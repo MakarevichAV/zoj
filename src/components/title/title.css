@@ -1,0 +1,19 @@
+.title {
+    max-width: 1200px;
+    padding: 30px;
+    background-color: #F7F7F7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.title p {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #A64639;
+}
+
+p.date {
+    color: #A7A7A7;
+}
