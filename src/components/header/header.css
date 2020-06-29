@@ -5,13 +5,6 @@
     box-sizing: border-box;
 }
 
-.wrapper {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
 .menu {
     display: flex;
     align-items: center;

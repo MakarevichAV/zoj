@@ -8,3 +8,17 @@
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
+body {
+    background-color: #ECEBEB;
+}
+
+.wrapper {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content {
+    padding: 30px 20px;
+}
