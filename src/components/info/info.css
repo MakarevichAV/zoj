@@ -1,0 +1,18 @@
+.info {
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+.info-container {
+    background: var(--block);
+    border-radius: 8px;
+    padding: 30px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.name {
+    color: var(--color-1);
+    font-size: 28px;
+    margin-bottom: 30px;
+}
