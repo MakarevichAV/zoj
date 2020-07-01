@@ -4,16 +4,7 @@ import InfoBlock from './info-block';
 
 import './info.css';
 
-const Info = ({name, infoBlockItems}) => {
-
-    // const infoBlocks = infoBlockItems.map((item) => {
-    //     return (
-
-    //     <span></span>
-    //         // <InfoBlock
-    //         //     infoItems={item} />   
-    //     )
-    // });
+const Info = ({name, ...infoBlockItems}) => {
 
     return (
         <div className="info">

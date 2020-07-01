@@ -129,7 +129,9 @@ const App = () => {
             <div className="container">
                 <SideBar />
                 <Info   name="Макаревич Александр"
-                        infoBlockItems={personInfo, targetInfo, adviceInfo} />
+                        personInfo={personInfo}
+                        targetInfo={targetInfo} 
+                        adviceInfo={adviceInfo}/>
             </div>
         </div>
     )
