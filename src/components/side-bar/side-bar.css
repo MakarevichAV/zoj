@@ -4,3 +4,12 @@
     padding: 0 20px;
     box-sizing: border-box;
 }
+
+@media (max-width: 900px) {
+    .side-bar {
+        max-width: 600px;
+        min-width: 370px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+    }
+}
