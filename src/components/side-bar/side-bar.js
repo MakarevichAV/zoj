@@ -7,7 +7,7 @@ import './side-bar.css';
 const SideBar = () => {
     return (
         <div className="side-bar">
-            <TargetSettingBlock />
+            {/* <TargetSettingBlock /> */}
         </div>
     )
 }

@@ -7,63 +7,34 @@ import './app.css';
 
 const App = () => {
 
-    const personInfo = [
+    const minWeight = 86; // будет расчитываться
+    const maxWeight = 96; // будет расчитываться
+    const optimalWeight = 92; // будет расчитываться
+
+    const normsInfo = [
         { 
-            key: 'Возраст',
-            value: '31 год',
-            underline: true,
-            change: false,
-            important: false,
-            head: false
-        },
-        { 
-            key: 'Рост',
-            value: '189 см',
-            underline: true,
-            change: false,
-            important: false,
-            head: false
-        },
-        { 
-            key: 'Вес',
-            value: '105 кг',
-            underline: true,
-            change: true,
-            important: false,
-            head: false
-        },
-        { 
-            key: 'Норма',
-            value: '95 кг',
+            key: 'Норма веса',
+            value: minWeight + ' - ' + maxWeight,
+            unit: 'кг',
             underline: true,
             change: false,
             important: true,
             head: false
-        }
-    ];
-
-    const targetInfo = [
-        { 
-            key: 'Цель',
-            value: 'Похудеть',
-            underline: false,
-            change: false,
-            important: false,
-            head: true
         },
         { 
-            key: 'Вес',
-            value: '92 кг',
+            key: 'Оптимальный вес',
+            value: optimalWeight,
+            unit: 'кг',
             underline: true,
             change: false,
-            important: false,
+            important: true,
             head: false
-        }
+        },
     ];
 
     const adviceInfo = [
         { 
-            key: 'Рекомендации',
+            key: 'Суточная норма',
             value: '',
             underline: false,
             change: false,
@@ -71,48 +42,45 @@ const App = () => {
             head: true
         },
         { 
-            key: 'Потребление, кКал/день',
+            key: 'Калории',
             value: '2430',
+            unit: 'кКал/день',
             underline: true,
             change: false,
             important: false,
             head: false
         },
         { 
-            key: 'Белки, г/день',
+            key: 'Белки',
             value: '60',
+            unit: 'г/день',
             underline: true,
             change: false,
             important: false,
             head: false
         },
         { 
-            key: 'Жиры, г/день',
+            key: 'Жиры',
             value: '30',
+            unit: 'г/день',
             underline: true,
             change: false,
             important: false,
             head: false
         },
         { 
-            key: 'Углеводы, г/день',
+            key: 'Углеводы',
             value: '40',
+            unit: 'г/день',
             underline: true,
             change: false,
             important: false,
             head: false
         },
         { 
-            key: 'Снижение веса, кг/неделю',
-            value: '0.9',
-            underline: true,
-            change: false,
-            important: false,
-            head: false
-        },
-        { 
-            key: 'Потребление воды, л/день',
+            key: 'Вода',
             value: '3.4',
+            unit: 'л/день',
             underline: true,
             change: false,
             important: false,
@@ -123,14 +91,10 @@ const App = () => {
     return (
         <div>
             <Header />
-            {/* <div className="wrapper">
-                <Title label="Питание" />
-            </div> */}
             <div className="container">
                 <SideBar />
-                <Info   name="Макаревич Александр"
-                        personInfo={personInfo}
-                        targetInfo={targetInfo} 
+                <Info   title="Рекомендации"
+                        normsInfo={normsInfo} 
                         adviceInfo={adviceInfo}/>
             </div>
         </div>

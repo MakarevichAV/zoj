@@ -15,7 +15,7 @@ const InfoItem = ({data}) => {
     return (
         <div className={styles}>
             <span>{data.key}</span>
-            <span>{data.value}</span>
+            <span>{data.value} {data.unit}</span>
             {console.log(data)}
         </div>
     )
