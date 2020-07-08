@@ -88,11 +88,42 @@ const App = () => {
         }
     ];
 
+    const userInfo = [
+        { 
+            key: 'Возраст',
+            value: '31',
+            unit: 'год',
+            underline: false,
+            change: false,
+            important: false,
+            head: false
+        },
+        { 
+            key: 'Рост',
+            value: '189',
+            unit: 'см',
+            underline: false,
+            change: false,
+            important: false,
+            head: false
+        },
+        { 
+            key: 'Вес',
+            value: '105',
+            unit: 'кг',
+            underline: false,
+            change: false,
+            important: false,
+            head: false
+        }
+    ];
+
     return (
         <div>
             <Header />
             <div className="container">
-                <SideBar />
+                <SideBar    name="Иванов Иван"
+                            userInfo={userInfo}/>
                 <Info   title="Рекомендации"
                         normsInfo={normsInfo} 
                         adviceInfo={adviceInfo}/>

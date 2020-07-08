@@ -1,13 +1,14 @@
 import React from 'react';
 
-import TargetSettingBlock from './target-setting-block';
+import UserInfo from './user-info';
 
 import './side-bar.css';
 
-const SideBar = () => {
+const SideBar = ({name, userInfo}) => {
     return (
         <div className="side-bar">
-            {/* <TargetSettingBlock /> */}
+            <UserInfo   name={name}
+                        userInfoItems={userInfo}/>
         </div>
     )
 }
