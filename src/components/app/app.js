@@ -1,4 +1,6 @@
 import React from 'react';
+import {Provider} from "react-redux";
+import store from "../../store";
 
 import Header from '../header';
 
@@ -124,27 +126,29 @@ const App = () => {
 
     return (
         <Router>
-            <div>
-                <Header />
+            <Provider store={store}>
+                <div>
+                    <Header />
 
-                <Route  path="/" 
-                        render= {() =>  <ProfilePage 
-                                            userInfo={userInfo} 
-                                            normsInfo={normsInfo} 
-                                            adviceInfo={adviceInfo}
-                                        />
-                                }
-                        exact/>
-                        
-                <Route  path="/profile" 
-                        render= {() =>  <ProfilePage 
-                                            userInfo={userInfo} 
-                                            normsInfo={normsInfo} 
-                                            adviceInfo={adviceInfo}
-                                        />}/>
-                <Route path="/food" component={FoodPage} />
-                <Route path="/sport" component={SportPage} />
-            </div>
+                    <Route  path="/" 
+                            render= {() =>  <ProfilePage 
+                                                userInfo={userInfo} 
+                                                normsInfo={normsInfo} 
+                                                adviceInfo={adviceInfo}
+                                            />
+                                    }
+                            exact/>
+                            
+                    <Route  path="/profile" 
+                            render= {() =>  <ProfilePage 
+                                                userInfo={userInfo} 
+                                                normsInfo={normsInfo} 
+                                                adviceInfo={adviceInfo}
+                                            />}/>
+                    <Route path="/food" component={FoodPage} />
+                    <Route path="/sport" component={SportPage} />
+                </div>
+            </Provider>
         </Router>
     )
 }
