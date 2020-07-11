@@ -1,9 +1,13 @@
 import React from 'react';
 
 import Header from '../header';
-import SideBar from '../side-bar'
-import Info from '../info'
+
+import ProfilePage from '../profile-page';
+import FoodPage from '../food-page';
+import SportPage from '../sport-page';
 import './app.css';
+
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const App = () => {
 
@@ -119,16 +123,21 @@ const App = () => {
     ];
 
     return (
-        <div>
-            <Header />
-            <div className="container">
-                <SideBar    name="Иванов Иван"
-                            userInfo={userInfo}/>
-                <Info   title="Рекомендации"
-                        normsInfo={normsInfo} 
-                        adviceInfo={adviceInfo}/>
+        <Router>
+            <div>
+                <Header />
+                <Route  path="/profile" 
+                        render= {() =>  <ProfilePage 
+                                            userInfo={userInfo} 
+                                            normsInfo={normsInfo} 
+                                            adviceInfo={adviceInfo}
+                                        />
+                                }
+                />
+                <Route path="/food" component={FoodPage} />
+                <Route path="/sport" component={SportPage} />
             </div>
-        </div>
+        </Router>
     )
 }
 
