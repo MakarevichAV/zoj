@@ -35,3 +35,14 @@ export const addUser = user => async dispatch => {
         });
     }
 };
+
+export const getUser = () => async dispatch => {
+    // try {
+        setLoading();
+
+        dispatch({
+            type: GET_USER,
+            payload: 'WWWWWWWW'
+        })
+    // }
+};
