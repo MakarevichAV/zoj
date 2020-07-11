@@ -126,14 +126,23 @@ const App = () => {
         <Router>
             <div>
                 <Header />
-                <Route  path="/profile" 
+
+                <Route  path="/" 
                         render= {() =>  <ProfilePage 
                                             userInfo={userInfo} 
                                             normsInfo={normsInfo} 
                                             adviceInfo={adviceInfo}
                                         />
                                 }
-                />
+                        exact/>
+
+                <Route  path="/profile" 
+                        render= {() =>  <ProfilePage 
+                                            userInfo={userInfo} 
+                                            normsInfo={normsInfo} 
+                                            adviceInfo={adviceInfo}
+                                        />}/>
+                                        
                 <Route path="/food" component={FoodPage} />
                 <Route path="/sport" component={SportPage} />
             </div>
