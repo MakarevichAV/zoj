@@ -37,12 +37,14 @@ export const addUser = user => async dispatch => {
 };
 
 export const getUser = () => async dispatch => {
-    // try {
-        setLoading();
-
+    try {
         dispatch({
-            type: GET_USER,
-            payload: 'WWWWWWWW'
+            type: GET_USER
+        });
+    } catch (err) {
+        dispatch({
+            type: ERROR_USER,
+            payload: err
         })
-    // }
+    }
 };

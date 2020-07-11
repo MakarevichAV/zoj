@@ -4,7 +4,7 @@ import {
     DELETE_USER,
     SET_LOADING,
     ERROR_USER
-} from '../../actions/types';
+} from '../actions/types';
 
 const initialState = {
     _id: null,
@@ -18,17 +18,18 @@ const initialState = {
     height: null
 };
 
-export default function userInfoReducer (state = initialState, action) {
-    switch(action) {
-        case GET_USER:
-            return {
-                ...state,
-                age: action.payload
-            }
-        case ADD_USER: 
-        return {
-            ...state,
-        }
+const userInfoReducer = (state = initialState, action) => {
+    switch(action.type) {
+        // case GET_USER:
+        //     return {
+        //         ...state,
+        //         age: 22
+        //     }
+        //TODO
+        // case ADD_USER: 
+        // return {
+        //     ...state,
+        // }
         case SET_LOADING: 
             return {
                 ...state,
@@ -38,3 +39,5 @@ export default function userInfoReducer (state = initialState, action) {
             return state;
     }
 }
+
+export default userInfoReducer;
