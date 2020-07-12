@@ -1,6 +1,7 @@
 .logo {
     position: relative;
     padding: 0 6px;
+    display: inline-block;
 }
 
 .logo:before {
