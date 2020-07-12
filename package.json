@@ -31,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon server/server.js",
-    "startFull": "concurrently \"node server/server.js\" \"npm run start\""
+    "startFull": "concurrently \"nodemon server.js\" \"npm run start\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,5 +47,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
+  },
+    "proxy": "http://localhost:8080"
 }

@@ -11,16 +11,17 @@ export const setLoading = () => {
 };
 
 export const addUser = user => async dispatch => {
-    try {
-        setLoading();
-
-        const res = await fetch ("./users", {
-            method: "POST",
-            body: JSON.stringify(user),
+    // try {
+        // setLoading();
+        console.log(JSON.stringify(user));
+        const res = await fetch ("/api/users/", {
             headers: {
-                "ContentType": "application/json"
-            }
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(user)
         });
+
 
         const data = res.json();
 
@@ -28,12 +29,12 @@ export const addUser = user => async dispatch => {
             type: ADD_USER,
             payload: data
         });
-    } catch (err) {
-        dispatch({
-            type: ERROR_USER,
-            payload: err
-        });
-    }
+    // } catch (err) {
+    //     dispatch({
+    //         type: ERROR_USER,
+    //         payload: err
+    //     });
+    // }
 };
 
 export const getUser = () => async dispatch => {
