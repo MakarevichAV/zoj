@@ -16,7 +16,6 @@ const InfoItem = ({data}) => {
         <p className={styles}>
             <span>{data.key}</span>
             <span>{data.value} {data.unit}</span>
-            {console.log(data)}
         </p>
     )
 }

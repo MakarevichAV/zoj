@@ -163,6 +163,7 @@ export default class App extends Component {
                                                 />}/>
                         <Route path="/food" component={FoodPage} />
                         <Route path="/sport" component={SportPage} />
+                        <Redirect to="/" />
                     </div>
                 </Router>
             )
@@ -171,11 +172,11 @@ export default class App extends Component {
         return (  // Если пользователь не залогинен
             <Router>
                 <Route  path="/login" 
-                                render={()=>(
-                                    <LoginPage 
-                                        isLoggedIn={isLoggedIn}
-                                        onLogin={this.onLogin}/>
-                                )}/>
+                        render={()=>(
+                            <LoginPage 
+                                isLoggedIn={isLoggedIn}
+                                onLogin={this.onLogin}/>
+                        )}/>
                 {/* Перебрасываем на страницу Входа */}
                 <Redirect to="/login" />
             </Router>

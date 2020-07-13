@@ -42,6 +42,7 @@
 
 .login-form {
     padding: 30px;
+    padding-bottom: 40px;
 }
 
 .login-form form {
@@ -55,10 +56,17 @@
     border: 2px solid var(--color-1);
     font-size: 20px;
     color: var(--txt-1);
+    border-radius: 4px;
 }
 
 .login-button {
     background-color: var(--color-1);
     color: white;
     cursor: pointer;
+    width: 100%;
+    padding: 7px;
+}
+
+.login-form .btn {
+
 }
