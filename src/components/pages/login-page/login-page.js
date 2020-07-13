@@ -21,37 +21,9 @@ const LoginPage = ({isLoggedIn, onLogin, onRegister}) => {
                         <NavLink activeClassName="here" className="nav-item" to="/login">Вход</NavLink>
                         <NavLink activeClassName="here" className="nav-item" to="/register">Регистрация</NavLink>
                     </div>
-                    <div className="login-form">
-                        <form>
-                            <input type="text" className="login-input" placeholder="Логин"/>
-                            <input type="password" className="login-input" placeholder="Пароль"/>
-                            
-                                <Route  path="/login"
-                                        render={ () => {
-                                            return (
-                                                <button
-                                                    type="submit" 
-                                                    className="login-button"
-                                                    onClick={onLogin}>
-                                                        ВОЙТИ
-                                                </button>
-                                            )
-                                        } }/>
-                                <Route  path="/register"
-                                        render={ () => {
-                                            return (
-                                                <div>
-                                                    <input type="password" className="login-input" placeholder="Повторите пароль"/>
-                                                    <button
-                                                        type="submit" 
-                                                        className="login-button"
-                                                        onClick={onRegister}>
-                                                            ЗАРЕГИСТРИРОВАТЬСЯ
-                                                    </button>
-                                                </div>
-                                            )
-                                        } }/>
-                        </form>
+                    <div className="login-form">                            
+                        <Route  path="/login" render={ () => <LoginForm/> }/>
+                        <Route  path="/register" render={ () => <RegisterForm/> }/>
                     </div>
                 </div>
             </div>
