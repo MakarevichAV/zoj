@@ -11,7 +11,7 @@ export const setLoading = () => {
 };
 
 export const addUser = user => async dispatch => {
-    // try {
+    try {
         // setLoading();
         console.log(JSON.stringify(user));
         const res = await fetch ("/api/users/", {
@@ -24,17 +24,17 @@ export const addUser = user => async dispatch => {
 
 
         const data = res.json();
-
+        console.log(data)
         dispatch({
             type: ADD_USER,
             payload: data
         });
-    // } catch (err) {
-    //     dispatch({
-    //         type: ERROR_USER,
-    //         payload: err
-    //     });
-    // }
+    } catch (err) {
+        dispatch({
+            type: ERROR_USER,
+            payload: err
+        });
+    }
 };
 
 export const getUser = () => async dispatch => {

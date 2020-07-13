@@ -29,7 +29,6 @@ const userInfoReducer = (state = initialState, action) => {
         case ADD_USER: 
         return {
             ...state,
-            _id: action.payload
         }
         case SET_LOADING: 
             return {
