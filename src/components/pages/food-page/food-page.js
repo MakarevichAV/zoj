@@ -12,4 +12,4 @@ const FoodPage = () => {
     )
 }
 
-export default FoodPage;
+export {FoodPage};

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'; 
+import {Provider} from "react-redux";
+import store from "../../store";
 
 import Header from '../header';
 
@@ -147,42 +149,46 @@ export default class App extends Component {
         if (isLoggedIn) {  // Если пользователь залогинен
             return (
                 <Router>
-                    <div>
-                        <Header />
-        
-                        <Route  path="/" 
-                                render= {() =>  <ProfilePage 
-                                                    userInfo={userInfo} 
-                                                    normsInfo={normsInfo} 
-                                                    adviceInfo={adviceInfo}
-                                                />
-                                        }
-                                exact/>
-                                
-                        <Route  path="/profile" 
-                                render= {() =>  <ProfilePage 
-                                                    userInfo={userInfo} 
-                                                    normsInfo={normsInfo} 
-                                                    adviceInfo={adviceInfo}
-                                                />}/>
-                        <Route path="/food" component={FoodPage} />
-                        <Route path="/sport" component={SportPage} />
-                        <Redirect to="/profile" />
-                    </div>
+                    <Provider store={store}>
+                        <div>
+                            <Header />
+            
+                            <Route  path="/" 
+                                    render= {() =>  <ProfilePage 
+                                                        userInfo={userInfo} 
+                                                        normsInfo={normsInfo} 
+                                                        adviceInfo={adviceInfo}
+                                                    />
+                                            }
+                                    exact/>
+                                    
+                            <Route  path="/profile" 
+                                    render= {() =>  <ProfilePage 
+                                                        userInfo={userInfo} 
+                                                        normsInfo={normsInfo} 
+                                                        adviceInfo={adviceInfo}
+                                                    />}/>
+                            <Route path="/food" component={FoodPage} />
+                            <Route path="/sport" component={SportPage} />
+                            <Redirect to="/profile" />
+                        </div>
+                    </Provider>
                 </Router>
             )
         }
     
         return (  // Если пользователь не залогинен
             <Router>
-                <Route  path="/login" 
-                        render={()=>(
-                            <LoginPage 
-                                isLoggedIn={isLoggedIn}
-                                onLogin={this.onLogin}/>
-                        )}/>
-                {/* Перебрасываем на страницу Входа */}
-                <Redirect to="/login" />
+                <Provider store={store}>
+                    <Route  path="/login" 
+                            render={()=>(
+                                <LoginPage 
+                                    isLoggedIn={isLoggedIn}
+                                    onLogin={this.onLogin}/>
+                            )}/>
+                    {/* Перебрасываем на страницу Входа */}
+                    <Redirect to="/login" />
+                </Provider>
             </Router>
         )
 
