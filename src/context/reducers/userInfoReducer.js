@@ -26,10 +26,11 @@ const userInfoReducer = (state = initialState, action) => {
         //         age: 22
         //     }
         //TODO
-        // case ADD_USER: 
-        // return {
-        //     ...state,
-        // }
+        case ADD_USER: 
+        return {
+            ...state,
+            _id: action.payload
+        }
         case SET_LOADING: 
             return {
                 ...state,

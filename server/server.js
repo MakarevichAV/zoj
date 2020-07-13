@@ -1,10 +1,13 @@
 const express = require("express");
+const cors = require('cors');
 const connectDB = require ("../config/db");
 const path = require("path");
 const app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+
+app.use(cors());
 connectDB();
 
 app.use("/api/auth", require("./routes/users"));
@@ -19,6 +22,7 @@ if (process.env.NODE_ENV === "production") {
     );
 }
 
-const PORT = process.env.PORT || 3000;
+const PORT = 8080;
+
 app.listen(PORT, () => console.log(`Serve startes on port - ${PORT}`));
 
