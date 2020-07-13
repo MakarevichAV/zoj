@@ -23,6 +23,10 @@ export default class App extends Component {
         })
     }
 
+    onRegister = () => {
+        console.log('Регистрация');
+    }
+
     render () {
 
         // Временное хранилище --НАЧАЛО--
@@ -163,7 +167,7 @@ export default class App extends Component {
                                                 />}/>
                         <Route path="/food" component={FoodPage} />
                         <Route path="/sport" component={SportPage} />
-                        <Redirect to="/" />
+                        <Redirect to="/profile" />
                     </div>
                 </Router>
             )

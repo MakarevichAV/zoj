@@ -1,38 +1,61 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './login-page.css';
 
 import Logo from '../../header/logo';
-import Button from '../../button';
+import LoginForm from './login-form';
+import RegisterForm from './register-form';
 
-const LoginPage = ({isLoggedIn, onLogin}) => {
+const LoginPage = ({isLoggedIn, onLogin, onRegister}) => {
 
     return (
-        <div className="login-page">
-            <div className="login-window">
-                <div className="login-header">
-                    <Logo />
-                </div>
-                <div className="login-nav">
-                    <a href="#" className="nav-item here">Вход</a>
-                    <Link to="/register"><a href="#" className="nav-item">Регистрация</a></Link>
-                </div>
-                <div className="login-form">
-                    <form>
-                        <input type="text" className="login-input" placeholder="Логин"/>
-                        <input type="password" className="login-input" placeholder="Пароль"/>
-                        <button
-                            type="submit" 
-                            className="login-button"
-                            onClick={onLogin}>
-                                ВОЙТИ
-                        </button>
-                    </form>
+        <Router>
+            <div className="login-page">
+                <div className="login-window">
+                    <div className="login-header">
+                        <Logo />
+                    </div>
+                    <div className="login-nav">
+                        <NavLink activeClassName="here" className="nav-item" to="/login">Вход</NavLink>
+                        <NavLink activeClassName="here" className="nav-item" to="/register">Регистрация</NavLink>
+                    </div>
+                    <div className="login-form">
+                        <form>
+                            <input type="text" className="login-input" placeholder="Логин"/>
+                            <input type="password" className="login-input" placeholder="Пароль"/>
+                            
+                                <Route  path="/login"
+                                        render={ () => {
+                                            return (
+                                                <button
+                                                    type="submit" 
+                                                    className="login-button"
+                                                    onClick={onLogin}>
+                                                        ВОЙТИ
+                                                </button>
+                                            )
+                                        } }/>
+                                <Route  path="/register"
+                                        render={ () => {
+                                            return (
+                                                <div>
+                                                    <input type="password" className="login-input" placeholder="Повторите пароль"/>
+                                                    <button
+                                                        type="submit" 
+                                                        className="login-button"
+                                                        onClick={onRegister}>
+                                                            ЗАРЕГИСТРИРОВАТЬСЯ
+                                                    </button>
+                                                </div>
+                                            )
+                                        } }/>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Router>
     )
 
 }
