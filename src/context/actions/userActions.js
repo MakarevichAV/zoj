@@ -12,8 +12,8 @@ export const setLoading = () => {
 
 export const addUser = user => async dispatch => {
     try {
+        //TODO loading
         // setLoading();
-        console.log(JSON.stringify(user));
         const res = await fetch ("/api/users/", {
             headers: {
                 "Content-Type": "application/json"
@@ -22,9 +22,8 @@ export const addUser = user => async dispatch => {
             body: JSON.stringify(user)
         });
 
+        const data = await res.json();
 
-        const data = res.json();
-        console.log(data)
         dispatch({
             type: ADD_USER,
             payload: data

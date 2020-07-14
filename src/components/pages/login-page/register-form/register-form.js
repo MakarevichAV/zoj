@@ -4,45 +4,57 @@ import {useDispatch} from 'react-redux';
 import {addUser} from '../../../../context/actions/userActions';
 
 const RegisterForm = () => {
-    let [login, setLogin] = useState('');
-    let [email, setEmail] = useState('');
-    let [password, setPassword] = useState('');
-    let [passwordConfirm, setPasswordConfirm] = useState('');
     const dispatch = useDispatch();
+    const [user, setUser] = useState({
+        name: "",
+        email: "",
+        password: "",
+        password2: ""
+      });
+    
+    const { name, email, password, password2} = user;
 
-    const user = {
-        email,
-        login,
-        password
-    }
+    const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
-    const onSubmitForm = () => {
-        console.log('submit');
-        if (password === passwordConfirm) {
-            dispatch(addUser(user));
-        } else {
-            alert('неправильно введены данные');
-        }
-    }
+    const onSubmit = e => {
+        e.preventDefault();
+        
+       if (password === password2) {
+        dispatch(addUser({name, email, password}));
+       }
+
+        //TODO alert if input wrong + loading msg??
+      };
 
     return (
-        <form>
-            {login}
-            {password}
-            {passwordConfirm}
+        <form >
             <input type="text" className="login-input"
-                 placeholder="Логин" value={login} onChange= {(e) => setLogin( e.target.value)}/>
-            <input type="email" className="login-input" placeholder="Email"
-                value={email} onChange= {(e) => setEmail( e.target.value)}/>
-            <input type="password" className="login-input" placeholder="Пароль"
-                value={password} onChange= {(e) => setPassword( e.target.value)}/>
+                        name="name"
+                        placeholder="Логин" 
+                        value={name} 
+                        onChange= {onChange}/>
+            <input type="email" className="login-input"
+                        name="email" 
+                        placeholder="Email"
+                        value={email} 
+                        onChange= {onChange}/>
+            <input type="password" className="login-input" 
+                        name="password"
+                        placeholder="Пароль"
+                        value={password} 
+                        onChange= {onChange}            
+                        required minLength="6"/>
             <div>
-                <input type="password" className="login-input" placeholder="Повторите пароль"
-                    value={passwordConfirm} onChange= {(e) => setPasswordConfirm( e.target.value)}/>
+                <input type="password" className="login-input"
+                            name="password2"
+                            placeholder="Повторите пароль"
+                            value={password2} 
+                            onChange= {onChange}   
+                            required minLength="6"/>
                 <button
                     type="submit" 
                     className="login-button"
-                    onClick={() => onSubmitForm()}
+                    onClick={onSubmit}
                     >
                         ЗАРЕГИСТРИРОВАТЬСЯ
                 </button>

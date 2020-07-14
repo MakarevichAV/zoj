@@ -15,7 +15,8 @@ const initialState = {
     lastName: null,
     age: null,
     weight: null,
-    height: null
+    height: null,
+    isAuthenticated: false
 };
 
 const userInfoReducer = (state = initialState, action) => {
@@ -27,9 +28,12 @@ const userInfoReducer = (state = initialState, action) => {
         //     }
         //TODO
         case ADD_USER: 
+        localStorage.setItem("token", action.payload.token);
         return {
             ...state,
-        }
+            ...action.payload,
+            loading: false
+        };
         case SET_LOADING: 
             return {
                 ...state,
