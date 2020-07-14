@@ -1,11 +1,14 @@
 .title {
     max-width: 1200px;
     padding: 30px;
+    box-sizing: border-box;
     background-color: #F7F7F7;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 8px;
+    margin: 0 auto;
+    margin-bottom: 30px;
 }
 
 .title p {

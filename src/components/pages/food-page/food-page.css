@@ -1,0 +1,13 @@
+.food-page {
+    padding: 0 20px;
+}
+
+.daily-rate {
+    padding: 30px;
+    margin: 0 20px;
+    background: var(--block);
+    flex-grow: 1;
+    max-width: 330px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}

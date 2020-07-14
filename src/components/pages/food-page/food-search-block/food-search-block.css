@@ -1,0 +1,24 @@
+.food-search-block {
+    padding: 30px;
+    margin: 0 20px;
+    flex-grow: 1;
+    box-sizing: border-box;
+    min-height: 100px;
+    background: var(--main-color);
+    flex-basis: 300px;
+    border-radius: 8px;
+}
+
+.food-list {
+    padding: 30px;
+    background: white;
+    display: none;
+}
+
+.food-list p {
+    margin-bottom: 10px;
+}
+
+.show-list {
+    display: block;
+}
