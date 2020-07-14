@@ -1,7 +1,7 @@
 import React from 'react';
 import './food-page.css';
 
-import Title from '../title';
+import Title from '../../title';
 
 const FoodPage = () => {
     return (
@@ -12,4 +12,4 @@ const FoodPage = () => {
     )
 }
 
-export default FoodPage;
+export {FoodPage};

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './nav.css'
 
 const Nav = () => {
     return (
         <ul className="nav">
-            <li><Link to="/profile">Профиль</Link></li>
-            <li><Link to="/food">Питание</Link></li>
-            <li><Link to="/sport">Упражнения</Link></li>
+            <li><NavLink activeClassName="nav-active" to="/profile">Профиль</NavLink></li>
+            <li><NavLink activeClassName="nav-active" to="/food">Питание</NavLink></li>
+            <li><NavLink activeClassName="nav-active" to="/sport">Упражнения</NavLink></li>
             <li><a href="#">Виртуальный тренер</a></li>
         </ul>
     )
