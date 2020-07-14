@@ -13,12 +13,30 @@
     padding: 30px;
     background: white;
     display: none;
-}
-
-.food-list p {
-    margin-bottom: 10px;
+    height: 150px;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #85AD90;
+    background: var(--block);
+    box-shadow: 3px 3px 4px 2px #a8a8a8;
 }
 
 .show-list {
     display: block;
+}
+
+.search-area {
+    padding: 8px 15px;
+    border: 2px solid var(--color-1);
+    font-size: 20px;
+    color: var(--txt-1);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.relative {
+    position: relative;
 }

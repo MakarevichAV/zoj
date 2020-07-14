@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import './food-search-block.css';
+import ListItem from './list-item'
 import cn from 'classnames';
 
 // Подключаем класс-сервис с хавчиком для работы с тестовыми данными
@@ -27,7 +28,7 @@ export default class FoodSearchBlock extends Component {
             const names = allFood.map((val) => { 
                 const regExp = new RegExp('^' + e.target.value, 'i'); // рег. выражение для сравнения
                 if (regExp.test(val.name)) {
-                    return <p id={val.id}>{val.name}</p>;
+                    return <ListItem id={val.id} listItemValue={val.name}/>;
                 } 
             }) // удаляем из массива значения undefined
             .filter(function(x) {
@@ -47,16 +48,15 @@ export default class FoodSearchBlock extends Component {
                 })
             }
             
-        } else {
+        } else { // если значение инпута пустое
             this.setState({
-                list: '',
-                showList: false
+                list: '',  // отчищаем список
+                showList: false // скрываем блок списка
             })
         }
     }
 
     render () {
-
         const { showList } = this.state;
         const styles = cn(
             'food-list', 
@@ -64,10 +64,13 @@ export default class FoodSearchBlock extends Component {
         );
         return (
             <div className="food-search-block">
-                <input type="text" placeholder="Начни вводить продукт" onChange={this.showHelper} />
-                <div className={styles}>
-                    {this.state.list}
+                <div className="relative">
+                    <input className="search-area" type="text" placeholder="Начни вводить продукт" onChange={this.showHelper} />
+                    <div className={styles}>
+                        {this.state.list}
+                    </div>
                 </div>
+                
             </div>
         )
     }

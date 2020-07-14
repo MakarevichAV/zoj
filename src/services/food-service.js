@@ -43,7 +43,7 @@ export default class FoodService {
         },
         {
             id: 6,
-			name: 'Мороженное [TEST DATA]',
+			name: 'Мороженое [TEST DATA]',
 			energy: 200,
 			protein: 25,
 			fat: 15,
@@ -75,7 +75,7 @@ export default class FoodService {
         },
         {
             id: 10,
-			name: 'Пироженное наполеон [TEST DATA]',
+			name: 'Пироженое наполеон [TEST DATA]',
 			energy: 190,
 			protein: 20,
 			fat: 18,

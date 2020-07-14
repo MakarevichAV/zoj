@@ -7,7 +7,9 @@ import Title from '../../title';
 const FoodPage = () => {
     return (
         <div className="food-page">
-            <Title label="питание"/>
+            <div className="wrapper">
+                <Title label="питание"/>
+            </div>
             <div className="container">
                 <FoodSearchBlock />
                 <div className="daily-rate"></div>
