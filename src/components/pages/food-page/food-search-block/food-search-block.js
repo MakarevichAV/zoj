@@ -24,30 +24,39 @@ export default class FoodSearchBlock extends Component {
         disabled: true
     }
 
+    // Получение выбранного продукта, подтягивается из <ListItem />
+    // и запись в стэйт всех необходимых данных
     getFood = (id) => {
         const foodService = new FoodService();
+        // Из фудСервиса берем функцию, которая возвращает все данные продукта
         const foodItem = foodService.getSelectedFood(id);
         this.setState({
-            inpValue: '',
-            inpNumValue: 100,
-            showList: false,
+            inpValue: '', // чистим инпут
+            inpNumValue: 100, // устанавливаем 100 грамм по умолчанию
+            showList: false,  // скрываем выплывающий список
+            // записываем название продукта и значения КБЖУ
             foodName: foodItem.name,
             energy: foodItem.energy,
             protein: foodItem.protein,
             fat: foodItem.fat,
             carbohydrate: foodItem.carbohydrate,
-            foodId: id,
-            disabled: false
+            foodId: id, // записываем id продукта для дальнейшего обращения 
+            disabled: false // делаем все заблокированные элементы рабочими
         })
     }
 
-    calculateEPFC = (e) => {  // функция расчета КБЖУ при изменении граммов
+    // функция расчета КБЖУ при изменении граммов
+    calculateEPFC = (e) => {
+        // Обращаемся к фудСервису 
         const foodService = new FoodService();
+        // По id из стэйта получаем из фудСервиса значения КБЖУ для расчетов
         const foodItem = foodService.getSelectedFood(this.state.foodId);
+        // Расчитываем
         const energy = Math.round(foodItem.energy * e.target.value / 100);
         const protein = Math.round(foodItem.protein * e.target.value / 100);
         const fat = Math.round(foodItem.fat * e.target.value / 100);
         const carbohydrate = Math.round(foodItem.carbohydrate * e.target.value / 100);
+        // И записываем в Стэйт
         this.setState({
             inpNumValue: e.target.value,
             energy: energy,
@@ -57,8 +66,10 @@ export default class FoodSearchBlock extends Component {
         });
     }
 
-    showHelper = (e) => {
-        this.setState({
+    // Функция-обработчик для показа списка совпадений при печатанье в инпуте
+    showList = (e) => {
+        // Делаем инпут контроллируемым
+        this.setState({ 
             inpValue: e.target.value
         });
 
@@ -103,6 +114,7 @@ export default class FoodSearchBlock extends Component {
         }
     }
 
+    // Функция отчистки всех данных при нажатии на кнопку Сбросить
     clear = () => {
         console.log('Сбросить');
         this.setState({
@@ -118,9 +130,10 @@ export default class FoodSearchBlock extends Component {
         })
     }
 
+    // Функция записи данных в БД при нажатии на ЗАПИСАТЬ В ДНЕВНИК
     write = () => {
         console.log('Записать в базу данных');
-        // После записи в БД всё стираем
+        // После записи в БД всё стираем, вызывая функцию для отчистки
         this.clear();
     }
 
@@ -130,7 +143,7 @@ export default class FoodSearchBlock extends Component {
             s.list, 
             {[s.showList]: this.state.showList},
         );
-
+        
         const mainRow = this.state.foodName ? this.state.foodName : 'Продукт не выбран';
 
         return (
@@ -139,8 +152,8 @@ export default class FoodSearchBlock extends Component {
                     <input  className={cn(s.inputs, s.searchArea)} 
                             type="text" 
                             placeholder="Начни вводить продукт" 
-                            value={this.state.inpValue}
-                            onChange={this.showHelper} />
+                            value={this.state.inpValue}  // контроллируемый инпут
+                            onChange={this.showList} />
                     <div className={listClasses}>
                         {this.state.list}
                     </div>
