@@ -1,0 +1,101 @@
+.foodSearchBlock {
+    padding: 30px;
+    margin: 0 20px;
+    flex-grow: 1;
+    box-sizing: border-box;
+    min-height: 100px;
+    background: var(--main-color);
+    flex-basis: 300px;
+    border-radius: 8px;
+}
+
+.list {
+    padding: 30px;
+    background: white;
+    display: none;
+    height: 150px;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #85AD90;
+    background: var(--block);
+    box-shadow: 3px 3px 4px 2px #a8a8a8;
+}
+
+.showList {
+    display: block;
+}
+
+.inputs {
+    padding: 8px 15px;
+    border: 2px solid var(--color-1);
+    font-size: 20px;
+    color: var(--txt-1);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.searchArea {
+    width: 100%;
+}
+.number {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.relative {
+    position: relative;
+}
+
+.dataRows {
+    padding: 20px 0;
+}
+
+.mainRow h2 {
+    font-size: 22px;
+    color: var(--color-3);
+}
+
+
+
+.row {
+    font-size: 20px;
+    color: var(--txt-3);
+    border-bottom: 1px solid var(--txt-3);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainRow {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: none;
+}
+
+.buttons {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.btn {
+    min-width: 180px;
+    padding: 10px 30px;
+    font-size: 24px;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+}
+
+.btnType1 {
+    background-color: var(--color-1);
+    color: white;
+}
+
+.btnType2 {
+    background-color: var(--block);
+    color: var(--color-1);
+    margin-right: 20px;
+}

@@ -1,9 +1,9 @@
 import React from 'react';
-import './list-item.css';
+import s from './list-item.module.css';
 
-const ListItem = ({id, listItemValue}) => {
+const ListItem = ({id, listItemValue, getFood}) => {
     return (
-        <p className="list-item" id={id}>{listItemValue}</p>
+        <p className={s.item} id={id} onClick={getFood}>{listItemValue}</p>
     )
 }
 
