@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 connectDB();
 
-app.use("/api/auth", require("./routes/users"));
+app.use("/api/auth", require("./routes/auth"));
 app.use("/api/users", require("./routes/users"));
 
 if (process.env.NODE_ENV === "production") {
