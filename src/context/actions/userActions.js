@@ -1,5 +1,6 @@
 import setAuthToken from '../setAuthToken';
 import axios from 'axios';
+import {useDispatch} from 'react-redux';
 import {
     ADD_USER,
     LOGIN_SUCCESS,
@@ -13,20 +14,6 @@ export const setLoading = () => {
     return {type: SET_LOADING}
 };
 
-//Load user
-export const loadUser = async () =>async dispatch => {
-    if (localStorage.token) {
-        setAuthToken(localStorage.token);
-    }
-
-    try {
-        const res = await axios.get("/api/auth");
-
-        dispatch({ type: USER_LOADED, payload: res.data });
-    } catch (err) {
-        dispatch({ type: AUTH_ERROR });
-    }
-};
 
 //Login user
 export const login = formData => async dispatch => {
@@ -44,7 +31,20 @@ export const login = formData => async dispatch => {
         payload: res.data
       });
 
-      loadUser();
+      runWhenConditionTrue(
+        () => localStorage.token,
+        async () => {
+          setAuthToken(localStorage.token);
+
+          try {
+            const res = await axios.get("/api/auth");
+            dispatch({ type: USER_LOADED, payload: res.data });
+          } catch (err) {
+            dispatch({ type: AUTH_ERROR });
+          }
+        }
+      );
+      
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
@@ -80,3 +80,11 @@ export const addUser = user => async dispatch => {
     }
 };
 
+function runWhenConditionTrue(condition, callback) {
+  const interval = setInterval(()=>{
+      if (condition()) {
+          clearInterval(interval);
+          return callback();
+      }
+  }, 50);
+}

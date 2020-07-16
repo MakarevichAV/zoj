@@ -6,42 +6,46 @@ import {
     LOGIN_FAIL,
     LOGIN_SUCCESS,
     LOGOUT,
+    USER_LOADED
 } from '../actions/types';
 
 const initialState = {
-    _id: null,
-    _avatarURL: null,
-    _loading: false,
-    _error: null,
-    firstName: null,
-    lastName: null,
-    age: null,
-    weight: null,
-    height: null,
-    isAuthenticated: false
-};
+    token: localStorage.getItem("token"),
+    isAuthenticated: null,
+    loading: true,
+    user: null,
+    error: null
+  };
+
 
 const userInfoReducer = (state = initialState, action) => {
     switch(action.type) {
+        case USER_LOADED:
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                user: action.payload
+            };
         case LOGIN_SUCCESS:
-        localStorage.setItem("token", action.payload.token); 
-        return {
-            ...state,
-            ...action.payload,
-            isAuthenticated: true,
-            loading: false
-        }; 
+            localStorage.setItem("token", action.payload.token); 
+            return {
+                ...state,
+                ...action.payload,
+                isAuthenticated: true,
+                loading: false
+            }; 
         case ADD_USER: 
-        return {
-            ...state,
-            ...action.payload,
-            loading: false
-        }
+            return {
+                ...state,
+                ...action.payload,
+                loading: false
+            };
         case SET_LOADING: 
             return {
                 ...state,
                 loading: true
-            }
+            };
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
