@@ -1,19 +1,63 @@
+import setAuthToken from '../setAuthToken';
+import axios from 'axios';
+import {useDispatch} from 'react-redux';
 import {
     ADD_USER,
-    GET_USER,
-    DELETE_USER,
+    LOGIN_SUCCESS,
+    USER_LOADED,
     SET_LOADING,
-    ERROR_USER
+    AUTH_ERROR,
+    LOGIN_FAIL
 } from './types';
 
 export const setLoading = () => {
     return {type: SET_LOADING}
 };
 
+
+//Login user
+export const login = formData => async dispatch => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    try {
+      const res = await axios.post("/api/auth", formData, config);
+
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      });
+
+      runWhenConditionTrue(
+        () => localStorage.token,
+        async () => {
+          setAuthToken(localStorage.token);
+
+          try {
+            const res = await axios.get("/api/auth");
+            dispatch({ type: USER_LOADED, payload: res.data });
+          } catch (err) {
+            dispatch({ type: AUTH_ERROR });
+          }
+        }
+      );
+      
+    } catch (err) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: err.response.data.msg
+      });
+    }
+  };
+
+
 export const addUser = user => async dispatch => {
-    // try {
+    try {
+        //TODO loading
         // setLoading();
-        console.log(JSON.stringify(user));
         const res = await fetch ("/api/users/", {
             headers: {
                 "Content-Type": "application/json"
@@ -22,30 +66,25 @@ export const addUser = user => async dispatch => {
             body: JSON.stringify(user)
         });
 
-
-        const data = res.json();
+        const data = await res.json();
 
         dispatch({
             type: ADD_USER,
             payload: data
         });
-    // } catch (err) {
-    //     dispatch({
-    //         type: ERROR_USER,
-    //         payload: err
-    //     });
-    // }
-};
-
-export const getUser = () => async dispatch => {
-    try {
-        dispatch({
-            type: GET_USER
-        });
     } catch (err) {
         dispatch({
-            type: ERROR_USER,
+            type: AUTH_ERROR,
             payload: err
-        })
+        });
     }
 };
+
+export function runWhenConditionTrue(condition, callback) {
+  const interval = setInterval(()=>{
+      if (condition()) {
+          clearInterval(interval);
+          return callback();
+      }
+  }, 50);
+}
