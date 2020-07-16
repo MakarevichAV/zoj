@@ -21,6 +21,7 @@ const initialState = {
 const userInfoReducer = (state = initialState, action) => {
     switch(action.type) {
         case USER_LOADED:
+            localStorage.setItem('login', true);
             return {
                 ...state,
                 isAuthenticated: true,
@@ -29,7 +30,6 @@ const userInfoReducer = (state = initialState, action) => {
             };
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token); 
-            localStorage.setItem('login', true);
             return {
                 ...state,
                 ...action.payload,
