@@ -31,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon server/server.js",
-    "startFull": "concurrently \"nodemon server.js\" \"npm run start\""
+    "startWithServer": "concurrently \"nodemon server.js\" \"npm run start\""
   },
   "eslintConfig": {
     "extends": "react-app"
