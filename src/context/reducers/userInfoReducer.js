@@ -28,7 +28,8 @@ const userInfoReducer = (state = initialState, action) => {
                 user: action.payload
             };
         case LOGIN_SUCCESS:
-            localStorage.setItem("token", action.payload.token); 
+            localStorage.setItem('token', action.payload.token); 
+            localStorage.setItem('login', true);
             return {
                 ...state,
                 ...action.payload,
@@ -50,7 +51,7 @@ const userInfoReducer = (state = initialState, action) => {
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT:
-            localStorage.removeItem("token");
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,

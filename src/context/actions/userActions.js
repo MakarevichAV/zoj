@@ -80,7 +80,7 @@ export const addUser = user => async dispatch => {
     }
 };
 
-function runWhenConditionTrue(condition, callback) {
+export function runWhenConditionTrue(condition, callback) {
   const interval = setInterval(()=>{
       if (condition()) {
           clearInterval(interval);

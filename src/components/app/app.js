@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'; 
 import {Provider} from "react-redux";
 import store from "../../store";
+import {runWhenConditionTrue} from '../../context/actions/userActions';
 
 import Header from '../header';
 
@@ -21,15 +22,24 @@ export default class App extends Component {
 
     onLogin = () => {
         this.setState({
-            isLoggedIn: true
-        })
+            isLoggedIn: localStorage.getItem('login')
+        });
     }
 
     onRegister = () => {
         console.log('Регистрация');
     }
 
+
     render () {
+
+        //TODO - плохое и временное решение
+        runWhenConditionTrue(
+            () => localStorage.getItem('login'),
+            () => {
+                this.setState({isLoggedIn: true});
+            }
+        );
 
         // Временное хранилище --НАЧАЛО--
                 const minWeight = 86; // будет расчитываться
