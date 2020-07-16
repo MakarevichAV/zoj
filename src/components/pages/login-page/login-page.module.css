@@ -1,4 +1,4 @@
-.login-page {
+.loginPage {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -7,14 +7,14 @@
     box-sizing: border-box;
 }
 
-.login-window {
+.window {
     background-color: var(--block);
     border-radius: 8px;
     max-width: 600px;
     flex-grow: 1;
 }
 
-.login-header {
+.header {
     border-radius: 8px 8px 0 0;
     padding: 10px 30px;
     background-color: var(--main-color);
@@ -23,34 +23,34 @@
     margin-bottom: 30px;
 }
 
-.login-nav {
+.nav {
     display: flex;
     justify-content: flex-end;
     padding: 0 30px 15px;
 }
 
-.nav-item {
+.item {
     font-size: 20px;
     margin-right: 20px;
     color: var(--color-3);
 }
 
-.nav-item.here {
+.here {
     color: var(--txt-1);
     cursor: default;
 }
 
-.login-form {
+.form {
     padding: 30px;
     padding-bottom: 40px;
 }
 
-.login-form form {
+.form form {
     display: flex;
     flex-direction: column;
 }
 
-.login-input, .login-button {
+.input, .button {
     padding: 8px 15px;
     margin-bottom: 15px;
     border: 2px solid var(--color-1);
@@ -61,7 +61,7 @@
     box-sizing: border-box;
 }
 
-.login-button {
+.button {
     background-color: var(--color-1);
     color: white;
     cursor: pointer;

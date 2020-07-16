@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-
-// import './food-search-block.css';
 import s from "./food-search-block.module.css";
 import ListItem from './list-item';
 import cn from 'classnames';
@@ -165,7 +163,7 @@ export default class FoodSearchBlock extends Component {
                             <input  className={cn(s.inputs, s.number)} 
                                     type="number" 
                                     step="50"
-                                    min="100"
+                                    min="50"
                                     value={this.state.inpNumValue}
                                     onChange={this.calculateEPFC}
                                     disabled={this.state.disabled}/>

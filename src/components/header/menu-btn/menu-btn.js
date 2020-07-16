@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './menu-btn.css';
+import s from './menu-btn.module.css';
 
 const MenuBtn = () => {
     return (
-        <div className="menu-btn"></div>
+        <div className={s.menuBtn}></div>
     )
 }
 

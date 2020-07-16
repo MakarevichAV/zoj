@@ -1,9 +1,6 @@
 import React from 'react';
-
 import InfoItem from '../../info/info-block/info-item';
-
-import './user-info.css';
-
+import s from './user-info.module.css';
 import Button from '../../../../button';
 
 const UserInfo = ({name, userInfoItems}) => {
@@ -15,14 +12,14 @@ const UserInfo = ({name, userInfoItems}) => {
     });
 
     return (
-        <div className="user-info">
-            <div className="user-photo"></div>
-            <p className="user-name">{name}</p>
-            <div className="user-data">
+        <div className={s.info}>
+            <div className={s.photo}></div>
+            <p className={s.name}>{name}</p>
+            <div className={s.data}>
                 {infoItemsData}
             </div>
             <Button txt="Редактрировать"
-                    type="type-1"/>
+                    type="type1"/>
         </div>
     )
 }

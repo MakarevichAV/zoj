@@ -1,10 +1,10 @@
-.target-setting-block {
+.targetSettingBlock {
     width: 100%;
     background-color: var(--block);
     border-radius: 8px;
 }
 
-.click-to-drop {
+.clickToDrop {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,35 +14,35 @@
     cursor: pointer;
 }
 
-.drop-down {
+.dropDown {
     padding: 15px 30px 30px;
     color: var(--txt-1);
 }
 
-.drop-down label {
+.dropDown label {
     font-stretch: condensed;
 }
 
-.select-target {
+.selectTarget {
     margin-bottom: 60px;
 }
 
-.target-item {
+.targetItem {
     margin-bottom: 20px;
     font-size: 24px;
 }
 
-.target-item label {
+.targetItem label {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.drop-down input[type="radio"] {
+.dropDown input[type="radio"] {
     display: none;
 }
 
-.pseudo-radio {
+.pseudoRadio {
     width: 30px;
     height: 30px;
     border: 2px solid var(--color-2);
@@ -52,7 +52,7 @@
     background-color: white;
 }
 
-.pseudo-radio:before {
+.pseudoRadio:before {
     content: "";
     position: absolute;
     top: 0;
@@ -66,13 +66,13 @@
     transition: 0.3s;
 }
 
-.drop-down input:checked ~ .pseudo-radio:before { 
+.dropDown input:checked ~ .pseudoRadio:before { 
     width: 18px;
     height: 18px;
     transition: 0.3s;
 }
 
-.target-value {
+.targetValue {
     font-size: 24px;
     display: flex;
     align-items: flex-end;
@@ -80,11 +80,11 @@
     margin-bottom: 50px;
 }
 
-.target-value label {
+.targetValue label {
     margin-right: 15px;
 }
 
-.target-value #weight {
+.targetValue #weight {
     width: 100px;
     height: 50px;
     padding: 10px;
@@ -94,7 +94,7 @@
     border: 1px solid rgb(201, 201, 201);
 }
 
-.drop-down button {
+.dropDown button {
     padding: 15px;
     min-width: 200px;
     font-size: 24px;

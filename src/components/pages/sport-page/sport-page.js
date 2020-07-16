@@ -1,6 +1,5 @@
 import React from 'react';
-import './sport-page.css';
-
+import s from './sport-page.module.css';
 import Title from '../../title';
 
 const SportPage = () => {

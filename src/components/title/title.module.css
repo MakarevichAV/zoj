@@ -1,4 +1,4 @@
-.title {
+.titleBlock {
     max-width: 1200px;
     padding: 30px;
     box-sizing: border-box;
@@ -11,12 +11,12 @@
     margin-bottom: 30px;
 }
 
-.title p {
+.title {
     font-size: 28px;
     text-transform: uppercase;
     color: #A64639;
 }
 
-p.date {
+.date {
     color: #A7A7A7;
 }

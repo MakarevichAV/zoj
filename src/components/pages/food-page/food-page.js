@@ -1,18 +1,18 @@
 import React from 'react';
-import './food-page.css';
+import s from './food-page.module.css';
 
 import FoodSearchBlock from './food-search-block';
 import Title from '../../title';
 
 const FoodPage = () => {
     return (
-        <div className="food-page">
-            <div className="wrapper">
+        <div className={s.foodPage}>
+            <div className={s.wrapper}>
                 <Title label="питание"/>
             </div>
-            <div className="container">
+            <div className={s.container}>
                 <FoodSearchBlock />
-                <div className="daily-rate"></div>
+                <div className={s.dailyRate}></div>
             </div>
         </div>
     )

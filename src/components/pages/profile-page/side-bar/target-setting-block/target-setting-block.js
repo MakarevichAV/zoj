@@ -1,41 +1,41 @@
 import React from 'react';
 
-import './target-setting-block.css';
+import s from './target-setting-block.css';
 
 const TargetSettingBlock = () => {
     return (
-        <div className="target-setting-block">
-            <p className="click-to-drop">
+        <div className={s.targetSettingBlock}>
+            <p className={s.clickToDrop}>
                 Задать цель
                 <span>▲</span> 
                 {/* ▼ */}
             </p>
-            <div className="drop-down">
-                <div className="select-target">
-                    <div className="target-item">
+            <div className={s.dropDown}>
+                <div className={s.selectTarget}>
+                    <div className={s.target-Item}>
                         <label>
                             <input type="radio" name="target" id="lose"/>
-                            <div className="pseudo-radio"></div>
+                            <div className={s.pseudoRadio}></div>
                             Похудеть
                         </label>
                     </div>
-                    <div className="target-item">
+                    <div className={s.targetItem}>
                         <label>
                             <input type="radio" name="target" id="gain"/>
-                            <div className="pseudo-radio"></div>
+                            <div className={s.pseudoRadio}></div>
                             Набрать вес
                         </label>
                     </div>        
-                    <div className="target-item">
+                    <div className={s.targetItem}>
                         <label>
                             <input type="radio" name="target" id="keep"/>
-                            <div className="pseudo-radio"></div>
+                            <div className={s.pseudoRadio}></div>
                             Оставаться в форме
                         </label>
                     </div>
                 </div>
 
-                <div className="target-value">
+                <div className={s.targetValue}>
                     <label for="weight">Желаемый вес</label>
                     <input type="number" id="weight" placeholder="кг" />
                 </div>

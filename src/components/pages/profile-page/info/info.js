@@ -1,15 +1,13 @@
 import React from 'react';
-
 import InfoBlock from './info-block';
-
-import './info.css';
+import s from './info.module.css';
 
 const Info = ({title, ...infoBlockItems}) => {
 
     return (
-        <div className="info">
-            <div className="info-container">
-                <p className="name">{title}</p>
+        <div className={s.info}>
+            <div className={s.container}>
+                <p className={s.name}>{title}</p>
                 <InfoBlock infoItems={infoBlockItems.normsInfo} />
                 <InfoBlock infoItems={infoBlockItems.adviceInfo} />
             </div>

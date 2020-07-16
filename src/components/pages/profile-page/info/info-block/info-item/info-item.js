@@ -1,15 +1,14 @@
 import React from 'react';
 import cn from 'classnames';
-
-import './info-item.css';
+import s from './info-item.module.css';
 
 const InfoItem = ({data}) => {
 
     const styles = cn(
-        'info-item', 
-        {underline: data.underline},
-        {important: data.important},
-        {head: data.head}
+        s.item, 
+        {[s.underline]: data.underline},
+        {[s.important]: data.important},
+        {[s.head]: data.head}
     );
 
     return (

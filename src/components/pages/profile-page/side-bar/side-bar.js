@@ -2,11 +2,11 @@ import React from 'react';
 
 import UserInfo from './user-info';
 
-import './side-bar.css';
+import s from './side-bar.module.css';
 
 const SideBar = ({name, userInfo}) => {
     return (
-        <div className="side-bar">
+        <div className={s.sideBar}>
             <UserInfo   name={name}
                         userInfoItems={userInfo}/>
         </div>

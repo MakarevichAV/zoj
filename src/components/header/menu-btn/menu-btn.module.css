@@ -1,4 +1,4 @@
-.menu-btn {
+.menuBtn {
     width: 60px;
     height: 60px;
     background: url(./img/menu-btn.svg) no-repeat center center / contain;
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 1000px) {
-    .menu-btn {
+    .menuBtn {
         display: block;
     }
 }

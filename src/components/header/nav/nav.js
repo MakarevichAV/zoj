@@ -2,14 +2,14 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import './nav.css'
+import s from './nav.module.css'
 
 const Nav = () => {
     return (
-        <ul className="nav">
-            <li><NavLink activeClassName="nav-active" to="/profile">Профиль</NavLink></li>
-            <li><NavLink activeClassName="nav-active" to="/food">Питание</NavLink></li>
-            <li><NavLink activeClassName="nav-active" to="/sport">Упражнения</NavLink></li>
+        <ul className={s.nav}>
+            <li><NavLink activeClassName={s.navActive} to="/profile">Профиль</NavLink></li>
+            <li><NavLink activeClassName={s.navActive} to="/food">Питание</NavLink></li>
+            <li><NavLink activeClassName={s.navActive} to="/sport">Упражнения</NavLink></li>
             <li><a href="#">Виртуальный тренер</a></li>
         </ul>
     )

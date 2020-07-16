@@ -1,8 +1,6 @@
 import React from 'react';
-
 import InfoItem from './info-item';
-
-import './info-block.css';
+import s from './info-block.module.css';
 
 const InfoBlock = ({infoItems}) => {
 
@@ -13,7 +11,7 @@ const InfoBlock = ({infoItems}) => {
     });
 
     return (
-        <div className="info-block">
+        <div className={s.infoBlock}>
             {infoItemsData}
         </div>
     )

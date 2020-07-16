@@ -1,6 +1,6 @@
 .btn {
     min-width: 180px;
-    padding: 14px 40px;
+    padding: 10px 30px;
     font-size: 24px;
     border-radius: 8px;
     margin: 0 auto;
@@ -8,7 +8,15 @@
     cursor: pointer;
 }
 
-.btn-type-1 {
+.type1 {
     background-color: var(--color-1);
+    color: white;
+}
+.type2 {
+    background-color: var(--color-2);
+    color: white;
+}
+.type3 {
+    background-color: var(--main-color);
     color: white;
 }

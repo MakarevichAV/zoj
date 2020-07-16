@@ -4,12 +4,12 @@ import Logo from './logo';
 import Nav from './nav';
 import MenuBtn from './menu-btn';
 
-import './header.css';
+import s from './header.module.css';
 
 const Header = () => {
     return (
-        <div className="header">
-            <div className="wrapper menu">
+        <div className={s.header}>
+            <div className={s.menu}>
                 <Logo />
                 <Nav />
                 <MenuBtn />

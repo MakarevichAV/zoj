@@ -1,4 +1,4 @@
-.side-bar {
+.sideBar {
     max-width: 400px;
     flex-grow: 1;
     padding: 0 20px;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 900px) {
-    .side-bar {
+    .sideBar {
         max-width: 600px;
         min-width: 370px;
         margin: 0 auto;

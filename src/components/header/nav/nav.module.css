@@ -1,18 +1,18 @@
-.nav-active {
+.navActive {
     color: var(--color-3) !important;
 }
 
-.menu .nav {
+.nav {
     display: flex;
     font-size: 24px;
 }
 
-.nav li {
+li {
     margin: 0 14px;
     padding: 0 4px;
 }
 
-.nav li:nth-last-child(1) {
+li:nth-last-child(1) {
     margin-right: 0;
 }
 
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 1000px) {
-    .menu .nav {
+    .nav {
         display: none;
     }
 }

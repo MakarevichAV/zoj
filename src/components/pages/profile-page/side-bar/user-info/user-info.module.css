@@ -1,10 +1,10 @@
-.user-info {
+.info {
     padding: 30px;
     background-color: var(--main-color);
     border-radius: 8px;
 }
 
-.user-photo {
+.photo {
     width: 175px;
     height: 175px;
     border: 3px solid white;
@@ -14,7 +14,7 @@
     background: url(./img/kote-vzglyad-sdaemsu.jpg) no-repeat center center / cover;
 }
 
-.user-name {
+.name {
     font-size: 26px;
     font-weight: bold;
     color: var(--user-font-color);
@@ -22,10 +22,10 @@
     margin-bottom: 30px;
 }
 
-.user-data {
+.data {
     margin-bottom: 30px;
 }
 
-.user-data p {
+.data p {
     color: var(--user-font-color);
 }
