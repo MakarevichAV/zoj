@@ -22,7 +22,9 @@ const LoginPage = ({isLoggedIn, onLogin, onRegister}) => {
                         <NavLink activeClassName={s.here} className={s.item} to="/register">Регистрация</NavLink>
                     </div>
                     <div className={s.form}>
-                        <form>
+                        <Route  path="/login" render={ () => <LoginForm/> }/>
+                        <Route  path="/register" render={ () => <RegisterForm/> }/>
+                        {/* <form>
                             <input type="text" className={s.input} placeholder="Логин"/>
                             <input type="password" className={s.input} placeholder="Пароль"/>
                             
@@ -51,7 +53,7 @@ const LoginPage = ({isLoggedIn, onLogin, onRegister}) => {
                                                 </div>
                                             )
                                         } }/>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
             </div>

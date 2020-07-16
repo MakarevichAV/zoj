@@ -3,6 +3,8 @@ import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {addUser} from '../../../../context/actions/userActions';
 
+import s from './register-form.module.css';
+
 const RegisterForm = () => {
     const dispatch = useDispatch();
     const [user, setUser] = useState({
@@ -28,24 +30,24 @@ const RegisterForm = () => {
 
     return (
         <form >
-            <input type="text" className="login-input"
+            <input type="text" className={s.input}
                         name="name"
                         placeholder="Логин" 
                         value={name} 
                         onChange= {onChange}/>
-            <input type="email" className="login-input"
+            <input type="email" className={s.input}
                         name="email" 
                         placeholder="Email"
                         value={email} 
                         onChange= {onChange}/>
-            <input type="password" className="login-input" 
+            <input type="password" className={s.input} 
                         name="password"
                         placeholder="Пароль"
                         value={password} 
                         onChange= {onChange}            
                         required minLength="6"/>
             <div>
-                <input type="password" className="login-input"
+                <input type="password" className={s.input}
                             name="password2"
                             placeholder="Повторите пароль"
                             value={password2} 
@@ -53,7 +55,7 @@ const RegisterForm = () => {
                             required minLength="6"/>
                 <button
                     type="submit" 
-                    className="login-button"
+                    className={s.button}
                     onClick={onSubmit}
                     >
                         ЗАРЕГИСТРИРОВАТЬСЯ

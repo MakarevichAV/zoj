@@ -3,6 +3,8 @@ import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {login} from '../../../../context/actions/userActions';
 
+import s from './login-form.module.css';
+
 const LoginForm = () => {
     const dispatch = useDispatch();
     const [user, setUser] = useState({email: '', password: ''});
@@ -19,13 +21,13 @@ const LoginForm = () => {
     return (
         <form>
             test@mail.ru - 123456
-            <input type="text" className="login-input" placeholder="Логин"
+            <input type="text" className={s.input} placeholder="Логин"
                     name='email' value={email} onChange={onChange}/>
-            <input type="password" className="login-input" placeholder="Пароль"
+            <input type="password" className={s.input} placeholder="Пароль"
                     name='password' value={password} onChange={onChange}/>
             <button
                     type="submit" 
-                    className="login-button"
+                    className={s.button}
                     onClick={onSubmit}
                     >
                         ВОЙТИ
