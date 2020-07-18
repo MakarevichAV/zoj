@@ -24,36 +24,6 @@ const LoginPage = ({isLoggedIn, onLogin, onRegister}) => {
                     <div className={s.form}>
                         <Route  path="/login" render={ () => <LoginForm/> }/>
                         <Route  path="/register" render={ () => <RegisterForm/> }/>
-                        {/* <form>
-                            <input type="text" className={s.input} placeholder="Логин"/>
-                            <input type="password" className={s.input} placeholder="Пароль"/>
-                            
-                                <Route  path="/login"
-                                        render={ () => {
-                                            return (
-                                                <button
-                                                    type="submit" 
-                                                    className={s.button}
-                                                    onClick={onLogin}>
-                                                        ВОЙТИ
-                                                </button>
-                                            )
-                                        } }/>
-                                <Route  path="/register"
-                                        render={ () => {
-                                            return (
-                                                <div>
-                                                    <input type="password" className={s.input} placeholder="Повторите пароль"/>
-                                                    <button
-                                                        type="submit" 
-                                                        className={s.button}
-                                                        onClick={onRegister}>
-                                                            ЗАРЕГИСТРИРОВАТЬСЯ
-                                                    </button>
-                                                </div>
-                                            )
-                                        } }/>
-                        </form> */}
                     </div>
                 </div>
             </div>
