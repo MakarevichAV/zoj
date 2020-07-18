@@ -6,7 +6,8 @@ import {
     LOGIN_FAIL,
     LOGIN_SUCCESS,
     LOGOUT,
-    USER_LOADED
+    USER_LOADED, 
+    CLEAR_ERRORS
 } from '../actions/types';
 
 const initialState = {
@@ -47,6 +48,11 @@ const userInfoReducer = (state = initialState, action) => {
                 ...state,
                 loading: true
             };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:

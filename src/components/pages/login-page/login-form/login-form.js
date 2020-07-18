@@ -1,12 +1,13 @@
 import React from 'react';
 import {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {login} from '../../../../context/actions/userActions';
+import {useDispatch, useSelector} from 'react-redux';
+import {login, clearErrors} from '../../../../context/actions/userActions';
 
 import s from './login-form.module.css';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
+    const alert = useSelector(state => state.userInfo.error);
     const [user, setUser] = useState({email: '', password: ''});
     const {email, password} = user;
 
@@ -15,12 +16,17 @@ const LoginForm = () => {
     const onSubmit = e => {
         e.preventDefault();
         dispatch(login({email, password}));
-
-        //TODO alert if wrong password or email
     }
+
+    if (alert) {
+        console.log('SDFASDF');
+        setTimeout(() => dispatch(clearErrors()), 5000);
+    }
+
     return (
         <form>
-            test@mail.ru - 123456
+            {alert ? <div className={s.alert}>{alert}</div> : false}
+            {/* <div className={s.alert}>{alert}</div> */}
             <input type="text" className={s.input} placeholder="Логин"
                     name='email' value={email} onChange={onChange}/>
             <input type="password" className={s.input} placeholder="Пароль"
@@ -31,7 +37,8 @@ const LoginForm = () => {
                     onClick={onSubmit}
                     >
                         ВОЙТИ
-                </button>
+            </button>            
+            test@mail.ru - 123456
         </form>
     )
 }
