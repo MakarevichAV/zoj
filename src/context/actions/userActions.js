@@ -14,6 +14,19 @@ export const setLoading = () => {
     return {type: SET_LOADING}
 };
 
+export const getUser = () => async dispatch => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+
+    try {
+      const res = await axios.get("/api/auth");
+      dispatch({ type: USER_LOADED, payload: res.data });
+    } catch (err) {
+      dispatch({ type: AUTH_ERROR });
+    }
+  }
+};
+
 //Login user
 export const login = formData => async dispatch => {
     const config = {
@@ -30,6 +43,8 @@ export const login = formData => async dispatch => {
         payload: res.data
       });
 
+
+      //todo get user?
       runWhenConditionTrue(
         () => localStorage.token,
         async () => {

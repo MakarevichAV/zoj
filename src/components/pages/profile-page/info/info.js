@@ -8,8 +8,8 @@ const Info = ({title, ...infoBlockItems}) => {
         <div className={s.info}>
             <div className={s.container}>
                 <p className={s.name}>{title}</p>
-                <InfoBlock infoItems={infoBlockItems.normsInfo} />
-                <InfoBlock infoItems={infoBlockItems.adviceInfo} />
+                {/* <InfoBlock infoItems={infoBlockItems.normsInfo} />
+                <InfoBlock infoItems={infoBlockItems.adviceInfo} /> */}
             </div>
         </div>
     )
