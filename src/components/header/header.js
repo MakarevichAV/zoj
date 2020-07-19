@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Logo from './logo';
-import Nav from './nav';
-import MenuBtn from './menu-btn';
+import Logo from './logo/logo';
+import Nav from './nav/nav';
+import MenuBtn from './menu-btn/menu-btn';
 
 import s from './header.module.css';
 

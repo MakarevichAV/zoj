@@ -1,5 +1,5 @@
 import React from 'react';
-import InfoBlock from './info-block';
+import InfoBlock from './info-block/info-block';
 import s from './info.module.css';
 
 const Info = ({title, ...infoBlockItems}) => {

@@ -2,8 +2,8 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import s from './food-page.module.css';
 
-import FoodSearchBlock from './food-search-block';
-import Title from '../../title';
+import FoodSearchBlock from './food-search-block/food-search-block';
+import Title from '../../title/title';
 
 const FoodPage = () => {
     return (
@@ -19,4 +19,4 @@ const FoodPage = () => {
     )
 }
 
-export {FoodPage};
+export default FoodPage;

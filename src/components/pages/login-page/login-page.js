@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import s from './login-page.module.css';
 
-import Logo from '../../header/logo';
-import LoginForm from './login-form';
-import RegisterForm from './register-form';
+import Logo from '../../header/logo/logo';
+import LoginForm from './login-form/login-form';
+import RegisterForm from './register-form/register-form';
 
 const LoginPage = ({isLoggedIn, onLogin, onRegister}) => {
 

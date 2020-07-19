@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SideBar from './side-bar';
-import Info from './info';
+import SideBar from './side-bar/side-bar';
+import Info from './info/info';
 import s from './profile-page.module.css';
 
 const ProfilePage = (props) => {

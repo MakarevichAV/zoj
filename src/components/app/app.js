@@ -4,42 +4,42 @@ import {Provider} from "react-redux";
 import store from "../../store";
 import {runWhenConditionTrue} from '../../context/actions/userActions';
 
-import Header from '../header';
+import Header from '../header/header';
 
-import ProfilePage from '../pages/profile-page';
-import FoodPage from '../pages/food-page';
-import SportPage from '../pages/sport-page';
-import LoginPage from '../pages/login-page'
+import ProfilePage from '../pages/profile-page/profile-page';
+import FoodPage from '../pages/food-page/food-page';
+import SportPage from '../pages/sport-page/sport-page';
+import LoginPage from '../pages/login-page/login-page'
 import './app.css';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-export default class App extends Component {
+const App  =  () => {
 
-    state = {
-        isLoggedIn: false
+    let state = {
+        isLoggedIn: true
     };
 
-    onLogin = () => {
-        this.setState({
-            isLoggedIn: localStorage.getItem('login')
-        });
+    const onLogin = () => {
+        // this.setState({
+        //     isLoggedIn: localStorage.getItem('login')
+        // });
     }
 
-    onRegister = () => {
-        console.log('Регистрация');
-    }
+    // onRegister = () => {
+    //     console.log('Регистрация');
+    // }
 
 
-    render () {
+    // render () {
 
         //TODO - плохое и временное решение
-        runWhenConditionTrue(
-            () => localStorage.getItem('login'),
-            () => {
-                this.setState({isLoggedIn: true});
-            }
-        );
+        // runWhenConditionTrue(
+        //     () => localStorage.getItem('login'),
+        //     () => {
+        //         this.setState({isLoggedIn: true});
+        //     }
+        // );
 
         // Временное хранилище --НАЧАЛО--
                 const minWeight = 86; // будет расчитываться
@@ -154,9 +154,9 @@ export default class App extends Component {
                 ];
         // Временное хранилище --КОНЕЦ--
 
-        const { isLoggedIn } = this.state;
+        // const { isLoggedIn } = this.state;
 
-        if (isLoggedIn) {  // Если пользователь залогинен
+        if (state.isLoggedIn) {  // Если пользователь залогинен
             return (
                 <Router>
                     <Provider store={store}>
@@ -193,8 +193,8 @@ export default class App extends Component {
                     <Route  path="/login" 
                             render={()=>(
                                 <LoginPage 
-                                    isLoggedIn={isLoggedIn}
-                                    onLogin={this.onLogin}/>
+                                    isLoggedIn={state.isLoggedIn}
+                                    onLogin={onLogin}/>
                             )}/>
                     {/* Перебрасываем на страницу Входа */}
                     <Redirect to="/login" />
@@ -202,8 +202,8 @@ export default class App extends Component {
             </Router>
         )
 
-    }
+    // }
     
 }
 
-// export default App;
+export default App;

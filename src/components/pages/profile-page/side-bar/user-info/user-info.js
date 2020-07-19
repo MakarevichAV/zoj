@@ -1,7 +1,7 @@
 import React from 'react';
-import InfoItem from '../../info/info-block/info-item';
+import InfoItem from '../../info/info-block/info-item/info-item';
 import s from './user-info.module.css';
-import Button from '../../../../button';
+import Button from '../../../../button/button';
 
 const UserInfo = ({name, userInfoItems}) => {
 
