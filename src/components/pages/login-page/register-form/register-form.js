@@ -20,12 +20,9 @@ const RegisterForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        
        if (password === password2) {
         dispatch(addUser({name, email, password}));
        }
-
-        //TODO alert if input wrong + loading msg??
       };
 
     return (

@@ -1,19 +1,18 @@
 import setAuthToken from '../setAuthToken';
 import axios from 'axios';
-import {useDispatch} from 'react-redux';
 import {
     ADD_USER,
     LOGIN_SUCCESS,
     USER_LOADED,
     SET_LOADING,
     AUTH_ERROR,
-    LOGIN_FAIL
+    LOGIN_FAIL, 
+    CLEAR_ERRORS
 } from './types';
 
 export const setLoading = () => {
     return {type: SET_LOADING}
 };
-
 
 //Login user
 export const login = formData => async dispatch => {
@@ -79,6 +78,8 @@ export const addUser = user => async dispatch => {
         });
     }
 };
+
+export const clearErrors = () => { return {type: CLEAR_ERRORS}};
 
 export function runWhenConditionTrue(condition, callback) {
   const interval = setInterval(()=>{

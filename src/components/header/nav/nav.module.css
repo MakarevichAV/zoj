@@ -7,6 +7,14 @@
     font-size: 24px;
 }
 
+.nav button{
+    font-size: 22px;
+    color: #ffffff;
+    background: none;
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
 li {
     margin: 0 14px;
     padding: 0 4px;

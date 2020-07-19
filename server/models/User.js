@@ -14,6 +14,18 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    birthdate: {
+        type: String,
+        required: true,
+    },
+    weight: {
+        type: String,
+        required: true,
+    },
+    height: {
+        type: String,
+        required: true,
+    },
     date: {
         type: Date,
         default: Date.now()
