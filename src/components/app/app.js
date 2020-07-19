@@ -21,7 +21,7 @@ const App  =  () => {
             <Router>
                 <Fragment>
                     <Switch>
-                        <PrivateRoute  path="/" exact component={Home}/>
+                        <PrivateRoute  path="/" component={Home}/>
                         <Route  path="/login" exact component={LoginPage} />
                     </Switch>
                 </Fragment>
