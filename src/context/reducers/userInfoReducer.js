@@ -15,8 +15,13 @@ const initialState = {
     isAuthenticated: null,
     loading: true,
     user: null,
-    error: null
-  };
+    error: null,
+    userData: {
+        age: 25,
+        height: 190,
+        weight: 90
+    }
+};
 
 
 const userInfoReducer = (state = initialState, action) => {
