@@ -1,10 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'; 
+import {goToEdit} from '../../../../../context/actions/userActions'
 import InfoItem from '../../info-item/info-item';
 import s from './user-info.module.css';
 import Button from '../../../../button';
 
 const UserInfo = () => {
+    const dispatch = useDispatch();
     const userData = useSelector(state => state.userInfo.user);
     
     // склонение ГОД/ГОДА/ЛЕТ
@@ -21,6 +23,10 @@ const UserInfo = () => {
         }
     }
 
+    const edit = () => {
+        dispatch(goToEdit({edit: true}));
+    }
+
     return (
         <div className={s.info}>
             <div className={s.photo}></div>
@@ -31,7 +37,9 @@ const UserInfo = () => {
                 <InfoItem name="Вес" value={userData.weight} unit="кг" />
             </div>
             <Button txt="Редактрировать"
-                    type="type1"/>
+                    classType="type1"
+                    onClick={edit}
+                    />
         </div>
     )
 }

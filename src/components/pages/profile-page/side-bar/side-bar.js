@@ -10,7 +10,7 @@ const SideBar = () => {
     const edit = useSelector(state => state.userInfo.user.edit);
     return (
         <div className={s.sideBar}>
-            {edit ? <UserInfo /> : <UserInfoEdit />}
+            {!edit ? <UserInfo /> : <UserInfoEdit />}
         </div>
     )
 }

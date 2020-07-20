@@ -8,7 +8,8 @@ import {
     LOGOUT,
     USER_LOADED, 
     CLEAR_ERRORS,
-    EDIT_USER_INFO
+    EDIT_USER_INFO,
+    GO_TO_EDIT
 } from '../actions/types';
 
 const initialState = {
@@ -20,7 +21,7 @@ const initialState = {
         age: 25, // сюда попадают значения при регистрации и редактировании
         height: 190,
         weight: 90,
-        edit: true
+        edit: false
     },
     error: null,
     normsInfo: {
@@ -89,11 +90,20 @@ const userInfoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: {
+                    ...state.user,
                     name: action.name,
                     age: action.age,
                     height: action.height,
                     weight: action.weight,
-                    edit: true
+                    edit: false
+                }
+            }
+        case GO_TO_EDIT:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    edit: action.edit
                 }
             }
         default:

@@ -9,3 +9,4 @@ export const LOGOUT = 'LOGOUT';
 export const REGISTER_FAIL= 'REGISTER_FAIL';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const EDIT_USER_INFO = 'EDIT_USER_INFO';
+export const GO_TO_EDIT = 'GO_TO_EDIT';

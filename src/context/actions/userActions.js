@@ -8,7 +8,8 @@ import {
     AUTH_ERROR,
     LOGIN_FAIL, 
     CLEAR_ERRORS,
-    EDIT_USER_INFO
+    EDIT_USER_INFO,
+    GO_TO_EDIT
 } from './types';
 
 export const setLoading = () => {
@@ -82,10 +83,19 @@ export const addUser = user => async dispatch => {
 
 export const clearErrors = () => { return {type: CLEAR_ERRORS}};
 
-export const editUserInfo = data =>  {
+export const editUserInfo = ({name, age, height, weight}) =>  {
   return {
     type: EDIT_USER_INFO,
-    data
+    name,
+    age,
+    height,
+    weight
+  }
+}
+export const goToEdit = (edit) => {
+  return {
+    type: GO_TO_EDIT,
+    edit
   }
 }
 
