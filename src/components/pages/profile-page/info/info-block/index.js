@@ -1,3 +1,3 @@
-import InfoBlock from './info-block';
+// import InfoBlock from './info-block';
 
-export default InfoBlock;
+// export default InfoBlock;

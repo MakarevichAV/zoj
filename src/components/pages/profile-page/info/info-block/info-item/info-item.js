@@ -6,15 +6,15 @@ const InfoItem = (props) => {
     
     const styles = cn(
         s.item, 
-        {[s.underline]: props.data ? props.data.underline : false},
-        {[s.important]: props.data ? props.data.important : false},
-        {[s.head]: props.data ? props.data.head : false}
+        {[s.underline]: props.underline},
+        {[s.important]: props.important},
+        {[s.head]: props.head}
     );
 
     return (
         <p className={styles}>
-            <span>{props.name || props.data.key}</span>
-            <span>{props.value || props.data.value} {props.unit || props.data.unit}</span>
+            <span>{props.name}</span>
+            <span>{props.value} {props.unit}</span>
         </p>
     )
 }

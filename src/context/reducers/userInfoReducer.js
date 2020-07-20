@@ -14,12 +14,23 @@ const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
-    user: null,
-    error: null,
-    userData: {
-        age: 25,
+    user: {
+        age: 25, // сюда попадают значения при регистрации и редактировании
         height: 190,
         weight: 90
+    },
+    error: null,
+    normsInfo: {
+        minWeight: 86, // сюда попадут расчитанные значения
+        maxWeight: 96,
+        optWeight: 92       
+    },
+    dailyRate: {
+        e: 2400, // расчитанные
+        p: 65,
+        f: 30,
+        c: 50,
+        w: 3.6
     }
 };
 

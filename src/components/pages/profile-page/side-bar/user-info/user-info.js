@@ -1,12 +1,15 @@
 import React from 'react';
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'; 
 import InfoItem from '../../info/info-block/info-item';
 import s from './user-info.module.css';
 import Button from '../../../../button';
 
 const UserInfo = ({name, userInfoItems}) => {
-    const userData = useSelector(state => state.userInfo.userData);
+    const userData = useSelector(state => state.userInfo.user);
+    
+    // склонение ГОД/ГОДА/ЛЕТ
     let yearsTxt;
     if (userData.age <= 20) {
         yearsTxt = 'лет';
