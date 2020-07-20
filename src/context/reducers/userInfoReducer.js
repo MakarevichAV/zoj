@@ -7,7 +7,8 @@ import {
     LOGIN_SUCCESS,
     LOGOUT,
     USER_LOADED, 
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    EDIT_USER_INFO
 } from '../actions/types';
 
 const initialState = {
@@ -15,9 +16,11 @@ const initialState = {
     isAuthenticated: null,
     loading: true,
     user: {
+        name: 'Иван Иванов',
         age: 25, // сюда попадают значения при регистрации и редактировании
         height: 190,
-        weight: 90
+        weight: 90,
+        edit: true
     },
     error: null,
     normsInfo: {
@@ -82,6 +85,17 @@ const userInfoReducer = (state = initialState, action) => {
                 user: null,
                 error: action.payload
             };
+        case EDIT_USER_INFO:
+            return {
+                ...state,
+                user: {
+                    name: action.name,
+                    age: action.age,
+                    height: action.height,
+                    weight: action.weight,
+                    edit: true
+                }
+            }
         default:
             return state;
     }

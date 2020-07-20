@@ -1,12 +1,10 @@
 import React from 'react';
-import {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'; 
-import InfoItem from '../../info/info-block/info-item';
+import {useDispatch, useSelector} from 'react-redux'; 
+import InfoItem from '../../info-item/info-item';
 import s from './user-info.module.css';
 import Button from '../../../../button';
 
-const UserInfo = ({name, userInfoItems}) => {
+const UserInfo = () => {
     const userData = useSelector(state => state.userInfo.user);
     
     // склонение ГОД/ГОДА/ЛЕТ
@@ -26,7 +24,7 @@ const UserInfo = ({name, userInfoItems}) => {
     return (
         <div className={s.info}>
             <div className={s.photo}></div>
-            <p className={s.name}>{name}</p>
+            <p className={s.name}>{userData.name}</p>
             <div className={s.data}>
                 <InfoItem name="Возраст" value={userData.age} unit={yearsTxt} />
                 <InfoItem name="Рост" value={userData.height} unit="см" />

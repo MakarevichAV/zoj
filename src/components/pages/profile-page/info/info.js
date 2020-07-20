@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import InfoBlock from './info-block';
-import InfoItem from './info-block/info-item';
+import InfoItem from '../info-item/info-item';
 import s from './info.module.css';
 
 const Info = () => {

@@ -7,6 +7,14 @@
     color: var(--txt-1);
 }
 
+.item input {
+    font-size: 22px;
+    color: var(--txt-2);
+    padding: 6px 10px;
+    width: 80px;
+    box-sizing: border-box;
+}
+
 .underline {
     border-bottom: 1px solid var(--txt-1);
 }

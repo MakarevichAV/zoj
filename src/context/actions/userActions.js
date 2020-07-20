@@ -7,7 +7,8 @@ import {
     SET_LOADING,
     AUTH_ERROR,
     LOGIN_FAIL, 
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    EDIT_USER_INFO
 } from './types';
 
 export const setLoading = () => {
@@ -80,6 +81,13 @@ export const addUser = user => async dispatch => {
 };
 
 export const clearErrors = () => { return {type: CLEAR_ERRORS}};
+
+export const editUserInfo = data =>  {
+  return {
+    type: EDIT_USER_INFO,
+    data
+  }
+}
 
 export function runWhenConditionTrue(condition, callback) {
   const interval = setInterval(()=>{

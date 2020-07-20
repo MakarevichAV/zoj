@@ -162,11 +162,9 @@ export default class App extends Component {
                     <Provider store={store}>
                         <div>
                             <Header />
-            
                             <Route  path="/" 
                                     render= {() =>  <ProfilePage />}
                                     exact/>
-                                    
                             <Route  path="/profile" 
                                     render= {() =>  <ProfilePage />}/>
                             <Route path="/food" component={FoodPage} />
