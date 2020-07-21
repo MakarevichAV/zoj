@@ -83,13 +83,13 @@ export const addUser = user => async dispatch => {
 
 export const clearErrors = () => { return {type: CLEAR_ERRORS}};
 
-export const editUserInfo = ({name, age, height, weight}) =>  {
+export const editUserInfo = (data) =>  {
   return {
     type: EDIT_USER_INFO,
-    name,
-    age,
-    height,
-    weight
+    name: data.name,
+    age: data.age,
+    height: data.height,
+    weight: data.weight
   }
 }
 export const goToEdit = (edit) => {

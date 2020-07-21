@@ -92,7 +92,7 @@ export default class FoodService {
 		let farther = true;
 		let foodItem;
 		for (let i = 0; farther && i < this._food.length; i++) {
-			if (this._food[i].id == id) {
+			if (this._food[i].id === id) {
 				farther = false;
 				foodItem = this._food[i];
 			}

@@ -10,7 +10,11 @@ const UserInfoEdit = () => {
     const userData = useSelector(state => state.userInfo.user);
     const [user, setUser] = useState({name: userData.name, age: userData.age, height: userData.height, weight: userData.weight});
     const {name, age, height, weight} = user;
-    const onChange = e => setUser({[e.target.ind]: e.target.value});
+    
+    const onChange = e => {
+        setUser({...user, [e.target.name]: e.target.value})
+    };
+    
     const onSubmit = e => {
         e.preventDefault();
         dispatch(editUserInfo({name, age, height, weight}));
@@ -24,7 +28,7 @@ const UserInfoEdit = () => {
                     <div className={s.pseudoChoose}></div>
                 </label>
             </div>
-            <input className={s.name} type="text" value={name} onChange={onChange} />
+            <input name="name" className={s.name} type="text" value={name} onChange={onChange} />
             <div className={s.data}>
                 <InfoItem ind="age" name="Возраст" value={age} change onChangeValue={onChange} />
                 <InfoItem ind="height" name="Рост" value={height} change onChangeValue={onChange} />
