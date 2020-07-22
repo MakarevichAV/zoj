@@ -9,7 +9,8 @@ const InfoItem = (props) => {
         s.item, 
         {[s.underline]: props.underline},
         {[s.important]: props.important},
-        {[s.head]: props.head}
+        {[s.head]: props.head},
+        {[s.blue]: props.blue}
     );
 
     // const [user, setUser] = useState({index: props.value});

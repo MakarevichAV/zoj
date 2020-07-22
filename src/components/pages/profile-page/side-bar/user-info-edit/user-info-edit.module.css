@@ -49,3 +49,12 @@
     cursor: pointer;
     opacity: 0.7;
 }
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: var(--txt-1);
+}

@@ -52,7 +52,12 @@ const Info = () => {
                         name="Углеводы" 
                         value={dailyRate.c} 
                         unit="г/день" 
-                        underline/>    
+                        underline/>
+                    <InfoItem 
+                        name="Вода" 
+                        value={dailyRate.w} 
+                        unit="л/день" 
+                        underline blue/>    
                 </div>
                 {/* <InfoBlock infoItems={normsInfo} /> */}
                 {/* <InfoBlock infoItems={dailyRate} /> */}

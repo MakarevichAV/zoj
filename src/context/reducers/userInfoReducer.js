@@ -21,20 +21,24 @@ const initialState = {
         age: 25, // сюда попадают значения при регистрации и редактировании
         height: 190,
         weight: 90,
+        gender: {
+            male: true,
+            female: false
+        },
         edit: false
     },
     error: null,
     normsInfo: {
-        minWeight: 86, // сюда попадут расчитанные значения
-        maxWeight: 96,
-        optWeight: 92       
+        minWeight: null, // сюда попадут расчитанные значения
+        maxWeight: null,
+        optWeight: null       
     },
     dailyRate: {
-        e: 2400, // расчитанные
-        p: 65,
-        f: 30,
-        c: 50,
-        w: 3.6
+        e: null, // расчитанные
+        p: null,
+        f: null,
+        c: null,
+        w: null
     }
 };
 
@@ -95,7 +99,26 @@ const userInfoReducer = (state = initialState, action) => {
                     age: action.age,
                     height: action.height,
                     weight: action.weight,
-                    edit: false
+                    edit: false,
+                    gender: {
+                        ...state.user.gender,
+                        male: action.male,
+                        female: action.female
+                    }
+                },
+                normsInfo: {
+                    ...state.normsInfo,
+                    minWeight: action.minWeight,
+                    maxWeight: action.maxWeight,
+                    optWeight: action.optWeight
+                },
+                dailyRate: {
+                    ...state.dailyRate,
+                    e: action.e,
+                    p: action.p,
+                    f: action.f,
+                    c: action.c,
+                    w: action.w
                 }
             }
         case GO_TO_EDIT:
