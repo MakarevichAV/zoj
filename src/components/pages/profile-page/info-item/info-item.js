@@ -13,6 +13,7 @@ const InfoItem = (props) => {
         {[s.blue]: props.blue}
     );
 
+    const type = props.type ? props.type : 'number';
     // const [user, setUser] = useState({index: props.value});
     // const val = user.index;
 
@@ -22,7 +23,7 @@ const InfoItem = (props) => {
         <p className={styles}>
             <span>{props.name}</span>
             {props.change ? 
-                <input name={props.ind} type="number" value={props.value} onChange={props.onChangeValue} /> : 
+                <input name={props.ind} type={type} value={props.value} onChange={props.onChangeValue} /> : 
                 <span>{props.value} {props.unit}</span>
             }
         </p>

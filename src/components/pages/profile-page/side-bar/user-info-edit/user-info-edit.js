@@ -8,11 +8,17 @@ import s from './user-info-edit.module.css';
 const UserInfoEdit = () => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.userInfo.user);
-    const [user, setUser] = useState({name: userData.name, age: userData.age, height: userData.height, weight: userData.weight, male: userData.gender.male, female: userData.gender.female});
-    const {name, age, height, weight, male, female} = user;
+    const [user, setUser] = useState({  name: userData.name, 
+                                        age: userData.age, 
+                                        birthDay: userData.birthDay, 
+                                        height: userData.height, 
+                                        weight: userData.weight, 
+                                        male: userData.gender.male, 
+                                        female: userData.gender.female});
+    const {name, age, birthDay, height, weight, male, female} = user;
     
     const onChange = e => {
-        setUser({...user, [e.target.name]: e.target.value})
+        setUser({...user, [e.target.name]: e.target.value});
     };
 
     const onChangeRadio = e => {
@@ -21,7 +27,7 @@ const UserInfoEdit = () => {
     
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(editUserInfo({name, age, height, weight, male, female}));
+        dispatch(editUserInfo({name, birthDay, height, weight, male, female}));
     }
     
     return (
@@ -34,19 +40,28 @@ const UserInfoEdit = () => {
             </div>
             <input name="name" className={s.name} type="text" value={name} onChange={onChange} />
             <div className={s.data}>
-                <InfoItem ind="age" name="Возраст" value={age} change onChangeValue={onChange} />
+                <InfoItem ind="birthDay" type="date" name="Дата рождения" value={birthDay} change onChangeValue={onChange} />
                 <InfoItem ind="height" name="Рост" value={height} change onChangeValue={onChange} />
                 <InfoItem ind="weight" name="Вес" value={weight} change onChangeValue={onChange} />
                 <div className={s.item}>
                     <p>Пол:</p>
-                    <input id="male" type="radio" value="female" name="gender" checked={female} 
-                        onChange={onChangeRadio}
-                        />
-                    <label for="male">Женский</label>
-                    <input id="female" type="radio" value="male" name="gender" checked={male} 
-                        onChange={onChangeRadio} 
-                        />
-                    <label for="female">Мужской</label>
+                    <div>
+                        <div className={s.genderItem}>
+                            <input id="male" type="radio" value="female" name="gender" checked={female} 
+                                onChange={onChangeRadio}
+                                />
+                            <div className={s.pseudoRadio}></div>
+                            <label for="male"><p>Женский</p></label>
+                        </div>
+                        <div className={s.genderItem}>
+                            <input id="female" type="radio" value="male" name="gender" checked={male} 
+                                onChange={onChangeRadio} 
+                                />
+                            <div className={s.pseudoRadio}></div>
+                            <label for="female"><p>Мужской</p></label>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
             <Button txt="Сохранить"

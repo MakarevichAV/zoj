@@ -18,7 +18,8 @@ const initialState = {
     loading: true,
     user: {
         name: 'Иван Иванов',
-        age: 25, // сюда попадают значения при регистрации и редактировании
+        age: 31, // сюда попадают значения при регистрации и редактировании
+        birthDay: '1989-02-11',
         height: 190,
         weight: 90,
         gender: {
@@ -97,6 +98,7 @@ const userInfoReducer = (state = initialState, action) => {
                     ...state.user,
                     name: action.name,
                     age: action.age,
+                    birthDay: action.birthDay,
                     height: action.height,
                     weight: action.weight,
                     edit: false,

@@ -52,9 +52,42 @@
 
 .item {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
     margin-bottom: 10px;
     font-size: 24px;
     color: var(--txt-1);
+}
+
+.genderItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.genderItem input {
+    display: none;
+}
+.pseudoRadio {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--txt-2);
+    margin-right: 10px;
+    position: relative;
+}
+.pseudoRadio:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    background: var(--color-3);
+}
+.genderItem input:checked ~ .pseudoRadio:before {
+    width: 16px;
+    height: 16px;
 }
