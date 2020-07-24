@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {editUserInfo} from '../../../../../context/actions/userActions'; 
+import {editUserInfo, setPhoto} from '../../../../../context/actions/userActions'; 
 import InfoItem from '../../info-item/info-item';
 import Button from '../../../../button';
 import s from './user-info-edit.module.css';
@@ -29,11 +29,20 @@ const UserInfoEdit = () => {
         e.preventDefault();
         dispatch(editUserInfo({name, birthDay, height, weight, male, female}));
     }
+
+    const uploadPhoto = e => {  // для загрузки фото
+        if (e.target.files.length) {
+            const file = e.target.files[0];
+            // let formData = new FormData();
+            // formData.append('file', file);
+            dispatch(setPhoto(file));
+        };
+    }
     
     return (
         <form className={s.info}>
             <div className={s.photo}>
-                <input className={s.choosePhoto} type="file" id="photo"/>
+                <input className={s.choosePhoto} type="file" accept="image/jpeg" id="photo" onChange={uploadPhoto}/>
                 <label for="photo">
                     <div className={s.pseudoChoose}></div>
                 </label>

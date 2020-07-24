@@ -26,7 +26,8 @@ const initialState = {
             male: true,
             female: false
         },
-        edit: false
+        edit: false,
+        userPhoto: null
     },
     error: null,
     normsInfo: {

@@ -158,6 +158,17 @@ export const editUserInfo = (data) =>  {
     w: dailyWater
   }
 }
+export const setPhoto = file => async dispatch => {
+    const data = new FormData()
+    data.append('file', file)
+    axios.post("http://localhost:8080/upload", data, { 
+        
+    })
+    .then(res => { // then print response status
+      console.log(res.statusText)
+    })
+  
+}
 export const goToEdit = (edit) => {
   return {
     type: GO_TO_EDIT,
