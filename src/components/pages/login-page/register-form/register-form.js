@@ -1,27 +1,32 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {addUser} from '../../../../context/actions/userActions';
 
 import s from './register-form.module.css';
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
+
     const dispatch = useDispatch();
     const [user, setUser] = useState({
         name: "",
         email: "",
+        height: "",
+        weight:"",
+        gender:'',
+        birthdate:"",
         password: "",
         password2: ""
-      });
+    });
     
-    const { name, email, password, password2} = user;
+    const { name, email, height, weight, birthdate, password, password2} = user;
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
        if (password === password2) {
-        dispatch(addUser({name, email, password}));
+        dispatch(addUser({name, email, password, height, weight, birthdate}));
        }
       };
 
@@ -37,19 +42,56 @@ const RegisterForm = () => {
                         placeholder="Email"
                         value={email} 
                         onChange= {onChange}/>
+            <div className={s.inputGroupe}>
+                <div class={s.radioGroupe}>
+                    <input type="radio" className={s.input}
+                                id='male'
+                                name="gender"
+                                value='male' 
+                                
+                                required/>
+                    <label for='male'>Мужчина</label>
+                    <input type="radio" className={s.input}
+                                id='female'
+                                name="gender"
+                                value='female'
+                                // checked={state.gender}
+                                required/>
+                    <label for='female'>Женщина</label>
+                </div>
+                <input type="date" className={s.input}
+                            name="birthdate"
+                            value={birthdate} 
+                            onChange= {onChange} 
+                            required/>
+            </div>
+            <div className={s.inputGroupe}>
+                <input type="number" className={s.input}
+                            name="height"
+                            placeholder="Рост"
+                            value={height} 
+                            onChange= {onChange}   
+                            required/>
+                <input type="number" className={s.input}
+                            name="weight"
+                            placeholder="Вес"
+                            value={weight} 
+                            onChange= {onChange}   
+                            required/>
+            </div>
             <input type="password" className={s.input} 
                         name="password"
                         placeholder="Пароль"
                         value={password} 
                         onChange= {onChange}            
                         required minLength="6"/>
+            <input type="password" className={s.input}
+                        name="password2"
+                        placeholder="Повторите пароль"
+                        value={password2} 
+                        onChange= {onChange}   
+                        required minLength="6"/>
             <div>
-                <input type="password" className={s.input}
-                            name="password2"
-                            placeholder="Повторите пароль"
-                            value={password2} 
-                            onChange= {onChange}   
-                            required minLength="6"/>
                 <button
                     type="submit" 
                     className={s.button}

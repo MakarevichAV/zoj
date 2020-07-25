@@ -21,3 +21,22 @@ form {
     width: 100%;
     padding: 7px;
 }
+
+.inputGroupe {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputGroupe>.input{
+    margin-right: 10px;
+}
+
+.inputGroupe>input[type=radio]{
+    margin: 0px;
+}
+
+.inputGroupe>.input:last-child{
+    margin-right: 0px;
+    padding-right: 3px;
+    padding-left: 4px;
+}
