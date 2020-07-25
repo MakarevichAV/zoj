@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import s from "./food-search-block.module.css";
-import ListItem from './list-item';
+import ListItem from './list-item/list-item';
 import cn from 'classnames';
 
 // Подключаем класс-сервис с хавчиком для работы с тестовыми данными

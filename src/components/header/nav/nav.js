@@ -8,7 +8,7 @@ const Nav = () => {
     const logout = () => {
         localStorage.removeItem('login');
         localStorage.removeItem('token');
-        window.location.reload() 
+        window.location = '/login';
     }
 
     return (

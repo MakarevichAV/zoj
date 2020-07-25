@@ -1,11 +1,11 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {login, clearErrors} from '../../../../context/actions/userActions';
 
 import s from './login-form.module.css';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     const dispatch = useDispatch();
     const alert = useSelector(state => state.userInfo.error);
     const [user, setUser] = useState({email: '', password: ''});
@@ -19,7 +19,6 @@ const LoginForm = () => {
     }
 
     if (alert) {
-        console.log('SDFASDF');
         setTimeout(() => dispatch(clearErrors()), 5000);
     }
 
