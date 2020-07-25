@@ -7,16 +7,42 @@ import {
     LOGIN_SUCCESS,
     LOGOUT,
     USER_LOADED, 
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    EDIT_USER_INFO,
+    GO_TO_EDIT
 } from '../actions/types';
 
 const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
-    user: null,
-    error: null
-  };
+    user: {
+        name: 'Иван Иванов',
+        age: 31, // сюда попадают значения при регистрации и редактировании
+        birthDay: '1989-02-11',
+        height: 190,
+        weight: 90,
+        gender: {
+            male: true,
+            female: false
+        },
+        edit: false,
+        userPhoto: null
+    },
+    error: null,
+    normsInfo: {
+        minWeight: null, // сюда попадут расчитанные значения
+        maxWeight: null,
+        optWeight: null       
+    },
+    dailyRate: {
+        e: null, // расчитанные
+        p: null,
+        f: null,
+        c: null,
+        w: null
+    }
+};
 
 
 const userInfoReducer = (state = initialState, action) => {
@@ -66,6 +92,46 @@ const userInfoReducer = (state = initialState, action) => {
                 user: null,
                 error: action.payload
             };
+        case EDIT_USER_INFO:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    name: action.name,
+                    age: action.age,
+                    birthDay: action.birthDay,
+                    height: action.height,
+                    weight: action.weight,
+                    edit: false,
+                    gender: {
+                        ...state.user.gender,
+                        male: action.male,
+                        female: action.female
+                    }
+                },
+                normsInfo: {
+                    ...state.normsInfo,
+                    minWeight: action.minWeight,
+                    maxWeight: action.maxWeight,
+                    optWeight: action.optWeight
+                },
+                dailyRate: {
+                    ...state.dailyRate,
+                    e: action.e,
+                    p: action.p,
+                    f: action.f,
+                    c: action.c,
+                    w: action.w
+                }
+            }
+        case GO_TO_EDIT:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    edit: action.edit
+                }
+            }
         default:
             return state;
     }

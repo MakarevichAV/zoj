@@ -1,14 +1,16 @@
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux'; 
 
 import UserInfo from './user-info/user-info';
+import UserInfoEdit from './user-info-edit/user-info-edit';
 
 import s from './side-bar.module.css';
 
-const SideBar = ({name, userInfo}) => {
+const SideBar = () => {
+    const edit = useSelector(state => state.userInfo.user.edit);
     return (
         <div className={s.sideBar}>
-            <UserInfo   name={name}
-                        userInfoItems={userInfo}/>
+            {!edit ? <UserInfo /> : <UserInfoEdit />}
         </div>
     )
 }

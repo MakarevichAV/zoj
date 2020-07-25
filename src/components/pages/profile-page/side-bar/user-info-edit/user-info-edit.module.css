@@ -1,0 +1,93 @@
+.info {
+    padding: 30px;
+    background-color: var(--main-color);
+    border-radius: 8px;
+}
+
+.photo {
+    width: 175px;
+    height: 175px;
+    border: 3px solid white;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    background: url(../../../../../user-photo.jpg) no-repeat center center / cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.name {
+    font-size: 22px;
+    color: var(--txt-2);
+    text-align: center;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 6px 10px;
+    box-sizing: border-box;
+}
+
+.data {
+    margin-bottom: 30px;
+}
+
+.data p {
+    color: var(--user-font-color);
+}
+
+.choosePhoto {
+    display: none;
+}
+
+.pseudoChoose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url(../img/camera.png) no-repeat center center / 50%;
+    background-color: #b4b4b4;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.item {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: var(--txt-1);
+}
+
+.genderItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.genderItem input {
+    display: none;
+}
+.pseudoRadio {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--txt-2);
+    margin-right: 10px;
+    position: relative;
+}
+.pseudoRadio:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    background: var(--color-3);
+}
+.genderItem input:checked ~ .pseudoRadio:before {
+    width: 16px;
+    height: 16px;
+}

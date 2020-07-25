@@ -2,11 +2,11 @@ import React from 'react';
 import cn from 'classnames';
 import s from './button.module.css';
 
-const Button = ({txt, type}) => {
+const Button = ({txt, classType, type, onClick}) => {
 
-    const type1 = (type === 'type1') ? true : false;
-    const type2 = (type === 'type2') ? true : false;
-    const type3 = (type === 'type3') ? true : false;
+    const type1 = (classType === 'type1') ? true : false;
+    const type2 = (classType === 'type2') ? true : false;
+    const type3 = (classType === 'type3') ? true : false;
     const styles = cn(
         s.btn, 
         {[s.type1]: type1},
@@ -15,7 +15,7 @@ const Button = ({txt, type}) => {
     );
 
     return (
-        <button className={styles}>{txt}</button>
+        <button type={type} className={styles} onClick={onClick}>{txt}</button>
     )
 }
 
