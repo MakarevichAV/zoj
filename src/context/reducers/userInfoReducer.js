@@ -26,9 +26,9 @@ const initialState = {
             male: true,
             female: false
         },
-        edit: false,
         userPhoto: null
     },
+    edit: false,
     error: null,
     normsInfo: {
         minWeight: null, // сюда попадут расчитанные значения
@@ -102,13 +102,13 @@ const userInfoReducer = (state = initialState, action) => {
                     birthDay: action.birthDay,
                     height: action.height,
                     weight: action.weight,
-                    edit: false,
                     gender: {
                         ...state.user.gender,
                         male: action.male,
                         female: action.female
                     }
                 },
+                edit: false,
                 normsInfo: {
                     ...state.normsInfo,
                     minWeight: action.minWeight,
@@ -127,10 +127,7 @@ const userInfoReducer = (state = initialState, action) => {
         case GO_TO_EDIT:
             return {
                 ...state,
-                user: {
-                    ...state.user,
-                    edit: action.edit
-                }
+                edit: action.edit
             }
         default:
             return state;
