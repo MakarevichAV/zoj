@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {editUserInfo, setPhoto} from '../../../../../context/actions/userActions'; 
 import InfoItem from '../../info-item/info-item';
-import Button from '../../../../button';
+import Button from '../../../../button/button';
 import s from './user-info-edit.module.css';
 
 const UserInfoEdit = () => {
@@ -14,7 +14,8 @@ const UserInfoEdit = () => {
                                         height: userData.height, 
                                         weight: userData.weight, 
                                         male: userData.gender.male, 
-                                        female: userData.gender.female});
+                                        female: userData.gender.female
+                                    });
     const {name, age, birthDay, height, weight, male, female} = user;
     
     const onChange = e => {
