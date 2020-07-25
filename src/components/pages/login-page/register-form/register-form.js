@@ -19,16 +19,16 @@ const RegisterForm = (props) => {
         password2: ""
     });
     
-    const { name, email, height, weight, birthdate, password, password2} = user;
+    const { name, email, height, weight, gender, birthdate, password, password2} = user;
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
        if (password === password2) {
-        dispatch(addUser({name, email, password, height, weight, birthdate}));
+        dispatch(addUser({name, email, password, height, weight, birthdate, gender}));
        }
-      };
+    };
 
     return (
         <form >
@@ -43,21 +43,21 @@ const RegisterForm = (props) => {
                         value={email} 
                         onChange= {onChange}/>
             <div className={s.inputGroupe}>
-                <div class={s.radioGroupe}>
+                <div className={s.radioGroupe}>
                     <input type="radio" className={s.input}
                                 id='male'
                                 name="gender"
                                 value='male' 
-                                
+                                onChange={onChange}
                                 required/>
-                    <label for='male'>Мужчина</label>
+                    <label htmlFor='male'>Мужчина</label>
                     <input type="radio" className={s.input}
                                 id='female'
                                 name="gender"
                                 value='female'
-                                // checked={state.gender}
+                                onChange={onChange}
                                 required/>
-                    <label for='female'>Женщина</label>
+                    <label htmlFor='female'>Женщина</label>
                 </div>
                 <input type="date" className={s.input}
                             name="birthdate"

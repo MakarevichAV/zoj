@@ -37,6 +37,25 @@ form {
 
 .inputGroupe>.input:last-child{
     margin-right: 0px;
-    padding-right: 3px;
-    padding-left: 4px;
+}
+
+.radioGroupe{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+input[type=radio]{
+    width: 20%;
+    margin: 0px;
+}
+
+input[type=radio]+label{
+   font-size: 19px;
+}
+
+.radioGroupe+input{
+    width: 50%;
+    height: 100%;
+    margin-left: 10px;
 }
