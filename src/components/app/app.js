@@ -19,7 +19,7 @@ const App = () => {
         <Provider store={store}>
             <Router>
                 <Fragment>
-                        <PrivateRoute  path="/" exactly component={Home}/>
+                        <PrivateRoute  path="/home" exactly component={Home}/>
                         <Route path="/login"  component={LoginPage} />
                 </Fragment>
             </Router>

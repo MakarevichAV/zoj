@@ -15,7 +15,7 @@ const LoginPage = (props) => {
 
     useEffect(() => {
         if (isAuthenticated) {
-          props.history.push("/");
+          props.history.push("/home");
         }
       }, [isAuthenticated, props.history]);
 
