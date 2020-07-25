@@ -9,7 +9,7 @@ import LoginPage from '../pages/login-page/login-page'
 import Home from '../pages/home-page/home-page';
 import './app.css';
 
-const App  =  () => {
+const App = () => {
 
     if (localStorage.token) {
         setAuthToken(localStorage.token);
@@ -19,7 +19,7 @@ const App  =  () => {
         <Provider store={store}>
             <Router>
                 <Fragment>
-                        <PrivateRoute  path="/" component={Home}/>
+                        <PrivateRoute  path="/home" exactly component={Home}/>
                         <Route path="/login"  component={LoginPage} />
                 </Fragment>
             </Router>
