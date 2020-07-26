@@ -9,26 +9,27 @@ const UserInfoEdit = () => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.userInfo.user);
     const [user, setUser] = useState({  name: userData.name, 
-                                        age: userData.age, 
+                                        // age: userData.age, 
                                         birthDay: userData.birthDay, 
                                         height: userData.height, 
                                         weight: userData.weight, 
-                                        male: userData.gender.male, 
-                                        female: userData.gender.female
+                                        gender: userData.gender
+                                        // male: userData.gender.male, 
+                                        // female: userData.gender.female
                                     });
-    const {name, age, birthDay, height, weight, male, female} = user;
+    const {name, birthDay, height, weight, gender} = user;
     
     const onChange = e => {
         setUser({...user, [e.target.name]: e.target.value});
     };
 
     const onChangeRadio = e => {
-        setUser({...user, [e.target.id]: false, [e.target.value]: true})
+        setUser({...user, [e.target.name]: e.target.value})
     }
     
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(editUserInfo({name, birthDay, height, weight, male, female}));
+        dispatch(editUserInfo({name, birthDay, height, weight, gender}));
     }
 
     const uploadPhoto = e => {  // для загрузки фото
@@ -57,18 +58,20 @@ const UserInfoEdit = () => {
                     <p>Пол:</p>
                     <div>
                         <div className={s.genderItem}>
-                            <input id="male" type="radio" value="female" name="gender" checked={female} 
+                            <input id="female" type="radio" value="female" name="gender" 
+                                checked={gender=='female' ? true : false} 
                                 onChange={onChangeRadio}
                                 />
                             <div className={s.pseudoRadio}></div>
-                            <label for="male"><p>Женский</p></label>
+                            <label for="female"><p>Женский</p></label>
                         </div>
                         <div className={s.genderItem}>
-                            <input id="female" type="radio" value="male" name="gender" checked={male} 
+                            <input id="male" type="radio" value="male" name="gender" 
+                                checked={gender=='male' ? true : false} 
                                 onChange={onChangeRadio} 
                                 />
                             <div className={s.pseudoRadio}></div>
-                            <label for="female"><p>Мужской</p></label>
+                            <label for="male"><p>Мужской</p></label>
                         </div>
                     </div>
                     

@@ -7,16 +7,18 @@ import Button from '../../../../button/button';
 
 const UserInfo = () => {
     const dispatch = useDispatch();
-    const userData = useSelector(state => state.userInfo.user);
-    
+    const userData = useSelector(state => state.userInfo);
+    const age = userData.age;
+    console.log(userData);
+    const {name, weight, height} = userData.user;
     // склонение ГОД/ГОДА/ЛЕТ
     let yearsTxt;
-    if (userData.age <= 20) {
+    if (age <= 20) {
         yearsTxt = 'лет';
-    } else if (userData.age > 20) {
-        if (userData.age % 10 == 1) {
+    } else if (age > 20) {
+        if (age % 10 == 1) {
             yearsTxt = 'год';
-        } else if (userData.age % 10 > 1 && userData.age % 10 < 5) {
+        } else if (age % 10 > 1 && age % 10 < 5) {
             yearsTxt = 'года';
         } else {
             yearsTxt = 'лет';
@@ -30,11 +32,11 @@ const UserInfo = () => {
     return (
         <div className={s.info}>
             <div className={s.photo}></div>
-            <p className={s.name}>{userData.name}</p>
+            <p className={s.name}>{name}</p>
             <div className={s.data}>
-                <InfoItem name="Возраст" value={userData.age} unit={yearsTxt} />
-                <InfoItem name="Рост" value={userData.height} unit="см" />
-                <InfoItem name="Вес" value={userData.weight} unit="кг" />
+                <InfoItem name="Возраст" value={age} unit={yearsTxt} />
+                <InfoItem name="Рост" value={height} unit="см" />
+                <InfoItem name="Вес" value={weight} unit="кг" />
             </div>
             <Button txt="Редактрировать"
                     classType="type1"

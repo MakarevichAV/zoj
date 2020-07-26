@@ -114,7 +114,7 @@ export const editUserInfo = (data) =>  {
   let age = now.getFullYear() - birthDate.getFullYear();
   
   // расчет нормы веса
-  if (data.female) {
+  if (data.gender === 'female') {
     if (18 <= age <= 24) {
       calcWeight(18.5, 23, 19.6);
     } else if (25 <= age <= 34) {
@@ -148,7 +148,7 @@ export const editUserInfo = (data) =>  {
                       1.2 * (data.weight * 10 + 
                       data.height * 6.25 + 
                       age * 5 +
-                      (data.female ? + 5 : -161)));
+                      (data.gender=='male' ? + 5 : -161)));
   const dailyProtein = Math.round(dailyEnergy * 0.3 / 4);
   const dailyFat = Math.round(dailyEnergy * 0.3 / 9);
   const dailyCarbo = Math.round(dailyEnergy * 0.4 / 4);
@@ -161,8 +161,7 @@ export const editUserInfo = (data) =>  {
     birthDay: data.birthDay,
     height: data.height,
     weight: data.weight,
-    male: data.male,
-    female: data.female,
+    gender: data.gender,
     minWeight: minWeight,
     maxWeight: maxWeight,
     optWeight: optWeight,

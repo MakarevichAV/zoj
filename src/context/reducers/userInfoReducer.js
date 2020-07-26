@@ -19,7 +19,7 @@ const initialState = {
     user: 
     {
         // name: 'Иван Иванов',
-        age: 31, // сюда попадают значения при регистрации и редактировании
+        //age: 31, // сюда попадают значения при регистрации и редактировании
         // birthDay: '1989-02-11',
         // height: 190,
         // weight: 90,
@@ -29,6 +29,7 @@ const initialState = {
         // },
         // userPhoto: null
     },
+    age: null,
     edit: false,
     error: null,
     normsInfo: {
@@ -100,16 +101,12 @@ const userInfoReducer = (state = initialState, action) => {
                 user: {
                     ...state.user,
                     name: action.name,
-                    age: action.age,
                     birthDay: action.birthDay,
                     height: action.height,
                     weight: action.weight,
-                    gender: {
-                        ...state.user.gender,
-                        male: action.male,
-                        female: action.female
-                    }
+                    gender: action.gender
                 },
+                age: action.age,
                 edit: false,
                 normsInfo: {
                     ...state.normsInfo,
