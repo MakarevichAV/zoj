@@ -1,40 +1,13 @@
 .logo {
-    position: relative;
-    padding: 0 6px;
     display: inline-block;
+    height: 76px;
+    width: 270px;
+    background: url(./logo.svg) no-repeat center left / contain;
 }
 
-.logo:before {
-    content: "";
-    position: absolute;
-    bottom: 13px;
-    left: 0;
-    width: 100%;
-    height: 24px;
-    background: var(--color-4);
-}
-
-.logoTxt {
-    position: relative;
-}
-
-.part1 {
-    color: var(--color-3);
-    font-size: 25px;
-    font-weight: bold;
-    position: absolute;
-    top: 21px;
-    right: 28px;
-}
-
-.part2 {
-    color: #ffffff;
-    font-size: 80px;
-    font-weight: bold;
-}
-
-.part3 {
-    color: #ffffff;
-    font-size: 60px;
-    font-weight: bold;
+@media (max-width: 1130px) {
+    .logo {
+        height: 70px;
+        width: 240px;
+    }   
 }

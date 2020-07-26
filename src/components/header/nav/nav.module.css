@@ -4,10 +4,11 @@
 
 .nav {
     display: flex;
+    align-items: center;
     font-size: 24px;
 }
 
-.nav button{
+.nav button {
     font-size: 22px;
     color: #ffffff;
     background: none;
@@ -27,7 +28,21 @@ li:nth-last-child(1) {
 .nav a {
     color: #ffffff;
 }
+@media (max-width: 1130px) {
+    .nav {
+        font-size: 22px;
+    }
+    .nav button {
+        position: absolute;
+        top: 5px;
+        right: 30px;
+    }
+    .nav {
+        place-self: flex-end;
+        margin: 20px;
+    }
 
+}
 @media (max-width: 1000px) {
     .nav {
         display: none;

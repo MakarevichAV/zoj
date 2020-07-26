@@ -1,10 +1,19 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {showMenu} from '../../../context/actions/menuActions';
 
 import s from './menu-btn.module.css';
 
 const MenuBtn = () => {
+
+    const dispatch = useDispatch();
+
+    const onShowMenu = () => {
+        dispatch(showMenu());
+    }
+
     return (
-        <div className={s.menuBtn}></div>
+        <button className={s.menuBtn} onClick={onShowMenu}></button>
     )
 }
 
