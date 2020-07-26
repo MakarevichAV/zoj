@@ -19,7 +19,6 @@ const RegisterForm = (props) => {
         password2: ""
     });
     
-    //TODO В стейт приходит массив именно в этом вся проблема то есть надо взять объект алерта в данном случае и преобразоватиь его и затем отрендерить 
     const alertArray = useSelector(state => state.userInfo.error);
     const alert = Array.isArray(alertArray) ? alertArray[0].msg : false;
     const { name, email, height, weight, gender, birthdate, password, password2} = user;
