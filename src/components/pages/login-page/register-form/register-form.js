@@ -20,7 +20,8 @@ const RegisterForm = (props) => {
     });
     
     //TODO В стейт приходит массив именно в этом вся проблема то есть надо взять объект алерта в данном случае и преобразоватиь его и затем отрендерить 
-    // const alert = useSelector(state => state.userInfo.error);
+    const alertArray = useSelector(state => state.userInfo.error);
+    const alert = Array.isArray(alertArray) ? alertArray[0].msg : false;
     const { name, email, height, weight, gender, birthdate, password, password2} = user;
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
@@ -32,13 +33,13 @@ const RegisterForm = (props) => {
        }
     };
 
-    // if (alert) {
-    //     setTimeout(() => dispatch(clearErrors()), 6000);
-    // }
+    if (alert) {
+        setTimeout(() => dispatch(clearErrors()), 6000);
+    }
 
     return (
         <form >
-            {/* {alert ? <div className={s.alert}>{alert}</div> : false} */}
+             {alert ? <div className={s.alert}>{alert}</div> : false}
             <input type="text" className={s.input}
                         name="name"
                         placeholder="Логин" 

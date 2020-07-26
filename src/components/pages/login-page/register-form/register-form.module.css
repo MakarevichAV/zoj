@@ -59,3 +59,14 @@ input[type=radio]+label{
     height: 100%;
     margin-left: 10px;
 }
+
+.alert{
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #f4f4f4f4;
+    border-radius: 4px;
+    align-self: center;
+    box-sizing: border-box;
+    background: #D03039;
+}
