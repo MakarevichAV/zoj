@@ -17,7 +17,7 @@ const LoginPage = (props) => {
         if (isAuthenticated) {
           props.history.push("/home");
         }
-      }, [isAuthenticated, props.history]);
+      }, [isAuthenticated]);
 
     return (
         <Router>

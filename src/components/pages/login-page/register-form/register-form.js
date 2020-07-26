@@ -1,7 +1,7 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
-import {addUser} from '../../../../context/actions/userActions';
+import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {addUser, clearErrors} from '../../../../context/actions/userActions';
 
 import s from './register-form.module.css';
 
@@ -19,6 +19,8 @@ const RegisterForm = (props) => {
         password2: ""
     });
     
+    //TODO В стейт приходит массив именно в этом вся проблема то есть надо взять объект алерта в данном случае и преобразоватиь его и затем отрендерить 
+    // const alert = useSelector(state => state.userInfo.error);
     const { name, email, height, weight, gender, birthdate, password, password2} = user;
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
@@ -30,8 +32,13 @@ const RegisterForm = (props) => {
        }
     };
 
+    // if (alert) {
+    //     setTimeout(() => dispatch(clearErrors()), 6000);
+    // }
+
     return (
         <form >
+            {/* {alert ? <div className={s.alert}>{alert}</div> : false} */}
             <input type="text" className={s.input}
                         name="name"
                         placeholder="Логин" 
@@ -70,13 +77,15 @@ const RegisterForm = (props) => {
                             name="height"
                             placeholder="Рост"
                             value={height} 
-                            onChange= {onChange}   
+                            onChange= {onChange}
+                            max={270}    
                             required/>
                 <input type="number" className={s.input}
                             name="weight"
                             placeholder="Вес"
                             value={weight} 
-                            onChange= {onChange}   
+                            onChange= {onChange}
+                            max={200}   
                             required/>
             </div>
             <input type="password" className={s.input} 
