@@ -64,7 +64,8 @@ const userInfoReducer = (state = initialState, action) => {
                 isAuthenticated: true,
                 loading: false
             }; 
-        case ADD_USER: 
+        case ADD_USER:
+            localStorage.setItem('registered', true);
             return {
                 ...state,
                 ...action.payload,

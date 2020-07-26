@@ -15,9 +15,9 @@ const LoginPage = (props) => {
 
     useEffect(() => {
         if (isAuthenticated) {
-          props.history.push("/");
+          props.history.push("/home");
         }
-      }, [isAuthenticated, props.history]);
+      }, [isAuthenticated]);
 
     return (
         <Router>
@@ -31,8 +31,8 @@ const LoginPage = (props) => {
                         <NavLink activeClassName={s.here} className={s.item} to="/register">Регистрация</NavLink>
                     </div>
                     <div className={s.form}>
-                        <Route  path="/login" render={ () => <LoginForm/> }/>
-                        <Route  path="/register" render={ () => <RegisterForm/> }/>
+                        <Route path="/login" render={ () => <LoginForm/> }/>
+                        <Route path="/register" render={ () => <RegisterForm/> }/>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {login, clearErrors} from '../../../../context/actions/userActions';
 
@@ -19,13 +19,12 @@ const LoginForm = (props) => {
     }
 
     if (alert) {
-        setTimeout(() => dispatch(clearErrors()), 5000);
+        setTimeout(() => dispatch(clearErrors()), 6000);
     }
 
     return (
         <form>
             {alert ? <div className={s.alert}>{alert}</div> : false}
-            {/* <div className={s.alert}>{alert}</div> */}
             <input type="text" className={s.input} placeholder="Логин"
                     name='email' value={email} onChange={onChange}/>
             <input type="password" className={s.input} placeholder="Пароль"

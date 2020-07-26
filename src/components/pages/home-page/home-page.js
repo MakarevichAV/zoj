@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react'
 import {useEffect} from "react";
-import { Switch } from 'react-router-dom'; 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {getUser} from '../../../context/actions/userActions';
 
 import Header from '../../header/header';
