@@ -7,6 +7,9 @@
     `npm i` 
     Примечание: должен быть установлен Node.js
     Ссылка для установки Node.js https://nodejs.org/en/download/
+4. В терминале ввести 
+    `npm run server`
+    `npm start`
 
 #### Работа с ветками
 ***
