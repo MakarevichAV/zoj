@@ -109,7 +109,7 @@ export const editUserInfo = (data) =>  {
   }
 
   // Расчет возраста от даты рождения
-  let birthDate = new Date(data.birthDay);
+  let birthDate = new Date(data.birthdate);
   let now = new Date();
   let age = now.getFullYear() - birthDate.getFullYear();
   
@@ -158,7 +158,7 @@ export const editUserInfo = (data) =>  {
     type: EDIT_USER_INFO,
     name: data.name,
     age: age,
-    birthDay: data.birthDay,
+    birthdate: data.birthdate,
     height: data.height,
     weight: data.weight,
     gender: data.gender,

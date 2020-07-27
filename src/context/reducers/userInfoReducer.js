@@ -29,7 +29,7 @@ const initialState = {
         // },
         // userPhoto: null
     },
-    age: null,
+    // age: null,
     edit: false,
     error: null,
     normsInfo: {
@@ -101,7 +101,7 @@ const userInfoReducer = (state = initialState, action) => {
                 user: {
                     ...state.user,
                     name: action.name,
-                    birthDay: action.birthDay,
+                    birthdate: action.birthdate,
                     height: action.height,
                     weight: action.weight,
                     gender: action.gender

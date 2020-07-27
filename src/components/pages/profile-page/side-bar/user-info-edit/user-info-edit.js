@@ -10,14 +10,14 @@ const UserInfoEdit = () => {
     const userData = useSelector(state => state.userInfo.user);
     const [user, setUser] = useState({  name: userData.name, 
                                         // age: userData.age, 
-                                        birthDay: userData.birthDay, 
+                                        birthdate: userData.birthdate, 
                                         height: userData.height, 
                                         weight: userData.weight, 
                                         gender: userData.gender
                                         // male: userData.gender.male, 
                                         // female: userData.gender.female
                                     });
-    const {name, birthDay, height, weight, gender} = user;
+    const {name, birthdate, height, weight, gender} = user;
     
     const onChange = e => {
         setUser({...user, [e.target.name]: e.target.value});
@@ -29,7 +29,7 @@ const UserInfoEdit = () => {
     
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(editUserInfo({name, birthDay, height, weight, gender}));
+        dispatch(editUserInfo({name, birthdate, height, weight, gender}));
     }
 
     const uploadPhoto = e => {  // для загрузки фото
@@ -51,7 +51,7 @@ const UserInfoEdit = () => {
             </div>
             <input name="name" className={s.name} type="text" value={name} onChange={onChange} />
             <div className={s.data}>
-                <InfoItem ind="birthDay" type="date" name="Дата рождения" value={birthDay} change onChangeValue={onChange} />
+                <InfoItem ind="birthdate" type="date" name="Дата рождения" value={birthdate} change onChangeValue={onChange} />
                 <InfoItem ind="height" name="Рост" value={height} change onChangeValue={onChange} />
                 <InfoItem ind="weight" name="Вес" value={weight} change onChangeValue={onChange} />
                 <div className={s.item}>
