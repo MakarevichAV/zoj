@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'; 
 import {goToEdit} from '../../../../../context/actions/userActions'
-import InfoItem from '../../info-item/info-item';
+import InfoItem from '../../../info-item/info-item';
 import s from './user-info.module.css';
 import Button from '../../../../button/button';
 

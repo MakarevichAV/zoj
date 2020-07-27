@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import InfoItem from './info-item/info-item';
-=======
-import InfoItem from '../../info-item/info-item';
->>>>>>> training_rdx
+import InfoItem from '../../../info-item/info-item';
 import s from './info-block.module.css';
 
 const InfoBlock = ({infoItems}) => {
