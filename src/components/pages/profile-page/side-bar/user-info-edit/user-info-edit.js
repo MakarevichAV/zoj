@@ -9,13 +9,10 @@ const UserInfoEdit = () => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.userInfo.user);
     const [user, setUser] = useState({  name: userData.name, 
-                                        // age: userData.age, 
                                         birthdate: userData.birthdate, 
                                         height: userData.height, 
                                         weight: userData.weight, 
                                         gender: userData.gender
-                                        // male: userData.gender.male, 
-                                        // female: userData.gender.female
                                     });
     const {name, birthdate, height, weight, gender} = user;
     

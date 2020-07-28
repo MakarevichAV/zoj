@@ -29,7 +29,7 @@ const initialState = {
         // },
         // userPhoto: null
     },
-    // age: null,
+    age: null,
     edit: false,
     error: null,
     normsInfo: {
@@ -55,7 +55,8 @@ const userInfoReducer = (state = initialState, action) => {
                 ...state,
                 isAuthenticated: true,
                 loading: false,
-                user: action.payload
+                user: action.payload,
+                age: action.age
             };
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token); 
