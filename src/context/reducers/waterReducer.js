@@ -5,9 +5,7 @@ import {
 
 const initialState = {
     sum: 0,
-    num: [
-        2,3
-    ]
+    num: []
 }
 
 const waterReducer = (state = initialState, action) => {
@@ -21,8 +19,8 @@ const waterReducer = (state = initialState, action) => {
         case DEL_GLASS:
             return {
                 ...state,
-                sum: action.sum,
-                num: action.num
+                sum: action.newSum,
+                num: action.newNum
             }
         default:
             return state;

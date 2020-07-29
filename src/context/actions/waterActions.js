@@ -3,15 +3,27 @@ import {
     DEL_GLASS
 } from './types';
 
-export const addGlass = ({sum, val, num}) => {
-    const newSum = sum + (val / 1000);
-    const newNum = num.push(val);
+export const addGlass = (data) => {
+    const newSum = (+data.sum + (data.val / 1000)).toFixed(1);
+    data.num.push(data.val);
     return {
         type: ADD_GLASS,
+        newSum,
+        newNum: data.num
+    }
+}
+export const delGlass = (data) => {
+    const newSum = (+data.sum - (data.val / 1000)).toFixed(1);
+    const ind = +data.ind;
+    const newNum = data.num.filter((v, i) => {
+        if (i !== ind) {
+            return data.num[i];
+        } 
+    } );
+    console.log(newNum);
+    return {
+        type: DEL_GLASS,
         newSum,
         newNum
     }
 }
-// export const delGlass = () => {
-
-// }

@@ -21,7 +21,6 @@ const App = () => {
                 <Fragment>
                         <PrivateRoute  path="/home" exactly component={Home}/>
                         <Route path="/login"  component={LoginPage} />
-                        <Redirect to="/home"/>
                 </Fragment>
             </Router>
         </Provider>

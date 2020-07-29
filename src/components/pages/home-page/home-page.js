@@ -26,7 +26,7 @@ export default function Home() {
                         <Route exact path="/profile" component={ProfilePage}/>
                         <Route path="/food" component={FoodPage} />
                         <Route path="/sport" component={SportPage} />
-                        <Redirect to="food" />   
+                        <Redirect to="profile" />   
                     </Fragment>
                 </Fragment>
             </Router>

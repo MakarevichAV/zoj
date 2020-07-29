@@ -8,6 +8,7 @@ import s from './water-block.module.css';
 const WaterBlock = () => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.waterInfo);
+    const norm = useSelector(state => state.userInfo.dailyRate.w);
 
     const onChangeDrunk = (e) => {
         if (e.target.name === 'add') {
@@ -15,8 +16,13 @@ const WaterBlock = () => {
             const sum = data.sum;
             const num = data.num;
             dispatch(addGlass({sum, val, num}));
-        } else {
-            console.log(`Удалить элемент с индексом ${e.target.id} `);
+        } else if (e.target.name === 'delete') {
+            const ind = e.target.id;
+            const val = e.target.dataset.val;
+            const sum = data.sum;
+            const num = data.num;
+            dispatch(delGlass({ind, sum, val, num}));
+            // console.log(`Удалить элемент с индексом ${e.target.id} `);
         }
         
     }
@@ -42,7 +48,7 @@ const WaterBlock = () => {
                 </div>
             </div>
             <div className={s.total}>
-    <p className={s.totalTxt}>ИТОГО: <span className={s.sum}>{data.sum} л</span> <span className={s.norm}>/ 2,5</span> л</p>
+                <p className={s.totalTxt}>ИТОГО: <span className={s.sum}>{data.sum} л</span> <span className={s.norm}>/ {norm} л</span></p>
                 <div className={s.glasses}>
                     {drunkWater}
                 </div>
