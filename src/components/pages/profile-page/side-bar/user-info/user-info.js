@@ -9,7 +9,6 @@ const UserInfo = () => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.userInfo);
     const age = userData.age;
-    console.log(userData);
     const {name, weight, height} = userData.user;
     // склонение ГОД/ГОДА/ЛЕТ
     let yearsTxt;

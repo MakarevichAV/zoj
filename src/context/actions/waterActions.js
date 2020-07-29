@@ -20,7 +20,6 @@ export const delGlass = (data) => {
             return data.num[i];
         } 
     } );
-    console.log(newNum);
     return {
         type: DEL_GLASS,
         newSum,
