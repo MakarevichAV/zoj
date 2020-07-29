@@ -4,12 +4,12 @@
     padding: 30px;
     background: var(--block);
     border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
 }
 
-.waterBlock h2 {
-    font-size: 24px;
-    color: var(--color-1);
-    margin-bottom: 20px;
+.add, .total {
+    flex-grow: 1;
 }
 
 .glasses {
@@ -82,4 +82,19 @@
 
 .glassItem:hover .glass {
     background: url(./img/full-glass.svg) no-repeat center top / contain;
+}
+
+.waterBlock h2, .totalTxt {
+    font-size: 24px;
+    color: var(--color-1);
+    margin-bottom: 20px;
+}
+
+.sum {
+    font-size: 26px;
+    color: var(--txt-2);
+}
+.norm {
+    font-size: 20px;
+    color: var(--txt-1);
 }

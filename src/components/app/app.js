@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "../../store";
 
@@ -21,6 +21,7 @@ const App = () => {
                 <Fragment>
                         <PrivateRoute  path="/home" exactly component={Home}/>
                         <Route path="/login"  component={LoginPage} />
+                        <Redirect to="/home"/>
                 </Fragment>
             </Router>
         </Provider>
