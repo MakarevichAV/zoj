@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import InfoItem from '../info-item/info-item';
+import WaterBlock from './water-block/water-block'
 import s from './food-page.module.css';
 
 import FoodSearchBlock from './food-search-block/food-search-block';
@@ -47,6 +48,9 @@ const FoodPage = () => {
                         unit="л" 
                         underline blue/>    
                 </div>
+            </div>
+            <div className={s.container}>
+                <WaterBlock />
             </div>
         </div>
     )

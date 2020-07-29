@@ -20,3 +20,9 @@
 .date {
     color: #A7A7A7;
 }
+
+@media (max-width: 600px) {
+    .titleBlock {
+        padding: 15px 30px;
+    }
+}

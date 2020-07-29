@@ -159,15 +159,14 @@ export default class FoodSearchBlock extends Component {
                 <div className={s.dataRows}>
                     <div className={cn(s.row, s.mainRow)}>
                         <h2>{mainRow}</h2>
-                        <label>
+                        <label className={s.numGramm}>
                             <input  className={cn(s.inputs, s.number)} 
                                     type="number" 
                                     step="50"
                                     min="50"
                                     value={this.state.inpNumValue}
                                     onChange={this.calculateEPFC}
-                                    disabled={this.state.disabled}/>
-                                г
+                                    disabled={this.state.disabled}/>г
                         </label>
                     </div>
                     
