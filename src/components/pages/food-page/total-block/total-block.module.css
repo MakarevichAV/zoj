@@ -1,7 +1,7 @@
-
 :root {
     --border: #dfdfdf;
 }
+
 .container {
     background-color: var(--block);
     flex-grow: 1;
@@ -18,29 +18,28 @@
 
 .row {
     display: flex;
-    flex-wrap: wrap;
     font-size: 20px;
     color: var(--txt-1);
 }
+
 .row:nth-child(1) .values .cell {
     background-color: var(--main-color);
     color: white;
 }
 
 .name {
-    flex-grow: 2;
-    flex-basis: 370px;
+    position: relative;
+    flex-grow: 1;
     padding: 10px 15px;
     box-sizing: border-box;
     border: 1px solid var(--border);
 }
+
 .noName {
     border: none;
-    /* border-bottom: 1px solid var(--border) */
 }
 
 .values {
-    flex-grow: 1;
     display: flex;
 }
 
@@ -50,4 +49,69 @@
     border: 1px solid var(--border);
     box-sizing: border-box;
     width: 70px;
+}
+
+.table {
+    margin-bottom: 30px;
+}
+
+.total {
+    margin-bottom: 40px;
+}
+
+.totalRow {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.factValue {
+    color: var(--color-3);
+}
+
+.factValueWater {
+    color: var(--txt-2);
+}
+
+.key {
+    display: inline-block;
+    width: 90px;
+    color: #575757;
+}
+
+.targetValue {
+    font-size: 16px;
+    color: var(--txt-1);
+}
+
+.btnDel {
+    width: 30px;
+    background-color: black;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+}
+
+@media (max-width: 900px) {
+    .row {
+        font-size: 18px;
+    }
+
+    .cell {
+        padding: 10px;
+    }
+
+    .name {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 760px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .cell {
+        width: 25%;
+    }
 }
