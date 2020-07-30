@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import InfoItem from '../info-item/info-item';
 import WaterBlock from './water-block/water-block'
+import TotalBlock from './total-block/total-block'
 import s from './food-page.module.css';
 
 import FoodSearchBlock from './food-search-block/food-search-block';
@@ -51,6 +52,9 @@ const FoodPage = () => {
             </div>
             <div className={s.container}>
                 <WaterBlock />
+            </div>
+            <div className={s.container}>
+                <TotalBlock />
             </div>
         </div>
     )

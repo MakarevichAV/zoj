@@ -1,0 +1,53 @@
+
+:root {
+    --border: #dfdfdf;
+}
+.container {
+    background-color: var(--block);
+    flex-grow: 1;
+    margin: 0 20px 30px;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.container h2 {
+    font-size: 24px;
+    color: var(--color-1);
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    color: var(--txt-1);
+}
+.row:nth-child(1) .values .cell {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.name {
+    flex-grow: 2;
+    flex-basis: 370px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border: 1px solid var(--border);
+}
+.noName {
+    border: none;
+    /* border-bottom: 1px solid var(--border) */
+}
+
+.values {
+    flex-grow: 1;
+    display: flex;
+}
+
+.cell {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    box-sizing: border-box;
+    width: 70px;
+}
