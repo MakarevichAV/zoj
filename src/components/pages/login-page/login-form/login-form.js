@@ -36,7 +36,8 @@ const LoginForm = (props) => {
                     >
                         ВОЙТИ
             </button>            
-            test@mail.ru - 123456
+            test@mail.ru - 123456 (с неправильным форматом даты) <br />
+            dunkanm89@gmail.com - 123456 (с правильным форматом даты)
         </form>
     )
 }
