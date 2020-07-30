@@ -38,7 +38,10 @@ const TotalBlock = () => {
                     </div>
                 </div>
                 <div className={s.row}>
-                    <div className={s.name}>Курица запеченная под сыром</div>
+                    <div className={s.name}>
+                        Курица запеченная под сыром
+                        <button className={s.btnDel}></button>
+                    </div>
                     <div className={s.values}>
                         <div className={s.cell}>200</div>
                         <div className={s.cell}>140</div>
