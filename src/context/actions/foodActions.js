@@ -16,11 +16,19 @@ export const saveFoodItem = (data) => {
     return {
         type: SAVE_FOOD_ITEM,
         newFoodArray: data.foodArr
-        // name: data.name,
-        // num: data.num,
-        // e: data.e,
-        // p: data.p,
-        // f: data.f,
-        // c: data.c
+    }
+}
+
+export const delFoodRow = (data) => {
+    
+    const ind = +data.ind;
+    const newFoodArray = data.foodArr.filter((v, i) => {
+        if (i !== ind) {
+            return data.foodArr[i];
+        } 
+    } );
+    return {
+        type: DEL_FOOD_ROW,
+        newFoodArray
     }
 }

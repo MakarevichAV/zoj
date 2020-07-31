@@ -1,22 +1,31 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-
+import {delFoodRow} from '../../../../context/actions/foodActions';
 import Button from '../../../button/button';
 
 import s from './total-block.module.css';
 
 const TotalBlock = () => {
-
+    const dispatch = useDispatch();
     const dailyRate = useSelector(state => state.userInfo.dailyRate);
     const data = useSelector(state => state.waterInfo);
     const food = useSelector(state => state.foodInfo);
+
+    const deleteRow = (e) => {
+        if (window.confirm("Вы точно хотите удалить строку?")) {
+            dispatch(delFoodRow({
+                foodArr: food.food,
+                ind: e.target.id
+            }));
+        }
+    }
     
-    const foodList = food.food.map((item) => {
+    const foodList = food.food.map((item, key) => {
         return (
             <div className={s.row}>
                 <div className={s.name}>
                     {item.name}
-                    <button className={s.btnDel}></button>
+                    <button id={key} className={s.btnDel} onClick={deleteRow}></button>
                 </div>
                 <div className={s.values}>
                     <div className={s.cell}>{item.num}</div>

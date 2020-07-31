@@ -42,7 +42,7 @@ const FoodSearchBlock = () => {
         const foodItem = foodService.getSelectedFood(id);
         setFood({
             ...food,
-            inpValue: '',
+            inpVal: '',
             inpNumValue: 100,
             showList: false,
             foodName: foodItem.name,

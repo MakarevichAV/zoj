@@ -17,24 +17,7 @@ const initialState = {
         foodId: null,
         disabled: true
     },
-    food: [
-        // {
-        //     name: 'Тестовая строка',
-        //     num: 250,
-        //     e: 100,
-        //     p: 15,
-        //     f: 10,
-        //     c: 15
-        // },
-        // {
-        //     name: 'Тестовая строка 2',
-        //     num: 250,
-        //     e: 200,
-        //     p: 25,
-        //     f: 10,
-        //     c: 25
-        // }
-    ]
+    food: []
 }
 
 const foodReducer = (state = initialState, action) => {
