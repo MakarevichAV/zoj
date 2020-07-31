@@ -56,7 +56,7 @@ const UserInfoEdit = () => {
                     <div>
                         <div className={s.genderItem}>
                             <input id="female" type="radio" value="female" name="gender" 
-                                checked={gender=='female' ? true : false} 
+                                checked={gender==='female' ? true : false} 
                                 onChange={onChangeRadio}
                                 />
                             <div className={s.pseudoRadio}></div>
@@ -64,7 +64,7 @@ const UserInfoEdit = () => {
                         </div>
                         <div className={s.genderItem}>
                             <input id="male" type="radio" value="male" name="gender" 
-                                checked={gender=='male' ? true : false} 
+                                checked={gender==='male' ? true : false} 
                                 onChange={onChangeRadio} 
                                 />
                             <div className={s.pseudoRadio}></div>

@@ -9,9 +9,9 @@ const TotalBlock = () => {
 
     const dailyRate = useSelector(state => state.userInfo.dailyRate);
     const data = useSelector(state => state.waterInfo);
-    const food = useSelector(state => state.foodInfo.food);
-
-    const foodList = food.map((item) => {
+    const food = useSelector(state => state.foodInfo);
+    
+    const foodList = food.food.map((item) => {
         return (
             <div className={s.row}>
                 <div className={s.name}>
@@ -34,7 +34,7 @@ const TotalBlock = () => {
     let sumProtein = 0;
     let sumFat = 0;
     let sumC = 0;
-    food.forEach((item) => {
+    food.food.forEach((item) => {
         sumEnergy = sumEnergy + item.e;
         sumProtein = sumProtein + item.p;
         sumFat = sumFat + item.f;
