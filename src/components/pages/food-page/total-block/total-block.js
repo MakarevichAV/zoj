@@ -62,9 +62,9 @@ const TotalBlock = () => {
                     <div className={s.values}>
                         <div className={s.cell}>Гр</div>
                         <div className={s.cell}>кКал</div>
-                        <div className={s.cell}>Б</div>
-                        <div className={s.cell}>Ж</div>
-                        <div className={s.cell}>У</div>
+                        <div className={s.cell}>Бел, г</div>
+                        <div className={s.cell}>Жир, г</div>
+                        <div className={s.cell}>Угл, г</div>
                     </div>
                 </div>
                 {foodList[0] ? foodList : 
