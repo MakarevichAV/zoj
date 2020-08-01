@@ -17,7 +17,6 @@ const Nav = () => {
             <li><NavLink activeClassName={s.navActive} to="/food">Питание</NavLink></li>
             <li><NavLink activeClassName={s.navActive} to="/sport">Упражнения</NavLink></li>
             <li><a href="#">Виртуальный тренер</a></li>
-            <div>343433434</div>
             <button onClick={logout}> <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти </button>
         </ul>
     )
