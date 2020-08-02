@@ -2,7 +2,9 @@ import setAuthToken from '../setAuthToken';
 import axios from 'axios';
 import {
     SAVE_FOOD_ITEM,
-    DEL_FOOD_ROW
+    DEL_FOOD_ROW,
+    FOODDAIRY_ERROR,
+    GET_FOODDAIRY
     
 } from './types';
 
@@ -38,6 +40,16 @@ export const saveFoodItem = data => async dispatch => {
     return {
         type: SAVE_FOOD_ITEM,
         newFoodArray: data.foodArr
+    }
+}
+
+export const getFoodDairy = async dispatch =>{
+    try {
+        const res = await axios.get("/api/foodDairy");
+
+        dispatch({type: GET_FOODDAIRY, payload: res.data});
+    } catch (err) {
+        dispatch({type: FOODDAIRY_ERROR, payload: err.responce.msg})
     }
 }
 

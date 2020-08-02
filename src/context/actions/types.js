@@ -14,5 +14,10 @@ export const SHOW_MENU = 'SHOW_MENU';
 export const HIDE_MENU = 'HIDE_MENU';
 export const ADD_GLASS = 'ADD_GLASS';
 export const DEL_GLASS = 'DEL_GLASS';
+
+
+//FOOD DAIRY TYPES
 export const SAVE_FOOD_ITEM = 'SAVE_FOOD_ITEM';
 export const DEL_FOOD_ROW = 'DEL_FOOD_ROW';
+export const GET_FOODDAIRY = 'GET_FOODDAIRY';
+export const FOODDAIRY_ERROR = 'FOODDAIRY_ERROR';

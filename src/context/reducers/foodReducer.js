@@ -1,6 +1,9 @@
 import {
     SAVE_FOOD_ITEM,
     DEL_FOOD_ROW,
+    FOODDAIRY_ERROR,
+    GET_FOODDAIRY
+    
 } from '../actions/types';
 
 const initialState = {
@@ -22,6 +25,11 @@ const initialState = {
 
 const foodReducer = (state = initialState, action) => {
     switch(action.type) {
+        case  GET_FOODDAIRY:
+            return {
+                ...state,
+                food: action.data
+            }
         case SAVE_FOOD_ITEM:
             return {
                 ...state,
