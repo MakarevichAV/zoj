@@ -13,6 +13,10 @@ const FoodDairy = mongoose.Schema({
         type: String,
         required: true,
     },
+    weight: {
+        type: String,
+        required: true
+    },
     calories: {
         type: String,
         required: true,
