@@ -28,7 +28,7 @@ const foodReducer = (state = initialState, action) => {
         case  GET_FOODDAIRY:
             return {
                 ...state,
-                food: [action.payload,  ...state.food]
+                food: [...action.payload]
             }
         case SAVE_FOOD_ITEM:
             return {
