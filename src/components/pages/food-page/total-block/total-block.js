@@ -25,15 +25,15 @@ const TotalBlock = () => {
         return (
             <div className={s.row}>
                 <div className={s.name}>
-                    {item.name}
+                    {item.dish}
                     <button id={key} className={s.btnDel} onClick={deleteRow}></button>
                 </div>
                 <div className={s.values}>
-                    <div className={s.cell}>{item.num}</div>
-                    <div className={s.cell}>{item.e}</div>
-                    <div className={s.cell}>{item.p}</div>
-                    <div className={s.cell}>{item.f}</div>
-                    <div className={s.cell}>{item.c}</div>
+                    <div className={s.cell}>{item.weight}</div>
+                    <div className={s.cell}>{item.calories}</div>
+                    <div className={s.cell}>{item.protein}</div>
+                    <div className={s.cell}>{item.fats}</div>
+                    <div className={s.cell}>{item.carbohydrates}</div>
                 </div>
             </div>
         )
@@ -45,10 +45,10 @@ const TotalBlock = () => {
     let sumFat = 0;
     let sumC = 0;
     food.food.forEach((item) => {
-        sumEnergy = sumEnergy + item.e;
-        sumProtein = sumProtein + item.p;
-        sumFat = sumFat + item.f;
-        sumC = sumC + item.c;
+        sumEnergy = sumEnergy + +item.calories;
+        sumProtein = sumProtein + +item.protein;
+        sumFat = sumFat + +item.fats;
+        sumC = sumC + +item.carbohydrates;
     });
 
     const saveTotal = () => {
