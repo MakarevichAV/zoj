@@ -26,7 +26,7 @@ const TotalBlock = () => {
             <div className={s.row}>
                 <div className={s.name}>
                     {item.dish}
-                    <button id={key} className={s.btnDel} onClick={deleteRow}></button>
+                    <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
                 </div>
                 <div className={s.values}>
                     <div className={s.cell}>{item.weight}</div>
