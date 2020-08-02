@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {delFoodRow} from '../../../../context/actions/foodActions';
+import {delFoodRow, getFoodDairy} from '../../../../context/actions/foodActions';
 import Button from '../../../button/button';
 
 import s from './total-block.module.css';
@@ -17,6 +17,7 @@ const TotalBlock = () => {
                 foodArr: food.food,
                 ind: e.target.id
             }));
+            dispatch(getFoodDairy());
         }
     }
     

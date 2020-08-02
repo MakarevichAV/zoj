@@ -33,7 +33,7 @@ const foodReducer = (state = initialState, action) => {
         case SAVE_FOOD_ITEM:
             return {
                 ...state,
-                food: action.newFoodArray
+                food: [action.payload,  ...state.food]
             }
         case DEL_FOOD_ROW:
             return {

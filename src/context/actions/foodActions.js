@@ -29,17 +29,9 @@ export const saveFoodItem = data => async dispatch => {
 
     const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config)
 
-    data.foodArr.push({
-        name: data.foodName,
-        num: data.inpNumValue,
-        e: data.energy,
-        p: data.protein,
-        f: data.fat,
-        c: data.carbohydrate
-    });
     return {
         type: SAVE_FOOD_ITEM,
-        newFoodArray: data.foodArr
+        payload: res.data
     }
 }
 
