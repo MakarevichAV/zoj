@@ -15,7 +15,7 @@ const TotalBlock = () => {
         if (window.confirm("Вы точно хотите удалить строку?")) {
             dispatch(delFoodRow({
                 foodArr: food.food,
-                ind: e.target.id
+                id: e.target.id
             }));
             dispatch(getFoodDairy());
         }

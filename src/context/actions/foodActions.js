@@ -45,8 +45,8 @@ export const getFoodDairy = () => async dispatch =>{
 }
 
 export const delFoodRow = (data) => {
-    
-    const ind = +data.ind;
+    console.log(data.id);
+    const ind = +data.id;
     const newFoodArray = data.foodArr.filter((v, i) => {
         if (i !== ind) {
             return data.foodArr[i];
