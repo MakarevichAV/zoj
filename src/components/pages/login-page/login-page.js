@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { useEffect} from 'react';
-import { useSelector} from 'react-redux';
+import { useEffect, useState} from 'react';
+import { useSelector, ma, connect} from 'react-redux';
 
 import s from './login-page.module.css';
 import Logo from '../../header/logo/logo';
@@ -11,13 +11,14 @@ import RegisterForm from './register-form/register-form';
 
 const LoginPage = (props) => {
 
-    const isAuthenticated = useSelector(state => state.userInfo.isAuthenticated);
-
-    useEffect(() => {
-        if (isAuthenticated) {
-          props.history.push("/home");
-        }
-      }, [isAuthenticated]);
+    // useEffect(() => {
+    //     if (props.isAuth === true) {
+    //       props.history.push("/home");
+    //     }
+    // }, [props.isAuth, props.history]);
+    // if (props.isAuth) {
+    //     props.history.push("/home");
+    // }
 
     return (
         <Router>
@@ -41,4 +42,8 @@ const LoginPage = (props) => {
 
 }
 
-export default LoginPage;
+// export default LoginPage;
+const mapStateToProps = (state) => {
+    return { isAuth: state.userInfo.isAuthenticated }
+};
+export default connect(mapStateToProps)(LoginPage);

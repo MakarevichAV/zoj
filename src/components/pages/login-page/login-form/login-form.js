@@ -16,6 +16,12 @@ const LoginForm = (props) => {
     const onSubmit = e => {
         e.preventDefault();
         dispatch(login({email, password}));
+
+        setTimeout(() => {
+            if (localStorage.getItem('login')) {
+                window.location  = "/home";
+            }
+        }, 1000)
     }
 
     if (alert) {
