@@ -45,5 +45,7 @@ export const getFoodDairy = () => async dispatch =>{
 }
 
 export const delFoodRow = (data) => async dispatch => {
-    const res = await axios.delete(`/api/foodDairy/${data.id}`);
+    const del = await axios.delete(`/api/foodDairy/${data.id}`);
+    const res = await axios.get("/api/foodDairy");
+    dispatch({type: DEL_FOOD_ROW, payload: res.data});
 }
