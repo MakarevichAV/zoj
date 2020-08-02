@@ -35,10 +35,9 @@ export const saveFoodItem = data => async dispatch => {
     });
 }
 
-export const getFoodDairy = async dispatch =>{
+export const getFoodDairy = () => async dispatch =>{
     try {
         const res = await axios.get("/api/foodDairy");
-
         dispatch({type: GET_FOODDAIRY, payload: res.data});
     } catch (err) {
         dispatch({type: FOODDAIRY_ERROR, payload: err.responce.msg})

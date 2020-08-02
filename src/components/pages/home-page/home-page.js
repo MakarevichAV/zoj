@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {getUser} from '../../../context/actions/userActions';
+import {getFoodDairy} from '../../../context/actions/foodActions';
 
 import Header from '../../header/header';
 import ProfilePage from '../profile-page/profile-page';
@@ -15,6 +16,7 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getUser());
+        dispatch(getFoodDairy());
     }, []);
     
     return (
