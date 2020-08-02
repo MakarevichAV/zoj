@@ -24,7 +24,7 @@ const MobileNav = () => {
             <li><NavLink    activeClassName={s.navActive} to="/sport" 
                             onClick={onHideMenu}>Упражнения</NavLink></li>
             <li><a href="#" onClick={onHideMenu}>Виртуальный тренер</a></li>
-            <button className={s.logoutBtn} onClick={onHideMenu}> <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти </button>
+            <button className={s.logoutBtn} onClick={onHideMenu}> <i className="fa fa-sign-out" aria-hidden="true"></i> Выйти </button>
         </ul>
     )
 }

@@ -5,6 +5,7 @@ import {
 } from './types';
 
 export const saveFoodItem = (data) => {
+    console.log(data);
     data.foodArr.push({
         name: data.foodName,
         num: data.inpNumValue,
