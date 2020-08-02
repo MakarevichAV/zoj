@@ -27,12 +27,12 @@ export const saveFoodItem = data => async dispatch => {
         }
     };
 
-    const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config)
+    const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config);
 
-    return {
+    dispatch({
         type: SAVE_FOOD_ITEM,
         payload: res.data
-    }
+    });
 }
 
 export const getFoodDairy = async dispatch =>{
