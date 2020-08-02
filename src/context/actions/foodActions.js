@@ -1,11 +1,32 @@
+import setAuthToken from '../setAuthToken';
+import axios from 'axios';
 import {
     SAVE_FOOD_ITEM,
     DEL_FOOD_ROW
     
 } from './types';
 
-export const saveFoodItem = (data) => {
-    console.log(data);
+export const saveFoodItem = data => async dispatch => {
+
+    const foodItem = {
+        dish: data.foodName,
+        weight: data.inpNumValue,
+        calories: data.energy,
+        protein: data.protein,
+        fats: data.fat,
+        carbohydrates: data.carbohydrate
+    };
+
+    setAuthToken(localStorage.token);
+
+    const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+    };
+
+    const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config)
+
     data.foodArr.push({
         name: data.foodName,
         num: data.inpNumValue,

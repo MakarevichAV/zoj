@@ -88,6 +88,7 @@ const userInfoReducer = (state = initialState, action) => {
         case LOGIN_FAIL:
         case LOGOUT:
             localStorage.removeItem('token');
+            localStorage.removeItem('login');
             return {
                 ...state,
                 token: null,
