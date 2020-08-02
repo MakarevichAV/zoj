@@ -44,16 +44,6 @@ export const getFoodDairy = () => async dispatch =>{
     }
 }
 
-export const delFoodRow = (data) => {
-    console.log(data.id);
-    const ind = +data.id;
-    const newFoodArray = data.foodArr.filter((v, i) => {
-        if (i !== ind) {
-            return data.foodArr[i];
-        } 
-    } );
-    return {
-        type: DEL_FOOD_ROW,
-        newFoodArray
-    }
+export const delFoodRow = (data) => async dispatch => {
+    const res = await axios.delete(`/api/foodDairy/${data.id}`);
 }
