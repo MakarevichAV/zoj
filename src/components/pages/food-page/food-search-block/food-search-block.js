@@ -4,9 +4,11 @@ import ListItem from './list-item/list-item';
 import {saveFoodItem} from '../../../../context/actions/foodActions';
 import s from "./food-search-block.module.css";
 import cn from 'classnames';
+import axios from 'axios';
 
 // Подключаем класс-сервис с хавчиком для работы с тестовыми данными
 import FoodService from '../../../../services/food-service';
+import Axios from 'axios';
 const foodService = new FoodService();
 const FoodSearchBlock = () => {
     
@@ -74,38 +76,23 @@ const FoodSearchBlock = () => {
     }
 
     // Функция-обработчик для показа списка совпадений при печатанье в инпуте
-    const showDropList = (e) => {
+    const showDropList = async (e) => {
        
         const allFood = foodService.getAllFood();
         // Если введено не пустое значение
         if (e.target.value != '') {
-            // проходим по массиву из сервиса еды, сравниваем с введеным значением
-            const names = allFood.map((val, key) => { 
-                const regExp = new RegExp('^' + e.target.value, 'i'); // рег. выражение для сравнения
-                if (regExp.test(val.name)) {
-                    return <ListItem key={key} id={val.id} listItemValue={val.name} getFood={() => getFood(val.id)}/>;
-                } 
-            }) 
-            .filter(function(x) {
-                return x !== undefined && x !== null; 
-            });
-            // Если совпадений не найдено
-            if (names.length == 0) { 
-                setFood({
-                    ...food,
-                    inpVal: e.target.value,
-                    showList: true,
-                    list: 'Ничего не найдено'
-                });
-            } else { 
-                setFood({
-                    ...food,
-                    inpVal: e.target.value,
-                    showList: true,
-                    list: names
-                });
-            }
-            
+
+            let foodItemData = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${e.target.value}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`);
+            foodItemData = foodItemData.data;
+            console.log(foodItemData);
+            console.log(food);
+            setFood({
+                ...food,
+                inpValue: e.target.value,
+                showList: false,
+                foodName:  e.target.value,
+                // energy: foo
+            })
         } else { // а если значение пустое
             setFood({ // то отчищаем список и скрываем его
                 ...food,
