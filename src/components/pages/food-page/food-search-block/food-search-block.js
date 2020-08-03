@@ -37,23 +37,23 @@ const FoodSearchBlock = () => {
 
     // Получение выбранного продукта, подтягивается из <ListItem />
     // и запись в стэйт всех необходимых данных
-    const getFood = (id) => {
-        // Из фудСервиса берем функцию, которая возвращает все данные продукта
-        const foodItem = foodService.getSelectedFood(id);
-        setFood({
-            ...food,
-            inpVal: '',
-            inpNumValue: 100,
-            showList: false,
-            foodName: foodItem.name,
-            energy: foodItem.energy,
-            protein: foodItem.protein,
-            fat: foodItem.fat,
-            carbohydrate: foodItem.carbohydrate,
-            foodId: id,
-            disabled: false
-        });
-    }
+    // const getFood = (id) => {
+    //     // Из фудСервиса берем функцию, которая возвращает все данные продукта
+    //     const foodItem = foodService.getSelectedFood(id);
+    //     setFood({
+    //         ...food,
+    //         inpVal: '',
+    //         inpNumValue: 100,
+    //         showList: false,
+    //         foodName: foodItem.name,
+    //         energy: foodItem.energy,
+    //         protein: foodItem.protein,
+    //         fat: foodItem.fat,
+    //         carbohydrate: foodItem.carbohydrate,
+    //         foodId: id,
+    //         disabled: false
+    //     });
+    // }
 
     // функция расчета КБЖУ при изменении граммов
     const calculateEPFC = (e) => {
@@ -77,24 +77,28 @@ const FoodSearchBlock = () => {
 
     // Функция-обработчик для показа списка совпадений при печатанье в инпуте
     const showDropList = async (e) => {
-       
-        const allFood = foodService.getAllFood();
-        // Если введено не пустое значение
         if (e.target.value != '') {
-
-            let foodItemData = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${e.target.value}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`);
-            foodItemData = foodItemData.data;
-            console.log(foodItemData);
-            console.log(food);
-            setFood({
-                ...food,
-                inpValue: e.target.value,
-                showList: false,
-                foodName:  e.target.value,
-                // energy: foo
-            })
-        } else { // а если значение пустое
-            setFood({ // то отчищаем список и скрываем его
+            try {
+                const textFromInput = e.target.value
+                let foodItemData = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${textFromInput}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`);
+                foodItemData = await foodItemData.data;
+                const objectOfFood = foodItemData.hints[0].food.nutrients;
+                setFood({
+                    inpValue: textFromInput,
+                    showList: false,
+                    foodName:  textFromInput,
+                    energy: Math.round(objectOfFood.ENERC_KCAL),
+                    protein: Math.round(objectOfFood.PROCNT),
+                    fat: Math.round(objectOfFood.FAT),
+                    carbohydrate: Math.round(objectOfFood.CHOCDF)
+                });
+                console.log(food);
+            } catch {
+                alert('Введите корректное название для вашего приема пищи на английском!');
+                clear();
+            }
+        } else { 
+            setFood({ 
                 ...food,
                 list: '',  
                 inpVal: e.target.value,
@@ -131,8 +135,6 @@ const FoodSearchBlock = () => {
         }));
         clear();
     }
-
-
     
     const listClasses = cn(
         s.list, 
