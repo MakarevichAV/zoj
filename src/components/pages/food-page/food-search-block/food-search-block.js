@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux'; 
-// import { connect } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import ListItem from './list-item/list-item';
 import {saveFoodItem} from '../../../../context/actions/foodActions';
 import s from "./food-search-block.module.css";
@@ -12,20 +11,19 @@ const foodService = new FoodService();
 const FoodSearchBlock = () => {
     
     const dispatch = useDispatch();
-    const foodData = useSelector(state => state.foodInfo.searchState);
     const foodArr = useSelector(state => state.foodInfo.food);
     const [food, setFood] = useState({
-        list: foodData.list,
-        inpVal: foodData.inpValue,
-        inpNumValue: foodData.inpNumValue,
-        showList: foodData.showList,
-        foodName: foodData.foodName,
-        energy: foodData.energy,
-        protein: foodData.protein,
-        fat: foodData.fat,
-        carbohydrate: foodData.carbohydrate,
-        foodId: foodData.foodId,
-        disabled: foodData.disabled
+        list: '',
+        inpValue: '',
+        inpNumValue: 100,
+        showList: false,
+        foodName: null,
+        energy: null,
+        protein: null,
+        fat: null,
+        carbohydrate: null,
+        foodId: null,
+        disabled: true
     });
     const { list, inpVal,
             inpNumValue, showList,

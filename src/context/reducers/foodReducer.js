@@ -7,19 +7,6 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    searchState: {
-        list: '',
-        inpValue: '',
-        inpNumValue: 100,
-        showList: false,
-        foodName: null,
-        energy: null,
-        protein: null,
-        fat: null,
-        carbohydrate: null,
-        foodId: null,
-        disabled: true
-    },
     food: []
 }
 
