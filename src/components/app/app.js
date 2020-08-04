@@ -22,7 +22,6 @@ const App = () => {
                         <PrivateRoute exact path="/home" exactly component={Home}/>
                         <Route path="/login"  component={LoginPage} />
                         <Redirect to="/home" />
-                        {/* Это для того чтобы каждый раз не вводить /home */}
                 </Fragment>
             </Router>
         </Provider>

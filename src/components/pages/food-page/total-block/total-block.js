@@ -20,15 +20,16 @@ const TotalBlock = () => {
             dispatch(getFoodDairy());
         }
     }
-    
-    const foodList = food.food.map((item, key) => {
-        const date = new Date();
+
+    const date = new Date();
         const year = date.getFullYear();
         const month = Number(date.getMonth()) + 1;
         const day = date.getDate();
         const nowDate = year + '-' + 
                         (month < 10 ? '0' + month : month) + '-' + 
                         (day < 10 ? '0' + day : day);
+
+    const foodList = food.food.map((item, key) => {
         if (nowDate === item.date.substring(0, 10)) {
             return (
                 <div className={s.row}>
@@ -54,14 +55,16 @@ const TotalBlock = () => {
     let sumFat = 0;
     let sumC = 0;
     food.food.forEach((item) => {
-        sumEnergy = sumEnergy + +item.calories;
-        sumProtein = sumProtein + +item.protein;
-        sumFat = sumFat + +item.fats;
-        sumC = sumC + +item.carbohydrates;
+        if (nowDate === item.date.substring(0, 10)) {
+            sumEnergy = sumEnergy + +item.calories;
+            sumProtein = sumProtein + +item.protein;
+            sumFat = sumFat + +item.fats;
+            sumC = sumC + +item.carbohydrates;
+        }
     });
 
-    const saveTotal = () => {
-    }
+    // const saveTotal = () => {
+    // }
 
     return (
         <div className={s.container}>
@@ -118,7 +121,7 @@ const TotalBlock = () => {
                     <span className={s.targetValue}> / {dailyRate.w} л</span>
                 </p> 
             </div>
-            <Button txt="Записать день" classType="type3" onClick={saveTotal} />
+            {/* <Button txt="Записать день" classType="type3" onClick={saveTotal} /> */}
         </div>
     )
 }

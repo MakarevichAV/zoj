@@ -2,12 +2,14 @@ import {
     SAVE_FOOD_ITEM,
     DEL_FOOD_ROW,
     FOODDAIRY_ERROR,
-    GET_FOODDAIRY
+    GET_FOODDAIRY,
+    SET_GRAPH
     
 } from '../actions/types';
 
 const initialState = {
-    food: []
+    food: [],
+    arrForGraph: []
 }
 
 const foodReducer = (state = initialState, action) => {
@@ -26,6 +28,11 @@ const foodReducer = (state = initialState, action) => {
             return {
                 ...state,
                 food: [...action.payload]
+            }
+        case SET_GRAPH:
+            return {
+                ...state,
+                arrForGraph: action.arrForGraph
             }
         default:
             return state;

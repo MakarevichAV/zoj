@@ -14,6 +14,7 @@ export const SHOW_MENU = 'SHOW_MENU';
 export const HIDE_MENU = 'HIDE_MENU';
 export const ADD_GLASS = 'ADD_GLASS';
 export const DEL_GLASS = 'DEL_GLASS';
+export const SET_GRAPH = 'SET_GRAPH';
 
 
 //FOOD DAIRY TYPES

@@ -11,6 +11,16 @@ import Title from '../../title/title';
 
 const FoodPage = () => {
     const dailyRate = useSelector(state => state.userInfo.dailyRate);
+    const arrForGraph = useSelector(state => state.foodInfo.arrForGraph);
+    
+    const data = arrForGraph.map((item) => {
+        return {
+            name: item.date,
+            'Потребленные кКал': item.calories,
+            'Рекомендуемое значение': dailyRate.e
+        }
+    });
+    let barWidth = data.length * 120; // ширина графика
     return (
         <div className={s.foodPage}>
             <div className={s.wrapper}>
@@ -58,7 +68,7 @@ const FoodPage = () => {
                 <TotalBlock />
             </div>
             <div className={s.container}>
-                <Chart />
+                <Chart barWidth={barWidth} data={data} />
             </div>
         </div>
     )
