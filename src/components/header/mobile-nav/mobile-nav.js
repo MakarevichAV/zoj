@@ -13,6 +13,12 @@ const MobileNav = () => {
         dispatch(hideMenu())
     }
 
+    const logout = () => {
+        localStorage.removeItem('login');
+        localStorage.removeItem('token');
+        window.location = '/login';
+    }
+
     return (
         
         <ul className={`${s.nav} ${menuData.visible ? s.visible : ''}`}>
@@ -24,7 +30,7 @@ const MobileNav = () => {
             <li><NavLink    activeClassName={s.navActive} to="/sport" 
                             onClick={onHideMenu}>Упражнения</NavLink></li>
             <li><a href="#" onClick={onHideMenu}>Виртуальный тренер</a></li>
-            <button className={s.logoutBtn} onClick={onHideMenu}> <i className="fa fa-sign-out" aria-hidden="true"></i> Выйти </button>
+            <button className={s.logoutBtn} onClick={logout}> <i className="fa fa-sign-out" aria-hidden="true"></i> Выйти </button>
         </ul>
     )
 }
