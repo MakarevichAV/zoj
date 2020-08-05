@@ -49,6 +49,7 @@ it('value of sum should be decremented by received value', () => {
     let newState = waterReducer(state, action);
     expect(state.sum - newState.sum).toBe(data.val / 1000);
 });
+
  // Тест на удаление из массива элемента с индексом , переданным в action 
 it('the last element of the num array should be deleted', () => {
     let state = {
