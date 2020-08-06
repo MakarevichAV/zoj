@@ -28,60 +28,19 @@ const TotalBlock = () => {
     const nowDate = year + '-' + 
                     (month < 10 ? '0' + month : month) + '-' + 
                     (day < 10 ? '0' + day : day);
-      // рассчет суммарных значений КБЖУ
     let sumEnergy = 0;
     let sumProtein = 0;
     let sumFat = 0;
     let sumC = 0;
-    // let foodList = []; 
     food.food.forEach((item, i) => {
-        // debugger;
         if (nowDate === item.userDate.substring(0, 10)) {
             sumEnergy = sumEnergy + +item.calories;
             sumProtein = sumProtein + +item.protein;
             sumFat = sumFat + +item.fats;
             sumC = sumC + +item.carbohydrates;
-            // foodList[i] = 
-            //     <div className={s.row}>
-            //         <div className={s.name}>
-            //             {item.dish}
-            //             <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
-            //         </div>
-            //         <div className={s.values}>
-            //             <div className={s.cell}>{item.weight}</div>
-            //             <div className={s.cell}>{item.calories}</div>
-            //             <div className={s.cell}>{item.protein}</div>
-            //             <div className={s.cell}>{item.fats}</div>
-            //             <div className={s.cell}>{item.carbohydrates}</div>
-            //         </div>
-            //     </div>
-            
         }
     });
   
-    // let foodList = [];
-    // useEffect(() => {
-    //     foodList = food.food.map((item, key) => {
-    //         if (nowDate === item.date.substring(0, 10)) {
-    //             return (
-    //                 <div className={s.row}>
-    //                     <div className={s.name}>
-    //                         {item.dish}
-    //                         <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
-    //                     </div>
-    //                     <div className={s.values}>
-    //                         <div className={s.cell}>{item.weight}</div>
-    //                         <div className={s.cell}>{item.calories}</div>
-    //                         <div className={s.cell}>{item.protein}</div>
-    //                         <div className={s.cell}>{item.fats}</div>
-    //                         <div className={s.cell}>{item.carbohydrates}</div>
-    //                     </div>
-    //                 </div>
-    //             )
-    //         }
-    //     });
-    // });
-    // let foodList = []; 
     const foodList = food.food.map((item, key) => {
         if (nowDate === item.userDate.substring(0, 10)) {
             return (
@@ -101,24 +60,6 @@ const TotalBlock = () => {
             )
         }
     });
-
-    // // рассчет суммарных значений КБЖУ
-    // let sumEnergy = 0;
-    // let sumProtein = 0;
-    // let sumFat = 0;
-    // let sumC = 0;
-    // food.food.forEach((item) => {
-    //     // debugger;
-    //     if (nowDate === item.date.substring(0, 10)) {
-    //         sumEnergy = sumEnergy + +item.calories;
-    //         sumProtein = sumProtein + +item.protein;
-    //         sumFat = sumFat + +item.fats;
-    //         sumC = sumC + +item.carbohydrates;
-    //     }
-    // });
-
-    // const saveTotal = () => {
-    // }
 
     return (
         <div className={s.container}>
@@ -164,7 +105,6 @@ const TotalBlock = () => {
                     <span className={s.targetValue}> / {dailyRate.w} л</span>
                 </p> 
             </div>
-            {/* <Button txt="Записать день" classType="type3" onClick={saveTotal} /> */}
         </div>
     )
 }

@@ -26,20 +26,20 @@ describe("Сценарии действий пользователя", () => {
         assert(text1, text2);
     });
 
-    it("Запись хавчика прозведена удачна", async () => {
+    it("Запись хавчика произведена успешно", async () => {
         let text1 = await driver.findElement(By.css("[class*='search-block_mainRow'] h2")).getText();
         await driver.findElement(By.css("[class*='food-search-block_btnType1']")).click();
-        let text2 = await driver.findElement(By.css("[class*='total-block_row']:nth-child(2) [class*='total-block_name']")).getText();
+        let text2 = await driver.findElement(By.css("[class*='total-block_row']:nth-child(1) [class*='total-block_name']")).getText();
         assert(text1, text2);
     });
 
-    // it("Удаление хавчика произведено удачно", async () => {
-        
-    // });
-
-    // it("Добавление воды прощло успешно", async () => {
-
-    // });
+    it("Удаление хавчика произведено успешно", async () => {
+        let numBefore = await driver.findElements(By.css("[class*='total-block_row']"));
+        await driver.wait(until.elementLocated(By.css("[class*='total-block_row']:nth-child(2) [class*='btnDel']"))).click();
+        await driver.switchTo().alert().accept();
+        let numAfter = await driver.findElements(By.css("[class*='total-block_row']"));
+        assert(numBefore.length, numAfter.length + 1);
+    });
 
     after(() => {
         driver.quit();
