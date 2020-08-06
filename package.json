@@ -37,7 +37,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon server/server.js",
-    "startWithServer": "concurrently \"nodemon server.js\" \"npm run start\""
+    "startWithServer": "concurrently \"nodemon server.js\" \"npm run start\"",
+    "startTest1": "./node_modules/.bin/mocha --timeout 20000 ./tests/firstTest.js "
   },
   "eslintConfig": {
     "extends": "react-app"
