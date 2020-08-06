@@ -9,6 +9,10 @@ const FoodDairy = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    userDate: {
+        type: String,
+        required: true,
+    },
     dish: {
         type: String,
         required: true,

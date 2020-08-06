@@ -7,12 +7,14 @@ import s from './chart.module.css';
 
 export default class Chart extends PureComponent {
     static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
-
+    
     render() {
         return (
             <div className={s.container}>
                 <BarChart
-                    width={this.props.barWidth}
+                    width={
+                    this.props.barWidth < 180 ? 180 : this.props.barWidth
+                    }
                     height={400}
                     data={this.props.data}
                     margin={{

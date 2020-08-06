@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {delFoodRow, getFoodDairy} from '../../../../context/actions/foodActions';
 import Button from '../../../button/button';
@@ -22,15 +22,68 @@ const TotalBlock = () => {
     }
 
     const date = new Date();
-        const year = date.getFullYear();
-        const month = Number(date.getMonth()) + 1;
-        const day = date.getDate();
-        const nowDate = year + '-' + 
-                        (month < 10 ? '0' + month : month) + '-' + 
-                        (day < 10 ? '0' + day : day);
-
+    const year = date.getFullYear();
+    const month = Number(date.getMonth()) + 1;
+    const day = date.getDate();
+    const nowDate = year + '-' + 
+                    (month < 10 ? '0' + month : month) + '-' + 
+                    (day < 10 ? '0' + day : day);
+      // рассчет суммарных значений КБЖУ
+    let sumEnergy = 0;
+    let sumProtein = 0;
+    let sumFat = 0;
+    let sumC = 0;
+    // let foodList = []; 
+    food.food.forEach((item, i) => {
+        // debugger;
+        if (nowDate === item.userDate.substring(0, 10)) {
+            sumEnergy = sumEnergy + +item.calories;
+            sumProtein = sumProtein + +item.protein;
+            sumFat = sumFat + +item.fats;
+            sumC = sumC + +item.carbohydrates;
+            // foodList[i] = 
+            //     <div className={s.row}>
+            //         <div className={s.name}>
+            //             {item.dish}
+            //             <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
+            //         </div>
+            //         <div className={s.values}>
+            //             <div className={s.cell}>{item.weight}</div>
+            //             <div className={s.cell}>{item.calories}</div>
+            //             <div className={s.cell}>{item.protein}</div>
+            //             <div className={s.cell}>{item.fats}</div>
+            //             <div className={s.cell}>{item.carbohydrates}</div>
+            //         </div>
+            //     </div>
+            
+        }
+    });
+  
+    // let foodList = [];
+    // useEffect(() => {
+    //     foodList = food.food.map((item, key) => {
+    //         if (nowDate === item.date.substring(0, 10)) {
+    //             return (
+    //                 <div className={s.row}>
+    //                     <div className={s.name}>
+    //                         {item.dish}
+    //                         <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
+    //                     </div>
+    //                     <div className={s.values}>
+    //                         <div className={s.cell}>{item.weight}</div>
+    //                         <div className={s.cell}>{item.calories}</div>
+    //                         <div className={s.cell}>{item.protein}</div>
+    //                         <div className={s.cell}>{item.fats}</div>
+    //                         <div className={s.cell}>{item.carbohydrates}</div>
+    //                     </div>
+    //                 </div>
+    //             )
+    //         }
+    //     });
+    // });
+    // let foodList = []; 
     const foodList = food.food.map((item, key) => {
-        if (nowDate === item.date.substring(0, 10)) {
+        if (nowDate === item.userDate.substring(0, 10)) {
             return (
                 <div className={s.row}>
                     <div className={s.name}>
@@ -49,19 +102,20 @@ const TotalBlock = () => {
         }
     });
 
-    // рассчет суммарных значений КБЖУ
-    let sumEnergy = 0;
-    let sumProtein = 0;
-    let sumFat = 0;
-    let sumC = 0;
-    food.food.forEach((item) => {
-        if (nowDate === item.date.substring(0, 10)) {
-            sumEnergy = sumEnergy + +item.calories;
-            sumProtein = sumProtein + +item.protein;
-            sumFat = sumFat + +item.fats;
-            sumC = sumC + +item.carbohydrates;
-        }
-    });
+    // // рассчет суммарных значений КБЖУ
+    // let sumEnergy = 0;
+    // let sumProtein = 0;
+    // let sumFat = 0;
+    // let sumC = 0;
+    // food.food.forEach((item) => {
+    //     // debugger;
+    //     if (nowDate === item.date.substring(0, 10)) {
+    //         sumEnergy = sumEnergy + +item.calories;
+    //         sumProtein = sumProtein + +item.protein;
+    //         sumFat = sumFat + +item.fats;
+    //         sumC = sumC + +item.carbohydrates;
+    //     }
+    // });
 
     // const saveTotal = () => {
     // }
@@ -80,18 +134,7 @@ const TotalBlock = () => {
                         <div className={s.cell}>Угл, г</div>
                     </div>
                 </div>
-                {foodList[0] ? foodList : 
-                    <div className={s.row}>
-                        <div className={s.name}></div>
-                        <div className={s.values}>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                        </div>
-                    </div>
-                }
+                {foodList}
             </div>
             <div className={s.total}>
                 <h2>Всего:</h2>

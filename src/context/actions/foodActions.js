@@ -9,14 +9,21 @@ import {
 } from './types';
 
 export const saveFoodItem = data => async dispatch => {
-
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = Number(date.getMonth()) + 1;
+    const day = date.getDate();
+    const nowDate = year + '-' + 
+                    (month < 10 ? '0' + month : month) + '-' + 
+                    (day < 10 ? '0' + day : day);
     const foodItem = {
         dish: data.foodName,
         weight: data.inpNumValue,
         calories: data.energy,
         protein: data.protein,
         fats: data.fat,
-        carbohydrates: data.carbohydrate
+        carbohydrates: data.carbohydrate,
+        userDate: nowDate
     };
 
     setAuthToken(localStorage.token);
@@ -42,22 +49,22 @@ export const getFoodDairy = () => async dispatch =>{
         // расчет для графика
         // Сортируем массив из БД
         const sortArr = res.data.sort(function(a, b) {
-            let dateA = new Date(a.date.substring(0, 10)), 
-                dateB=new Date(b.date.substring(0, 10));
+            let dateA = new Date(a.userDate.substring(0, 10)), 
+                dateB=new Date(b.userDate.substring(0, 10));
             return dateA-dateB;
         }).map((item) => {
             return {
-                date: item.date.substring(0, 10),
+                date: item.userDate.substring(0, 10),
                 calories: Number(item.calories)
             }
         });
         // группируем по дате, складывая кКалории
         let obj={};
         sortArr.forEach(entry=>{
-            if(obj[entry.date]){
-                obj[entry.date].calories+= entry.calories;
+            if(obj[entry.userDate]){
+                obj[entry.userDate].calories+= entry.calories;
             }else{
-                obj[entry.date] = entry;
+                obj[entry.userDate] = entry;
             }
         });
         const arrForGraph = Object.values(obj);

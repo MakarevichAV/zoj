@@ -78,7 +78,7 @@ const FoodSearchBlock = () => {
        
         const allFood = foodService.getAllFood();
         // Если введено не пустое значение
-        if (e.target.value != '') {
+        if (e.target.value !== '') {
             // проходим по массиву из сервиса еды, сравниваем с введеным значением
             const names = allFood.map((val, key) => { 
                 const regExp = new RegExp('^' + e.target.value, 'i'); // рег. выражение для сравнения
@@ -90,7 +90,7 @@ const FoodSearchBlock = () => {
                 return x !== undefined && x !== null; 
             });
             // Если совпадений не найдено
-            if (names.length == 0) { 
+            if (names.length === 0) { 
                 setFood({
                     ...food,
                     inpVal: e.target.value,
