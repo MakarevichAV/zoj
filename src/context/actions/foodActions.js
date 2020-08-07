@@ -4,8 +4,7 @@ import {
     SAVE_FOOD_ITEM,
     DEL_FOOD_ROW,
     FOODDAIRY_ERROR,
-    GET_FOODDAIRY,
-    SET_GRAPH
+    GET_FOODDAIRY
 } from './types';
 
 export const saveFoodItem = data => async dispatch => {
@@ -36,17 +35,16 @@ export const saveFoodItem = data => async dispatch => {
 
     const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config);
 
-    dispatch({
-        type: SAVE_FOOD_ITEM,
-        payload: res.data
-    });
+    // dispatch({
+    //     type: SAVE_FOOD_ITEM,
+    //     payload: res.data
+    // });
+    dispatch(getFoodDairy());
 }
 
 export const getFoodDairy = () => async dispatch =>{
     try {
         const res = await axios.get("/api/foodDairy");
-        dispatch({type: GET_FOODDAIRY, payload: res.data});
-        // расчет для графика
         // Сортируем массив из БД
         const sortArr = res.data.sort(function(a, b) {
             let dateA = new Date(a.userDate.substring(0, 10)), 
@@ -61,14 +59,16 @@ export const getFoodDairy = () => async dispatch =>{
         // группируем по дате, складывая кКалории
         let obj={};
         sortArr.forEach(entry=>{
-            if(obj[entry.userDate]){
-                obj[entry.userDate].calories+= entry.calories;
+            if(obj[entry.date]){
+                obj[entry.date].calories+= entry.calories;
             }else{
-                obj[entry.userDate] = entry;
+                obj[entry.date] = entry;
             }
         });
-        const arrForGraph = Object.values(obj);
-        dispatch({type: SET_GRAPH, arrForGraph});
+        res.arrForGraph = Object.values(obj);
+
+        dispatch({type: GET_FOODDAIRY, payload: res});
+        
     } catch (err) {
         dispatch({type: FOODDAIRY_ERROR, payload: err.responce.msg});
     }
@@ -76,6 +76,7 @@ export const getFoodDairy = () => async dispatch =>{
 
 export const delFoodRow = (data) => async dispatch => {
     const del = await axios.delete(`/api/foodDairy/${data.id}`);
-    const res = await axios.get("/api/foodDairy");
-    dispatch({type: DEL_FOOD_ROW, payload: res.data});
+    // const res = await axios.get("/api/foodDairy");
+    // dispatch({type: DEL_FOOD_ROW, payload: res.data});
+    dispatch(getFoodDairy());
 }

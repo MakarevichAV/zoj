@@ -17,7 +17,8 @@ const foodReducer = (state = initialState, action) => {
         case  GET_FOODDAIRY:
             return {
                 ...state,
-                food: [...action.payload]
+                food: [...action.payload.data],
+                arrForGraph: [...action.payload.arrForGraph]
             }
         case SAVE_FOOD_ITEM:
             return {
@@ -28,11 +29,6 @@ const foodReducer = (state = initialState, action) => {
             return {
                 ...state,
                 food: [...action.payload]
-            }
-        case SET_GRAPH:
-            return {
-                ...state,
-                arrForGraph: action.arrForGraph
             }
         default:
             return state;
