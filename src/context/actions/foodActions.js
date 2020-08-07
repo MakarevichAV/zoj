@@ -14,7 +14,10 @@ export const saveFoodItem = data => async dispatch => {
     const day = date.getDate();
     const nowDate = year + '-' + 
                     (month < 10 ? '0' + month : month) + '-' + 
-                    (day < 10 ? '0' + day : day);
+                    (day < 10 ? '0' + day : day) + 'Т' +
+                    date.getHours() + ':' +
+                    date.getMinutes() + ':' +
+                    date.getSeconds();
     const foodItem = {
         dish: data.foodName,
         weight: data.inpNumValue,
@@ -44,13 +47,20 @@ export const saveFoodItem = data => async dispatch => {
 
 export const getFoodDairy = () => async dispatch =>{
     try {
-        const res = await axios.get("/api/foodDairy");
+        let result = {};
+        let res = await axios.get("/api/foodDairy");
         // Сортируем массив из БД
-        const sortArr = res.data.sort(function(a, b) {
-            let dateA = new Date(a.userDate.substring(0, 10)), 
-                dateB=new Date(b.userDate.substring(0, 10));
-            return dateA-dateB;
-        }).map((item) => {
+        res.data.sort(function(a, b) {
+            let dateA = a.userDate, 
+                dateB = b.userDate;
+            // return dateB - dateA;
+            if (dateA > dateB) { 
+            return 1; } 
+            if (dateA < dateB) { 
+            return -1; } 
+            return 0; 
+        });
+        const easyArr = res.data.map((item) => {
             return {
                 date: item.userDate.substring(0, 10),
                 calories: Number(item.calories)
@@ -58,16 +68,17 @@ export const getFoodDairy = () => async dispatch =>{
         });
         // группируем по дате, складывая кКалории
         let obj={};
-        sortArr.forEach(entry=>{
+        easyArr.forEach(entry=>{
             if(obj[entry.date]){
                 obj[entry.date].calories+= entry.calories;
             }else{
                 obj[entry.date] = entry;
             }
         });
-        res.arrForGraph = Object.values(obj);
+        result.data = res.data;
+        result.arrForGraph = Object.values(obj);
 
-        dispatch({type: GET_FOODDAIRY, payload: res});
+        dispatch({type: GET_FOODDAIRY, payload: result});
         
     } catch (err) {
         dispatch({type: FOODDAIRY_ERROR, payload: err.responce.msg});

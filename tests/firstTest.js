@@ -28,10 +28,10 @@ describe("Сценарии действий пользователя", () => {
     });
 
     it("Запись хавчика произведена успешно", async () => {
-        let text1 = await driver.findElement(By.css("[class*='search-block_mainRow'] h2")).getText();
+        let txt1 = await driver.findElement(By.css("[class*='search-block_mainRow'] h2")).getText();
         await driver.findElement(By.css("[class*='food-search-block_btnType1']")).click();
-        let text2 = await driver.findElement(By.css("[class*='total-block_row']:nth-child(1) [class*='total-block_name']")).getText();
-        assert(text1, text2);
+        let txt2 = await driver.findElement(By.css("[class*='total-block_row']:nth-child(1) [class*='total-block_name']")).getText();
+        assert(txt1, txt2);
     });
 
     it("Удаление хавчика произведено успешно", async () => {
