@@ -4,7 +4,8 @@ const assert = require("assert");
 
 describe("Сценарии действий пользователя", () => {
     before(async function() {
-        driver = await new Builder().forBrowser("chrome").build();    
+        driver = await new Builder().forBrowser("chrome").build(); 
+        driver.manage().window().maximize();   
     });
 
     it("Вход в аккаунт и переход на страницу питания", async () => {
