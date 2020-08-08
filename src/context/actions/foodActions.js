@@ -15,9 +15,9 @@ export const saveFoodItem = data => async dispatch => {
     const nowDate = year + '-' + 
                     (month < 10 ? '0' + month : month) + '-' + 
                     (day < 10 ? '0' + day : day) + 'Т' +
-                    date.getHours() + ':' +
-                    date.getMinutes() + ':' +
-                    date.getSeconds();
+                    (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' +
+                    (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' +
+                    (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
     const foodItem = {
         dish: data.foodName,
         weight: data.inpNumValue,
