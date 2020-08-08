@@ -70,13 +70,21 @@ export const setCurrentFoodItem = data => {
         fat: Math.round(data.nutrients.FAT),
         carbs: Math.round(data.nutrients.CHOCDF)
     }
-    // const energy = Math.round(foodItem.energy * e.target.value / 100);
-    // const protein = Math.round(foodItem.protein * e.target.value / 100);
-    // const fat = Math.round(foodItem.fat * e.target.value / 100);
-    // const carbohydrate = Math.round(foodItem.carbohydrate * e.target.value / 100);
 
     return {
         type:SET_CURRENT_FOOD_ITEM,
         payload: currentItem
+    }
+}
+
+export const calculateEPFC = ({weight, foodItem}) => {
+    foodItem.energy = Math.round(foodItem.energy * weight / 100);
+    foodItem.protein = Math.round(foodItem.protein * weight / 100);
+    foodItem.fat = Math.round(foodItem.fat * weight / 100);
+    foodItem.carbs = Math.round(foodItem.carbs * weight / 100);
+
+    return {
+        type: SET_CURRENT_FOOD_ITEM,
+        payload: foodItem
     }
 }

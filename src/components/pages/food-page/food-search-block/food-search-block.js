@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ListItem from './list-item/list-item';
-import {saveFoodItem, findFoodSuggestions} from '../../../../context/actions/foodActions';
+import {saveFoodItem, findFoodSuggestions, calculateEPFC} from '../../../../context/actions/foodActions';
 import s from "./food-search-block.module.css";
 import cn from 'classnames';
 
@@ -11,7 +11,7 @@ const FoodSearchBlock = () => {
     const dispatch = useDispatch();
     const searchSuggestions = useSelector(state => state.foodInfo.searchSuggestions);
     const currentFoodItem = useSelector(state => state.foodInfo.currentFoodItem);
-    // const [name, energy, protein, fat, carbs] = currentFoodItem;
+
     const [food, setFood] = useState({
         list: '',
         inpValue: '',
@@ -68,6 +68,22 @@ const FoodSearchBlock = () => {
                 showList: false
             });
         }
+    }
+
+    const calcEPFC = e => {
+        console.log(currentFoodItem);
+        const foodItem = {
+            weight : e.target.value,
+            foodItem: currentFoodItem
+        }
+        dispatch(calculateEPFC(foodItem));
+        setFood({
+            ...food,
+            energy: currentFoodItem.energy,
+            protein: currentFoodItem.protein,
+            fat: currentFoodItem.fat,
+            carbs: currentFoodItem.carbs
+        });
     }
 
     // Функция отчистки при нажатии на СБРОСИТЬ
@@ -127,7 +143,7 @@ const FoodSearchBlock = () => {
                                 step="50"
                                 min="50"
                                 value={inpNumValue}
-                                // onChange={calculateEPFC}
+                                onChange={calcEPFC}
                                 disabled={disabled}/>г
                     </label>
                 </div>
