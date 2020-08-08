@@ -4,7 +4,6 @@ import ListItem from './list-item/list-item';
 import {saveFoodItem, findFoodSuggestions} from '../../../../context/actions/foodActions';
 import s from "./food-search-block.module.css";
 import cn from 'classnames';
-import {login} from "../../../../context/actions/userActions";
 
 // Подключаем класс-сервис с хавчиком для работы с тестовыми данными
 const FoodSearchBlock = () => {
@@ -33,27 +32,6 @@ const FoodSearchBlock = () => {
             disabled
             } = food;
 
-    //TODO
-    // функция расчета КБЖУ при изменении граммов
-    // const calculateEPFC = (e) => {
-    //     // По id из стэйта получаем из фудСервиса значения КБЖУ для расчетов
-    //     const foodItem = foodService.getSelectedFood(foodId);
-    //     // Расчитываем
-    //     const energy = Math.round(foodItem.energy * e.target.value / 100);
-    //     const protein = Math.round(foodItem.protein * e.target.value / 100);
-    //     const fat = Math.round(foodItem.fat * e.target.value / 100);
-    //     const carbohydrate = Math.round(foodItem.carbohydrate * e.target.value / 100);
-    //     // И записываем в Стэйт
-    //     setFood({
-    //         ...food,
-    //         inpNumValue: e.target.value,
-    //         energy: energy,
-    //         protein: protein,
-    //         fat: fat,
-    //         carbohydrate: carbohydrate
-    //     });
-    // }
-
     const showDropList = e => {
         if (e.target.value != '' && e.target.value.length > 3) {
             dispatch(findFoodSuggestions(e.target.value));
@@ -64,7 +42,7 @@ const FoodSearchBlock = () => {
                 suggestions.forEach(food => {
                     if (food && food.food) {
                         const item = food.food;
-                        names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label}/>);
+                        names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} item={item}/>);
                     } else {
                         return
                     }

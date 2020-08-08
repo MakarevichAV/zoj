@@ -11,7 +11,7 @@
 }
 
 .list {
-    padding: 30px;
+    /*padding: 30px;*/
     background: white;
     display: none;
     height: auto;
@@ -20,6 +20,7 @@
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #85AD90;
+    border-radius: 8px;
     background: var(--block);
     box-shadow: 3px 3px 4px 2px #a8a8a8;
 }

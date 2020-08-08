@@ -63,7 +63,26 @@ export const findFoodSuggestions = data => async  dispatch => {
 }
 
 export const setCurrentFoodItem = data => {
+    console.log(data);
 
+    const calculateEPFC = (e) => {
+        // По id из стэйта получаем из фудСервиса значения КБЖУ для расчетов
+        const foodItem = foodService.getSelectedFood(foodId);
+        // Расчитываем
+        const energy = Math.round(foodItem.energy * e.target.value / 100);
+        const protein = Math.round(foodItem.protein * e.target.value / 100);
+        const fat = Math.round(foodItem.fat * e.target.value / 100);
+        const carbohydrate = Math.round(foodItem.carbohydrate * e.target.value / 100);
+        // И записываем в Стэйт
+        setFood({
+            ...food,
+            inpNumValue: e.target.value,
+            energy: energy,
+            protein: protein,
+            fat: fat,
+            carbohydrate: carbohydrate
+        });
+    }
     return {
         type:SET_CURRENT_FOOD_ITEM,
         payload: data
