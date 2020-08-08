@@ -31,23 +31,20 @@ describe("Сценарии действий пользователя", () => {
         let rows = await driver.findElements(By.css("[class*='total-block_row']"));
         let txt1 = await driver.findElement(By.css("[class*='search-block_mainRow'] h2")).getText();
         await driver.findElement(By.css("[class*='food-search-block_btnType1']")).click();
-        let txt2 = await driver.findElement(By.css(`[class*='total-block_row']:nth-child(${rows.length}) [class*='total-block_name']`)).getText();
+        await driver.wait(until.elementLocated(By.xpath(`//div[contains(@class, 'total-block_row')][position()=${rows.length + 1}]`)), 10000);
+        let txt2 = await driver.findElement(By.xpath(`//div[contains(@class, 'total-block_row')][position()=${rows.length + 1}] //div[text()='${txt1}']`)).getText();
         assert.equal(txt1 === txt2, true);
     });
 
     it("Удаление хавчика произведено успешно", async () => {
         let numBefore = await driver.findElements(By.css("[class*='total-block_row']"));
-console.log(numBefore.length);
-        await driver.findElements(By.css(`[class*='total-block_row']:nth-child(${numBefore.length - 1}) [class*='btnDel']`)).click();
-        // btn.click();
+        await driver.findElement(By.css(`[class*='total-block_row']:nth-last-child(${numBefore.length - 1}) [class*='btnDel']`)).click();
         await driver.switchTo().alert().accept();
-        // let numAfter;
-        // do {
-            let numAfter = await driver.findElements(By.css("[class*='total-block_row']"));
-        // } 
-        // while (numAfter.length == numBefore.length);
-
-        console.log(numBefore.length + ' : ' + numAfter.length);
+        do {
+            var numAfter = await driver.findElements(By.css("[class*='total-block_row']"));
+            // console.log(numAfter.length);
+        } 
+        while (numAfter.length == numBefore.length);
         assert.equal(numBefore.length - numAfter.length == 1, true);
     });
 
