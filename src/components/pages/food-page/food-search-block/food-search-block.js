@@ -1,15 +1,11 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ListItem from './list-item/list-item';
-import {saveFoodItem} from '../../../../context/actions/foodActions';
+import {saveFoodItem, findFoodSuggestions} from '../../../../context/actions/foodActions';
 import s from "./food-search-block.module.css";
 import cn from 'classnames';
-import axios from 'axios';
 
 // Подключаем класс-сервис с хавчиком для работы с тестовыми данными
-import FoodService from '../../../../services/food-service';
-import Axios from 'axios';
-const foodService = new FoodService();
 const FoodSearchBlock = () => {
     
     const dispatch = useDispatch();
@@ -55,54 +51,42 @@ const FoodSearchBlock = () => {
     //     });
     // }
 
+    //TODO
     // функция расчета КБЖУ при изменении граммов
-    const calculateEPFC = (e) => {
-        // По id из стэйта получаем из фудСервиса значения КБЖУ для расчетов
-        const foodItem = foodService.getSelectedFood(foodId);
-        // Расчитываем
-        const energy = Math.round(foodItem.energy * e.target.value / 100);
-        const protein = Math.round(foodItem.protein * e.target.value / 100);
-        const fat = Math.round(foodItem.fat * e.target.value / 100);
-        const carbohydrate = Math.round(foodItem.carbohydrate * e.target.value / 100);
-        // И записываем в Стэйт
-        setFood({
-            ...food,
-            inpNumValue: e.target.value,
-            energy: energy,
-            protein: protein,
-            fat: fat,
-            carbohydrate: carbohydrate
-        });
-    }
+    // const calculateEPFC = (e) => {
+    //     // По id из стэйта получаем из фудСервиса значения КБЖУ для расчетов
+    //     const foodItem = foodService.getSelectedFood(foodId);
+    //     // Расчитываем
+    //     const energy = Math.round(foodItem.energy * e.target.value / 100);
+    //     const protein = Math.round(foodItem.protein * e.target.value / 100);
+    //     const fat = Math.round(foodItem.fat * e.target.value / 100);
+    //     const carbohydrate = Math.round(foodItem.carbohydrate * e.target.value / 100);
+    //     // И записываем в Стэйт
+    //     setFood({
+    //         ...food,
+    //         inpNumValue: e.target.value,
+    //         energy: energy,
+    //         protein: protein,
+    //         fat: fat,
+    //         carbohydrate: carbohydrate
+    //     });
+    // }
 
-    // Функция-обработчик для показа списка совпадений при печатанье в инпуте
-    const showDropList = async (e) => {
+    const showDropList = e => {
         if (e.target.value != '') {
             try {
-                const textFromInput = e.target.value
-                let foodItemData = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${textFromInput}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`);
-                foodItemData = await foodItemData.data;
-                const objectOfFood = foodItemData.hints[0].food.nutrients;
-                setFood({
-                    inpValue: textFromInput,
-                    showList: false,
-                    foodName:  textFromInput,
-                    energy: Math.round(objectOfFood.ENERC_KCAL),
-                    protein: Math.round(objectOfFood.PROCNT),
-                    fat: Math.round(objectOfFood.FAT),
-                    carbohydrate: Math.round(objectOfFood.CHOCDF)
-                });
-                console.log(food);
+                dispatch(findFoodSuggestions(e.target.value));
+
             } catch {
                 alert('Введите корректное название для вашего приема пищи на английском!');
                 clear();
             }
-        } else { 
-            setFood({ 
+        } else {
+            setFood({
                 ...food,
-                list: '',  
+                list: '',
                 inpVal: e.target.value,
-                showList: false 
+                showList: false
             });
         }
     }
@@ -151,7 +135,8 @@ const FoodSearchBlock = () => {
                         type="text" 
                         placeholder="Начни вводить продукт" 
                         value={inpVal}
-                        onChange={showDropList} />
+                        onChange={showDropList}
+                />
                 <div className={listClasses}>
                     {list}
                 </div>
@@ -165,7 +150,7 @@ const FoodSearchBlock = () => {
                                 step="50"
                                 min="50"
                                 value={inpNumValue}
-                                onChange={calculateEPFC}
+                                // onChange={calculateEPFC}
                                 disabled={disabled}/>г
                     </label>
                 </div>
