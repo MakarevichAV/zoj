@@ -73,4 +73,25 @@ router.post(
   }
 )
 
+//@route    PUT api/users
+//@desc     Edit a user
+//@access   Public
+router.put('./:id', auth, async(req,res) => {
+    const {name, birthdate,  height, weight, gender} = req.body;
+    try{
+        let user = await User.findById(req.params.id);
+
+        if (!user) return res.status(404).json({msg:'User not found'});
+
+        user = await User.findByIdAndUpdate(
+            req.params.id,
+            {$set: dfd},
+            {new: true}
+        )
+
+    } catch (err) {
+        res.status(500);
+    }
+})
+
 module.exports = router;

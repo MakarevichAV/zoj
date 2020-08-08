@@ -70,7 +70,6 @@ export const login = formData => async dispatch => {
     }
   };
 
-
 export const addUser = user => async dispatch => {
     try {
         //TODO loading
@@ -99,7 +98,7 @@ export const addUser = user => async dispatch => {
 
 export const clearErrors = () => { return {type: CLEAR_ERRORS}};
 
-export const editUserInfo = (data) =>  {
+export const editUserInfo = (data) => async dispatch => {
   // функция расчета веса
   let minWeight, maxWeight, optWeight,
       height = data.height / 100;
@@ -154,6 +153,13 @@ export const editUserInfo = (data) =>  {
   const dailyFat = Math.round(dailyEnergy * 0.3 / 9);
   const dailyCarbo = Math.round(dailyEnergy * 0.4 / 4);
   const dailyWater = Math.round(data.weight * 0.03);
+
+  const config = {
+      headers: {
+          "Content-Type": "application/json"
+      }
+  };
+    const res = await axios.put("/api/auth", data.name, config);
 
   return {
     type: EDIT_USER_INFO,
