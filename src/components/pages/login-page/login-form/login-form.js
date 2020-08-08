@@ -17,11 +17,12 @@ const LoginForm = (props) => {
         e.preventDefault();
         dispatch(login({email, password}));
 
-        setTimeout(() => {
+        const interval = setInterval(() => {
             if (localStorage.getItem('login')) {
                 window.location  = "/home";
+                clearInterval(interval);
             }
-        }, 1000)
+        }, 50);
     }
 
     if (alert) {
