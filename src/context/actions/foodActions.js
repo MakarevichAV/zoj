@@ -70,7 +70,7 @@ export const getFoodDairy = () => async dispatch =>{
         dispatch({type: GET_FOODDAIRY, payload: res});
         
     } catch (err) {
-        dispatch({type: FOODDAIRY_ERROR, payload: err.responce.msg});
+        dispatch({type: FOODDAIRY_ERROR, payload: err});
     }
 }
 
