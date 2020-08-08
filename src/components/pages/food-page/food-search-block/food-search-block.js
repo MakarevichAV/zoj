@@ -46,6 +46,7 @@ const FoodSearchBlock = () => {
             const names = [];
             if (suggestions && suggestions.length === 4 && suggestions.every(suggestion => suggestion ? 1 : 0)) {
                 suggestions.forEach(food => {
+
                     if (food && food.food) {
                         const item = food.food;
                         names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} item={item}/>);
