@@ -20,7 +20,7 @@ export const saveFoodItem = data => async dispatch => {
         weight: data.inpNumValue,
         calories: data.energy,
         protein: data.protein,
-        fats: data.fat,
+        fats: data.fats,
         carbohydrates: data.carbohydrate,
         userDate: nowDate
     };

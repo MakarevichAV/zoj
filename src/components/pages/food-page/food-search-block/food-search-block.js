@@ -11,7 +11,6 @@ const foodService = new FoodService();
 const FoodSearchBlock = () => {
     
     const dispatch = useDispatch();
-    const foodArr = useSelector(state => state.foodInfo.food);
     const [food, setFood] = useState({
         list: '',
         inpValue: '',
@@ -136,7 +135,6 @@ const FoodSearchBlock = () => {
     // Функция записи данных в дневник при нажатии на ЗАПИСАТЬ В ДНЕВНИК
     const write = () => {
         dispatch(saveFoodItem({
-            foodArr,
             inpNumValue,
             foodName, energy,
             protein, fat,
