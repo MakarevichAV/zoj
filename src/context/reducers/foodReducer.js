@@ -3,17 +3,23 @@ import {
     DEL_FOOD_ROW,
     FOODDAIRY_ERROR,
     GET_FOODDAIRY,
-    SET_SEARCH_SUGGESTIONS
-    
+    SET_SEARCH_SUGGESTIONS,
+    SET_CURRENT_FOOD_ITEM
 } from '../actions/types';
 
 const initialState = {
     food: [],
-    searchSuggestions: []
+    searchSuggestions: [],
+    currentFoodItem: null
 }
 
 const foodReducer = (state = initialState, action) => {
     switch(action.type) {
+        case SET_CURRENT_FOOD_ITEM:
+            return {
+                ...state,
+                currentFoodItem: action.payload
+            }
         case SET_SEARCH_SUGGESTIONS:
             return {
                 ...state,

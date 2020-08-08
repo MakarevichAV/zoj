@@ -4,13 +4,14 @@ import ListItem from './list-item/list-item';
 import {saveFoodItem, findFoodSuggestions} from '../../../../context/actions/foodActions';
 import s from "./food-search-block.module.css";
 import cn from 'classnames';
+import {login} from "../../../../context/actions/userActions";
 
 // Подключаем класс-сервис с хавчиком для работы с тестовыми данными
 const FoodSearchBlock = () => {
     
     const dispatch = useDispatch();
-    const foodArr = useSelector(state => state.foodInfo.food);
     const searchSuggestions = useSelector(state => state.foodInfo.searchSuggestions);
+    const currentFoodItem = useSelector(state => state.foodInfo.currentFoodItem);
     const [food, setFood] = useState({
         list: '',
         inpValue: '',
@@ -31,26 +32,6 @@ const FoodSearchBlock = () => {
             carbohydrate, foodId,
             disabled
             } = food;
-
-    // Получение выбранного продукта, подтягивается из <ListItem />
-    // и запись в стэйт всех необходимых данных
-    // const getFood = (id) => {
-    //     // Из фудСервиса берем функцию, которая возвращает все данные продукта
-    //     const foodItem = foodService.getSelectedFood(id);
-    //     setFood({
-    //         ...food,
-    //         inpVal: '',
-    //         inpNumValue: 100,
-    //         showList: false,
-    //         foodName: foodItem.name,
-    //         energy: foodItem.energy,
-    //         protein: foodItem.protein,
-    //         fat: foodItem.fat,
-    //         carbohydrate: foodItem.carbohydrate,
-    //         foodId: id,
-    //         disabled: false
-    //     });
-    // }
 
     //TODO
     // функция расчета КБЖУ при изменении граммов
@@ -78,11 +59,12 @@ const FoodSearchBlock = () => {
             dispatch(findFoodSuggestions(e.target.value));
             const suggestions =  searchSuggestions[0];
             const names = [];
+            console.log( suggestions);
             if (suggestions && suggestions.length === 4) {
                 suggestions.forEach(food => {
                     if (food && food.food) {
                         const item = food.food;
-                        names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} />);
+                        names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label}/>);
                     } else {
                         return
                     }
@@ -124,7 +106,6 @@ const FoodSearchBlock = () => {
     // Функция записи данных в дневник при нажатии на ЗАПИСАТЬ В ДНЕВНИК
     const write = () => {
         dispatch(saveFoodItem({
-            foodArr,
             inpNumValue,
             foodName, energy,
             protein, fat,
@@ -139,7 +120,6 @@ const FoodSearchBlock = () => {
     );
     
     const mainRow = foodName ? foodName : 'Продукт не выбран';
-    
 
     return (
         <div className={s.foodSearchBlock}>
@@ -187,7 +167,6 @@ const FoodSearchBlock = () => {
             </div>
         </div>
     )
-    
 }
 
 export default FoodSearchBlock;

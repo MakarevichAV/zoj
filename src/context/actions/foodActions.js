@@ -5,7 +5,8 @@ import {
     DEL_FOOD_ROW,
     FOODDAIRY_ERROR,
     GET_FOODDAIRY,
-    SET_SEARCH_SUGGESTIONS
+    SET_SEARCH_SUGGESTIONS,
+    SET_CURRENT_FOOD_ITEM
 } from './types';
 
 export const saveFoodItem = data => async dispatch => {
@@ -59,4 +60,12 @@ export const findFoodSuggestions = data => async  dispatch => {
         suggestions.push(res.data.hints[i]);
     }
     dispatch({type: SET_SEARCH_SUGGESTIONS, payload: suggestions})
+}
+
+export const setCurrentFoodItem = data => {
+
+    return {
+        type:SET_CURRENT_FOOD_ITEM,
+        payload: data
+    }
 }
