@@ -11,13 +11,24 @@ import {
 } from './types';
 
 export const saveFoodItem = data => async dispatch => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = Number(date.getMonth()) + 1;
+    const day = date.getDate();
+    const nowDate = year + '-' +
+    (month < 10 ? '0' + month : month) + '-' +
+    (day < 10 ? '0' + day : day) + 'Т' +
+    (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' +
+    (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' +
+    (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
     const foodItem = {
         dish: data.name,
         weight: data.inpNumValue,
         calories: data.energy,
         protein: data.protein,
         fats: data.fat,
-        carbohydrates: data.carbs
+        carbohydrates: data.carbs,
+        userDate: nowDate
     };
     console.log(foodItem);
     setAuthToken(localStorage.token);
@@ -29,7 +40,7 @@ export const saveFoodItem = data => async dispatch => {
     };
 
     const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config);
-    console.log(res.data)
+
     dispatch({
         type: SAVE_FOOD_ITEM,
         payload: res.data
