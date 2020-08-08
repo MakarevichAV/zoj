@@ -74,41 +74,26 @@ const FoodSearchBlock = () => {
     // }
 
     const showDropList = e => {
-        if (e.target.value != '') {
+        if (e.target.value != '' && e.target.value.length > 3) {
             dispatch(findFoodSuggestions(e.target.value));
             const suggestions =  searchSuggestions[0];
             const names = [];
-            if (suggestions) {
+            if (suggestions && suggestions.length === 4) {
                 suggestions.forEach(food => {
-                    const item = food.food;
-                    names.push(item.label);
-                    console.log(item);
-                    setFood({
-                        ...food,
-                        inpVal: e.target.value,
-                        showList: true,
-                        list: names
-                    });
-                    return <ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} />
+                    if (food && food.food) {
+                        const item = food.food;
+                        names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} />);
+                    } else {
+                        return
+                    }
+                })
+                setFood({
+                    ...food,
+                    inpVal: e.target.value,
+                    showList: true,
+                    list: names
                 });
             }
-            // const names = allFood.map((val, key) => {
-            //     const regExp = new RegExp('^' + e.target.value, 'i'); // рег. выражение для сравнения
-            //     if (regExp.test(val.name)) {
-            //         return <ListItem key={key} id={val.id} listItemValue={val.name} getFood={() => getFood(val.id)}/>;
-            //     }
-            // })
-            //     .filter(function(x) {
-            //         return x !== undefined && x !== null;
-            //     });
-            // // Если совпадений не найдено
-            // if (names.length === 0) {
-            //     setFood({
-            //         ...food,
-            //         inpVal: e.target.value,
-            //         showList: true,
-            //         list: 'Ничего не найдено'
-            //     });
         } else {
             setFood({
                 ...food,
