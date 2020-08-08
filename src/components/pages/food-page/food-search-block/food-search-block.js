@@ -37,21 +37,18 @@ const FoodSearchBlock = () => {
                 carbs: currentFoodItem.carbs
             })
         }
-    },currentFoodItem)
+    }, currentFoodItem);
 
     const showDropList = e => {
-        if (e.target.value != '' && e.target.value.length > 3) {
+        if (e.target.value != '') {
             dispatch(findFoodSuggestions(e.target.value));
             const suggestions =  searchSuggestions[0];
             const names = [];
-            console.log( suggestions);
-            if (suggestions && suggestions.length === 4) {
+            if (suggestions && suggestions.length === 4 && suggestions.every(suggestion => suggestion ? 1 : 0)) {
                 suggestions.forEach(food => {
                     if (food && food.food) {
                         const item = food.food;
                         names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} item={item}/>);
-                    } else {
-                        return
                     }
                 })
                 setFood({
@@ -66,7 +63,7 @@ const FoodSearchBlock = () => {
                 ...food,
                 list: '',
                 inpVal: e.target.value,
-                showList: false
+                showList: false,
             });
         }
     }
