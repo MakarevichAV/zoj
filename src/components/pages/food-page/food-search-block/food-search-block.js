@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ListItem from './list-item/list-item';
 import {saveFoodItem, findFoodSuggestions} from '../../../../context/actions/foodActions';
@@ -11,26 +11,32 @@ const FoodSearchBlock = () => {
     const dispatch = useDispatch();
     const searchSuggestions = useSelector(state => state.foodInfo.searchSuggestions);
     const currentFoodItem = useSelector(state => state.foodInfo.currentFoodItem);
+    // const [name, energy, protein, fat, carbs] = currentFoodItem;
     const [food, setFood] = useState({
         list: '',
         inpValue: '',
         inpNumValue: 100,
         showList: false,
-        foodName: null,
-        energy: null,
-        protein: null,
-        fat: null,
-        carbohydrate: null,
-        foodId: null,
-        disabled: true
+        name: '',
+        energy: 0,
+        protein: 0,
+        fat: 0,
+        carbs: 0
     });
-    const { list, inpVal,
-            inpNumValue, showList,
-            foodName, energy,
-            protein, fat,
-            carbohydrate, foodId,
-            disabled
-            } = food;
+    const { list, inpVal, inpNumValue, showList, disabled, name, energy, protein, fat, carbs} = food;
+
+    useEffect(() => {
+        if (currentFoodItem)  {
+            setFood({
+                ...food,
+                name: currentFoodItem.name,
+                energy: currentFoodItem.energy,
+                protein: currentFoodItem.protein,
+                fat: currentFoodItem.fat,
+                carbs: currentFoodItem.carbs
+            })
+        }
+    },currentFoodItem)
 
     const showDropList = e => {
         if (e.target.value != '' && e.target.value.length > 3) {
@@ -82,22 +88,22 @@ const FoodSearchBlock = () => {
     }
 
     // Функция записи данных в дневник при нажатии на ЗАПИСАТЬ В ДНЕВНИК
-    const write = () => {
-        dispatch(saveFoodItem({
-            inpNumValue,
-            foodName, energy,
-            protein, fat,
-            carbohydrate
-        }));
-        clear();
-    }
+    // const write = () => {
+    //     dispatch(saveFoodItem({
+    //         inpNumValue,
+    //         foodName, energy,
+    //         protein, fat,
+    //         carbs
+    //     }));
+    //     clear();
+    // }
     
     const listClasses = cn(
         s.list, 
         {[s.showList]: showList},
     );
     
-    const mainRow = foodName ? foodName : 'Продукт не выбран';
+    const mainRow = name ? name : 'Продукт не выбран';
 
     return (
         <div className={s.foodSearchBlock}>
@@ -129,7 +135,7 @@ const FoodSearchBlock = () => {
                 <p className={s.row}>Калорийность <span>{energy} кКал</span></p>
                 <p className={s.row}>Белки <span>{protein} г</span></p>
                 <p className={s.row}>Жиры <span>{fat} г</span></p>
-                <p className={s.row}>Углеводы <span>{carbohydrate} г</span></p>
+                <p className={s.row}>Углеводы <span>{carbs} г</span></p>
             </div>
             <div className={s.buttons}>
                 <button disabled={disabled} 
@@ -139,7 +145,8 @@ const FoodSearchBlock = () => {
                 </button>
                 <button disabled={disabled} 
                         className={cn(s.btn, s.btnType1)}
-                        onClick={write}> 
+                        // onClick={write}
+                >
                         Записать в дневник
                 </button>
             </div>
