@@ -4,7 +4,8 @@ import {
     FOODDAIRY_ERROR,
     GET_FOODDAIRY,
     SET_SEARCH_SUGGESTIONS,
-    SET_CURRENT_FOOD_ITEM
+    SET_CURRENT_FOOD_ITEM,
+    CLEAR_CURRENT_FOOD_ITEM
 } from '../actions/types';
 
 const initialState = {
@@ -15,6 +16,11 @@ const initialState = {
 
 const foodReducer = (state = initialState, action) => {
     switch(action.type) {
+        case CLEAR_CURRENT_FOOD_ITEM:
+            return {
+                ...state,
+                currentFoodItem: null
+            }
         case SET_CURRENT_FOOD_ITEM:
             return {
                 ...state,

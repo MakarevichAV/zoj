@@ -6,20 +6,20 @@ import {
     FOODDAIRY_ERROR,
     GET_FOODDAIRY,
     SET_SEARCH_SUGGESTIONS,
-    SET_CURRENT_FOOD_ITEM
+    SET_CURRENT_FOOD_ITEM,
+    CLEAR_CURRENT_FOOD_ITEM
 } from './types';
 
 export const saveFoodItem = data => async dispatch => {
-
     const foodItem = {
-        dish: data.foodName,
+        dish: data.name,
         weight: data.inpNumValue,
         calories: data.energy,
         protein: data.protein,
         fats: data.fat,
-        carbohydrates: data.carbohydrate
+        carbohydrates: data.carbs
     };
-
+    console.log(foodItem);
     setAuthToken(localStorage.token);
 
     const config = {
@@ -29,7 +29,7 @@ export const saveFoodItem = data => async dispatch => {
     };
 
     const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config);
-
+    console.log(res.data)
     dispatch({
         type: SAVE_FOOD_ITEM,
         payload: res.data
@@ -86,5 +86,11 @@ export const calculateEPFC = ({weight, foodItem}) => {
     return {
         type: SET_CURRENT_FOOD_ITEM,
         payload: foodItem
+    }
+}
+
+export const clearCurrentFoodItem = () => {
+    return {
+        type: CLEAR_CURRENT_FOOD_ITEM,
     }
 }

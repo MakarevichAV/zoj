@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ListItem from './list-item/list-item';
-import {saveFoodItem, findFoodSuggestions, calculateEPFC} from '../../../../context/actions/foodActions';
+import {saveFoodItem, findFoodSuggestions, calculateEPFC, clearCurrentFoodItem} from '../../../../context/actions/foodActions';
 import s from "./food-search-block.module.css";
 import cn from 'classnames';
 
@@ -79,6 +79,7 @@ const FoodSearchBlock = () => {
         dispatch(calculateEPFC(foodItem));
         setFood({
             ...food,
+            inpNumValue: e.target.value,
             energy: currentFoodItem.energy,
             protein: currentFoodItem.protein,
             fat: currentFoodItem.fat,
@@ -88,31 +89,31 @@ const FoodSearchBlock = () => {
 
     // Функция отчистки при нажатии на СБРОСИТЬ
     const clear = () => {
+        dispatch(clearCurrentFoodItem());
         setFood({
             ...food,
             inpVal: '',
             inpNumValue: 100,
+            name: '',
             showList: false,
             foodName: null,
-            energy: null,
-            protein: null,
-            fat: null,
-            carbohydrate: null,
-            foodId: null,
-            disabled: true
+            energy: 0,
+            protein: 0,
+            fat: 0,
+            carbs: 0,
         });
     }
 
     // Функция записи данных в дневник при нажатии на ЗАПИСАТЬ В ДНЕВНИК
-    // const write = () => {
-    //     dispatch(saveFoodItem({
-    //         inpNumValue,
-    //         foodName, energy,
-    //         protein, fat,
-    //         carbs
-    //     }));
-    //     clear();
-    // }
+    const write = () => {
+        dispatch(saveFoodItem({
+            inpNumValue,
+            name, energy,
+            protein, fat,
+            carbs
+        }));
+        clear();
+    }
     
     const listClasses = cn(
         s.list, 
@@ -161,8 +162,7 @@ const FoodSearchBlock = () => {
                 </button>
                 <button disabled={disabled} 
                         className={cn(s.btn, s.btnType1)}
-                        // onClick={write}
-                >
+                        onClick={write}>
                         Записать в дневник
                 </button>
             </div>
