@@ -10,6 +10,7 @@ const FoodSearchBlock = () => {
     
     const dispatch = useDispatch();
     const foodArr = useSelector(state => state.foodInfo.food);
+    const searchSuggestions = useSelector(state => state.foodInfo.searchSuggestions);
     const [food, setFood] = useState({
         list: '',
         inpValue: '',
@@ -74,13 +75,40 @@ const FoodSearchBlock = () => {
 
     const showDropList = e => {
         if (e.target.value != '') {
-            try {
-                dispatch(findFoodSuggestions(e.target.value));
-
-            } catch {
-                alert('Введите корректное название для вашего приема пищи на английском!');
-                clear();
+            dispatch(findFoodSuggestions(e.target.value));
+            const suggestions =  searchSuggestions[0];
+            const names = [];
+            if (suggestions) {
+                suggestions.forEach(food => {
+                    const item = food.food;
+                    names.push(item.label);
+                    console.log(item);
+                    setFood({
+                        ...food,
+                        inpVal: e.target.value,
+                        showList: true,
+                        list: names
+                    });
+                    return <ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} />
+                });
             }
+            // const names = allFood.map((val, key) => {
+            //     const regExp = new RegExp('^' + e.target.value, 'i'); // рег. выражение для сравнения
+            //     if (regExp.test(val.name)) {
+            //         return <ListItem key={key} id={val.id} listItemValue={val.name} getFood={() => getFood(val.id)}/>;
+            //     }
+            // })
+            //     .filter(function(x) {
+            //         return x !== undefined && x !== null;
+            //     });
+            // // Если совпадений не найдено
+            // if (names.length === 0) {
+            //     setFood({
+            //         ...food,
+            //         inpVal: e.target.value,
+            //         showList: true,
+            //         list: 'Ничего не найдено'
+            //     });
         } else {
             setFood({
                 ...food,
