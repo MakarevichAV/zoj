@@ -29,6 +29,7 @@ const FoodSearchBlock = () => {
         if (currentFoodItem)  {
             setFood({
                 ...food,
+                showList: false,
                 name: currentFoodItem.name,
                 energy: currentFoodItem.energy,
                 protein: currentFoodItem.protein,
