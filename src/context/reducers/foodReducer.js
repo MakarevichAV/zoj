@@ -19,6 +19,7 @@ const foodReducer = (state = initialState, action) => {
         case CLEAR_CURRENT_FOOD_ITEM:
             return {
                 ...state,
+                searchSuggestions: null,
                 currentFoodItem: null
             }
         case SET_CURRENT_FOOD_ITEM:

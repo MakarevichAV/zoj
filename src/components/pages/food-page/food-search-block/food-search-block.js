@@ -27,7 +27,6 @@ const FoodSearchBlock = () => {
 
     useEffect(() => {
         if (currentFoodItem)  {
-            console.log(1);
             setFood({
                 ...food,
                 showList: false,

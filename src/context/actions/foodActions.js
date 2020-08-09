@@ -65,13 +65,30 @@ export const delFoodRow = (data) => async dispatch => {
 export const findFoodSuggestions = data => async dispatch => {
     const suggestions = [];
     //todo test cors problem
-    // const res = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
-    const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
+    const res = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
+    // const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
         {headers: {
         'Access-Control-Allow-Origin': '*',}});
-    for (let i = 0; i < 4; i++) {
-        suggestions.push(res.data.hints[i]);
+    const hints = await res.data.hints;
+    console.log(hints);
+    for (let i = 0; i < hints.length; i++) {
+        if (suggestions.length === 4) break;
+        if (suggestions.some(suggestion => suggestion.label === hints[i].label)) {
+            suggestions.push(hints[i]);
+            console.log(suggestions);
+            console.log(hints[i]);
+            continue;
+        }
+        // suggestions.push(res.data.hints[i]);
     }
+
+    // while (suggestions.length < 4) {
+    //     res.data.hints.forEach(hint => {
+    //         if (!suggestions.some(suggestion => suggestion.label === hint.label)) {
+    //             suggestions.push(hint);
+    //         }
+    //     });
+    // }
     dispatch({type: SET_SEARCH_SUGGESTIONS, payload: suggestions})
 }
 
