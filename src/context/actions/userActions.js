@@ -160,15 +160,15 @@ export const editUserInfo = (data) => async dispatch => {
       }
   };
   const res = await axios.put(`/api/users/${data._id}`, data, config);
-  console.log(res.data);
-  return {
+  const newUserdata = await res.data;
+  dispatch({
     type: EDIT_USER_INFO,
-    name: data.name,
+    name: newUserdata.name,
     age: age,
-    birthdate: data.birthdate,
-    height: data.height,
-    weight: data.weight,
-    gender: data.gender,
+    birthdate: newUserdata.birthdate,
+    height: newUserdata.height,
+    weight: newUserdata.weight,
+    gender: newUserdata.gender,
     minWeight: minWeight,
     maxWeight: maxWeight,
     optWeight: optWeight,
@@ -177,8 +177,9 @@ export const editUserInfo = (data) => async dispatch => {
     f: dailyFat,
     c: dailyCarbo,
     w: dailyWater
-  }
+  });
 }
+
 export const setPhoto = file => async dispatch => {
     const data = new FormData()
     data.append('file', file)
