@@ -100,6 +100,7 @@ const userInfoReducer = (state = initialState, action) => {
         case EDIT_USER_INFO:
             return {
                 ...state,
+                edit: false,
                 user: {
                     ...state.user,
                     name: action.name,
@@ -109,7 +110,6 @@ const userInfoReducer = (state = initialState, action) => {
                     gender: action.gender
                 },
                 age: action.age,
-                edit: false,
                 normsInfo: {
                     ...state.normsInfo,
                     minWeight: action.minWeight,
@@ -128,7 +128,7 @@ const userInfoReducer = (state = initialState, action) => {
         case GO_TO_EDIT:
             return {
                 ...state,
-                edit: action.edit
+                edit: true
             }
         default:
             return state;
