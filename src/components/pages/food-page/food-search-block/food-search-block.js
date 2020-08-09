@@ -27,6 +27,7 @@ const FoodSearchBlock = () => {
 
     useEffect(() => {
         if (currentFoodItem)  {
+            console.log(1);
             setFood({
                 ...food,
                 showList: false,
@@ -37,27 +38,34 @@ const FoodSearchBlock = () => {
                 carbs: currentFoodItem.carbs
             })
         }
-    }, currentFoodItem);
 
-    const showDropList = e => {
-        if (e.target.value != '') {
-            dispatch(findFoodSuggestions(e.target.value));
+        if (searchSuggestions && !currentFoodItem) {
             const suggestions =  searchSuggestions[0];
             const names = [];
             if (suggestions) {
-                suggestions.forEach(food => {
+                suggestions.forEach((food, index) => {
                     if (food && food.food) {
                         const item = food.food;
-                        names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} item={item}/>);
+                        names.push(<ListItem key={index} id={item.foodId} listItemValue={item.label} item={item}/>);
                     }
                 });
                 setFood({
                     ...food,
-                    inpVal: e.target.value,
                     showList: true,
                     list: names
                 });
             }
+        }
+    }, [currentFoodItem, searchSuggestions]);
+
+    const showDropList = e => {
+        if (e.target.value != '') {
+            dispatch(findFoodSuggestions(e.target.value));
+            setFood({
+                ...food,
+                inpVal: e.target.value,
+                showList: true,
+            });
         } else {
             setFood({
                 ...food,

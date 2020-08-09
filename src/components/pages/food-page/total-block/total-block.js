@@ -23,7 +23,7 @@ const TotalBlock = () => {
     
     const foodList = food.food.map((item, key) => {
         return (
-            <div className={s.row}>
+            <div className={s.row} key={key}>
                 <div className={s.name}>
                     {item.dish}
                     <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
