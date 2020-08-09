@@ -98,7 +98,6 @@ const userInfoReducer = (state = initialState, action) => {
                 error: action.payload
             };
         case EDIT_USER_INFO:
-            console.log(111);
             return {
                 ...state,
                 edit: false,
