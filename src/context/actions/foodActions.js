@@ -70,25 +70,14 @@ export const findFoodSuggestions = data => async dispatch => {
         {headers: {
         'Access-Control-Allow-Origin': '*',}});
     const hints = await res.data.hints;
-    console.log(hints);
-    for (let i = 0; i < hints.length; i++) {
-        if (suggestions.length === 4) break;
-        if (suggestions.some(suggestion => suggestion.label === hints[i].label)) {
-            suggestions.push(hints[i]);
-            console.log(suggestions);
-            console.log(hints[i]);
-            continue;
-        }
-        // suggestions.push(res.data.hints[i]);
-    }
 
-    // while (suggestions.length < 4) {
-    //     res.data.hints.forEach(hint => {
-    //         if (!suggestions.some(suggestion => suggestion.label === hint.label)) {
-    //             suggestions.push(hint);
-    //         }
-    //     });
-    // }
+    for (let i = 0; i < hints.length; i++) {
+        if (suggestions.length === 4) {
+            break;
+        }
+        suggestions.push(hints[i]);
+    }
+    console.log(suggestions);
     dispatch({type: SET_SEARCH_SUGGESTIONS, payload: suggestions})
 }
 
