@@ -14,7 +14,7 @@ const FoodSearchBlock = () => {
 
     const [food, setFood] = useState({
         list: '',
-        inpValue: '',
+        inpVal: '',
         inpNumValue: 100,
         showList: false,
         name: '',
@@ -29,6 +29,7 @@ const FoodSearchBlock = () => {
         if (currentFoodItem)  {
             setFood({
                 ...food,
+                inpVal: '',
                 showList: false,
                 name: currentFoodItem.name,
                 energy: currentFoodItem.energy,
@@ -76,7 +77,6 @@ const FoodSearchBlock = () => {
     }
 
     const calcEPFC = e => {
-        console.log(currentFoodItem);
         const foodItem = {
             weight : e.target.value,
             foodItem: currentFoodItem
