@@ -159,8 +159,8 @@ export const editUserInfo = (data) => async dispatch => {
           "Content-Type": "application/json"
       }
   };
-    const res = await axios.put("/api/auth", data.name, config);
-
+  const res = await axios.put(`/api/users/${data._id}`, data, config);
+  console.log(res.data);
   return {
     type: EDIT_USER_INFO,
     name: data.name,

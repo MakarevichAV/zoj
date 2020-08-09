@@ -76,19 +76,23 @@ router.post(
 //@route    PUT api/users
 //@desc     Edit a user
 //@access   Public
-router.put('./:id', async(req,res) => {
+router.put('/:id', async(req,res) => {
     const {name, birthdate,  height, weight, gender} = req.body;
     try{
         let user = await User.findById(req.params.id);
 
         if (!user) return res.status(404).json({msg:'User not found'});
-
+        console.log(req);
         user = await User.findByIdAndUpdate(
             req.params.id,
-            {$set: req.body},
+            {name : req.body.name,
+              birthdate,
+              weight,
+              height,
+              gender},
             {new: true}
-        )
-
+        );
+        res.send(user);
     } catch (err) {
         res.status(500);
     }
