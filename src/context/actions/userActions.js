@@ -22,7 +22,11 @@ export const getUser = () => async dispatch => {
 
     try {
       const res = await axios.get("/api/auth");
-      dispatch({ type: USER_LOADED, payload: res.data });
+      const user = await res.data;
+      let birthDate = new Date(user.birthdate);
+      let now = new Date();
+      let age = now.getFullYear() - birthDate.getFullYear();
+      dispatch({ type: USER_LOADED, payload: res.data, age: age });
     } catch (err) {
       dispatch({ type: AUTH_ERROR });
     }
