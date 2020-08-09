@@ -76,7 +76,7 @@ router.post(
 //@route    PUT api/users
 //@desc     Edit a user
 //@access   Public
-router.put('./:id', auth, async(req,res) => {
+router.put('./:id', async(req,res) => {
     const {name, birthdate,  height, weight, gender} = req.body;
     try{
         let user = await User.findById(req.params.id);
@@ -85,7 +85,7 @@ router.put('./:id', auth, async(req,res) => {
 
         user = await User.findByIdAndUpdate(
             req.params.id,
-            {$set: dfd},
+            {$set: req.body},
             {new: true}
         )
 
