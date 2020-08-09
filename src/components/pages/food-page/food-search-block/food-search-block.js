@@ -44,14 +44,13 @@ const FoodSearchBlock = () => {
             dispatch(findFoodSuggestions(e.target.value));
             const suggestions =  searchSuggestions[0];
             const names = [];
-            if (suggestions && suggestions.length === 4 && suggestions.every(suggestion => suggestion ? 1 : 0)) {
+            if (suggestions) {
                 suggestions.forEach(food => {
-
                     if (food && food.food) {
                         const item = food.food;
                         names.push(<ListItem key={item.foodId} id={item.foodId} listItemValue={item.label} item={item}/>);
                     }
-                })
+                });
                 setFood({
                     ...food,
                     inpVal: e.target.value,
