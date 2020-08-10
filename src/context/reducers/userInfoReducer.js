@@ -16,19 +16,7 @@ const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
-    user: 
-    {
-        // name: 'Иван Иванов',
-        //age: 31, // сюда попадают значения при регистрации и редактировании
-        // birthDay: '1989-02-11',
-        // height: 190,
-        // weight: 90,
-        // gender: {
-        //     male: true,
-        //     female: false
-        // },
-        // userPhoto: null
-    },
+    user: {},
     age: null,
     edit: false,
     error: null,
