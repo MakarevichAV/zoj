@@ -9,7 +9,8 @@ import {
     LOGIN_FAIL, 
     CLEAR_ERRORS,
     EDIT_USER_INFO,
-    GO_TO_EDIT
+    GO_TO_EDIT,
+    TOGGLE_IS_LOADING
 } from './types';
 
 export const setLoading = () => {
@@ -21,12 +22,14 @@ export const getUser = () => async dispatch => {
     setAuthToken(localStorage.token);
 
     try {
+      dispatch(toggleIsLoading(true));
       const res = await axios.get("/api/auth");
       const user = await res.data;
       let birthDate = new Date(user.birthdate);
       let now = new Date();
       let age = now.getFullYear() - birthDate.getFullYear();
       dispatch({ type: USER_LOADED, payload: res.data, age: age });
+      dispatch(toggleIsLoading(false))
     } catch (err) {
       dispatch({ type: AUTH_ERROR });
     }
@@ -87,7 +90,6 @@ export const addUser = user => async dispatch => {
         });
 
         const data = await res.json();
-
         dispatch({
             type: ADD_USER,
             payload: data
@@ -103,6 +105,7 @@ export const addUser = user => async dispatch => {
 export const clearErrors = () => { return {type: CLEAR_ERRORS}};
 
 export const editUserInfo = (data) => async dispatch => {
+  dispatch(toggleIsLoading(true));
   // функция расчета веса
   let minWeight, maxWeight, optWeight,
       height = data.height / 100;
@@ -164,6 +167,7 @@ export const editUserInfo = (data) => async dispatch => {
       }
   };
   const res = await axios.put(`/api/users/${data._id}`, data, config);
+  // dispatch(toggleIsLoading(false));
   const newUserdata = await res.data;
   dispatch({
     type: EDIT_USER_INFO,
@@ -182,6 +186,7 @@ export const editUserInfo = (data) => async dispatch => {
     c: dailyCarbo,
     w: dailyWater
   });
+  dispatch(toggleIsLoading(false));
 }
 
 export const setPhoto = file => async dispatch => {
@@ -209,4 +214,11 @@ export function runWhenConditionTrue(condition, callback) {
           return callback();
       }
   }, 50);
+}
+
+export const toggleIsLoading = (isLoading) => {
+  return {
+    type: TOGGLE_IS_LOADING,
+    isLoading
+  }
 }

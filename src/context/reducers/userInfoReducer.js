@@ -9,7 +9,8 @@ import {
     USER_LOADED, 
     CLEAR_ERRORS,
     EDIT_USER_INFO,
-    GO_TO_EDIT
+    GO_TO_EDIT,
+    TOGGLE_IS_LOADING
 } from '../actions/types';
 
 const initialState = {
@@ -31,7 +32,8 @@ const initialState = {
         f: null,
         c: null,
         w: null
-    }
+    },
+    isLoading: false
 };
 
 
@@ -117,6 +119,11 @@ const userInfoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 edit: true
+            }
+        case TOGGLE_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
             }
         default:
             return state;
