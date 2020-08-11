@@ -29,14 +29,10 @@ const UserInfo = () => {
     }
 
     useEffect(() => {
-        if (userData.age == null) {
-            return () => {
-                dispatch(editUserInfo(userData.user));
-            }
+        if (userData.age) {
+            dispatch(editUserInfo(userData.user));
         }    
-    },
-    
-    );
+    },[userData.age]);
     
 
     return (

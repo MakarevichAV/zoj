@@ -14,7 +14,10 @@ export const SHOW_MENU = 'SHOW_MENU';
 export const HIDE_MENU = 'HIDE_MENU';
 export const ADD_GLASS = 'ADD_GLASS';
 export const DEL_GLASS = 'DEL_GLASS';
+export const SET_GRAPH = 'SET_GRAPH';
 
+// Preloaders
+export const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 
 //FOOD DAIRY TYPES
 export const SAVE_FOOD_ITEM = 'SAVE_FOOD_ITEM';

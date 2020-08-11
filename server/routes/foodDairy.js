@@ -31,7 +31,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
   
-      const { dish, calories, protein, fats, carbohydrates, weight } = req.body;
+      const { dish, calories, protein, fats, carbohydrates, weight, userDate } = req.body;
   
       try {
         const newFoodRecord = new FoodDairy({
@@ -41,6 +41,7 @@ router.post(
           fats,
           carbohydrates,
           weight,
+          userDate,
           user: req.user.id
         });
   

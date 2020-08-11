@@ -4,9 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import UserInfo from './user-info/user-info';
 import UserInfoEdit from './user-info-edit/user-info-edit';
 
-import s from './side-bar.module.css';
+import s from './user-bar.module.css';
 
-const SideBar = () => {
+const UserBar = () => {
     const edit = useSelector(state => state.userInfo.edit);
     return (
         <div className={s.sideBar}>
@@ -15,4 +15,4 @@ const SideBar = () => {
     )
 }
 
-export default SideBar;
+export default UserBar;

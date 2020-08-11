@@ -9,26 +9,15 @@ import {
     USER_LOADED, 
     CLEAR_ERRORS,
     EDIT_USER_INFO,
-    GO_TO_EDIT
+    GO_TO_EDIT,
+    TOGGLE_IS_LOADING
 } from '../actions/types';
 
 const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
-    user: 
-    {
-        // name: 'Иван Иванов',
-        //age: 31, // сюда попадают значения при регистрации и редактировании
-        // birthDay: '1989-02-11',
-        // height: 190,
-        // weight: 90,
-        // gender: {
-        //     male: true,
-        //     female: false
-        // },
-        // userPhoto: null
-    },
+    user: {},
     age: null,
     edit: false,
     error: null,
@@ -43,7 +32,8 @@ const initialState = {
         f: null,
         c: null,
         w: null
-    }
+    },
+    isLoading: false
 };
 
 
@@ -100,6 +90,7 @@ const userInfoReducer = (state = initialState, action) => {
         case EDIT_USER_INFO:
             return {
                 ...state,
+                edit: false,
                 user: {
                     ...state.user,
                     name: action.name,
@@ -109,7 +100,6 @@ const userInfoReducer = (state = initialState, action) => {
                     gender: action.gender
                 },
                 age: action.age,
-                edit: false,
                 normsInfo: {
                     ...state.normsInfo,
                     minWeight: action.minWeight,
@@ -128,7 +118,12 @@ const userInfoReducer = (state = initialState, action) => {
         case GO_TO_EDIT:
             return {
                 ...state,
-                edit: action.edit
+                edit: true
+            }
+        case TOGGLE_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
             }
         default:
             return state;

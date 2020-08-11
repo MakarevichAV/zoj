@@ -9,7 +9,8 @@ import {
     LOGIN_FAIL, 
     CLEAR_ERRORS,
     EDIT_USER_INFO,
-    GO_TO_EDIT
+    GO_TO_EDIT,
+    TOGGLE_IS_LOADING
 } from './types';
 
 export const setLoading = () => {
@@ -21,8 +22,14 @@ export const getUser = () => async dispatch => {
     setAuthToken(localStorage.token);
 
     try {
+      dispatch(toggleIsLoading(true));
       const res = await axios.get("/api/auth");
-      dispatch({ type: USER_LOADED, payload: res.data });
+      const user = await res.data;
+      let birthDate = new Date(user.birthdate);
+      let now = new Date();
+      let age = now.getFullYear() - birthDate.getFullYear();
+      dispatch({ type: USER_LOADED, payload: res.data, age: age });
+      dispatch(toggleIsLoading(false))
     } catch (err) {
       dispatch({ type: AUTH_ERROR });
     }
@@ -70,7 +77,6 @@ export const login = formData => async dispatch => {
     }
   };
 
-
 export const addUser = user => async dispatch => {
     try {
         //TODO loading
@@ -84,7 +90,6 @@ export const addUser = user => async dispatch => {
         });
 
         const data = await res.json();
-
         dispatch({
             type: ADD_USER,
             payload: data
@@ -99,7 +104,8 @@ export const addUser = user => async dispatch => {
 
 export const clearErrors = () => { return {type: CLEAR_ERRORS}};
 
-export const editUserInfo = (data) =>  {
+export const editUserInfo = (data) => async dispatch => {
+  dispatch(toggleIsLoading(true));
   // функция расчета веса
   let minWeight, maxWeight, optWeight,
       height = data.height / 100;
@@ -155,14 +161,22 @@ export const editUserInfo = (data) =>  {
   const dailyCarbo = Math.round(dailyEnergy * 0.4 / 4);
   const dailyWater = Math.round(data.weight * 0.03);
 
-  return {
+  const config = {
+      headers: {
+          "Content-Type": "application/json"
+      }
+  };
+  const res = await axios.put(`/api/users/${data._id}`, data, config);
+  // dispatch(toggleIsLoading(false));
+  const newUserdata = await res.data;
+  dispatch({
     type: EDIT_USER_INFO,
-    name: data.name,
+    name: newUserdata.name,
     age: age,
-    birthdate: data.birthdate,
-    height: data.height,
-    weight: data.weight,
-    gender: data.gender,
+    birthdate: newUserdata.birthdate,
+    height: newUserdata.height,
+    weight: newUserdata.weight,
+    gender: newUserdata.gender,
     minWeight: minWeight,
     maxWeight: maxWeight,
     optWeight: optWeight,
@@ -171,8 +185,10 @@ export const editUserInfo = (data) =>  {
     f: dailyFat,
     c: dailyCarbo,
     w: dailyWater
-  }
+  });
+  dispatch(toggleIsLoading(false));
 }
+
 export const setPhoto = file => async dispatch => {
     const data = new FormData()
     data.append('file', file)
@@ -198,4 +214,11 @@ export function runWhenConditionTrue(condition, callback) {
           return callback();
       }
   }, 50);
+}
+
+export const toggleIsLoading = (isLoading) => {
+  return {
+    type: TOGGLE_IS_LOADING,
+    isLoading
+  }
 }

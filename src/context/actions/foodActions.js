@@ -7,7 +7,8 @@ import {
     GET_FOODDAIRY,
     SET_SEARCH_SUGGESTIONS,
     SET_CURRENT_FOOD_ITEM,
-    CLEAR_CURRENT_FOOD_ITEM
+    CLEAR_CURRENT_FOOD_ITEM,
+    SET_GRAPH
 } from './types';
 
 export const saveFoodItem = data => async dispatch => {
@@ -15,12 +16,12 @@ export const saveFoodItem = data => async dispatch => {
     const year = date.getFullYear();
     const month = Number(date.getMonth()) + 1;
     const day = date.getDate();
-    const nowDate = year + '-' +
-    (month < 10 ? '0' + month : month) + '-' +
-    (day < 10 ? '0' + day : day) + 'Т' +
-    (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' +
-    (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' +
-    (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+    const nowDate = year + '-' + 
+                    (month < 10 ? '0' + month : month) + '-' + 
+                    (day < 10 ? '0' + day : day) + 'Т' +
+                    (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' +
+                    (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' +
+                    (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
     const foodItem = {
         dish: data.name,
         weight: data.inpNumValue,
@@ -28,9 +29,10 @@ export const saveFoodItem = data => async dispatch => {
         protein: data.protein,
         fats: data.fat,
         carbohydrates: data.carbs,
+        // carbohydrates: data.carbohydrate,
         userDate: nowDate
     };
-    console.log(foodItem);
+    // console.log(foodItem);
     setAuthToken(localStorage.token);
 
     const config = {
@@ -41,18 +43,50 @@ export const saveFoodItem = data => async dispatch => {
 
     const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config);
 
-    dispatch({
-        type: SAVE_FOOD_ITEM,
-        payload: res.data
-    });
+    // dispatch({
+    //     type: SAVE_FOOD_ITEM,
+    //     payload: res.data
+    // });
+    dispatch(getFoodDairy());
 }
 
 export const getFoodDairy = () => async dispatch =>{
     try {
-        const res = await axios.get("/api/foodDairy");
-        dispatch({type: GET_FOODDAIRY, payload: res.data});
+        let result = {};
+        let res = await axios.get("/api/foodDairy");
+        // Сортируем массив из БД
+        res.data.sort(function(a, b) {
+            let dateA = a.userDate, 
+                dateB = b.userDate;
+            // return dateB - dateA;
+            if (dateA > dateB) { 
+            return 1; } 
+            if (dateA < dateB) { 
+            return -1; } 
+            return 0; 
+        });
+        const easyArr = res.data.map((item) => {
+            return {
+                date: item.userDate.substring(0, 10),
+                calories: Number(item.calories)
+            }
+        });
+        // группируем по дате, складывая кКалории
+        let obj={};
+        easyArr.forEach(entry=>{
+            if(obj[entry.date]){
+                obj[entry.date].calories+= entry.calories;
+            }else{
+                obj[entry.date] = entry;
+            }
+        });
+        result.data = res.data;
+        result.arrForGraph = Object.values(obj);
+
+        dispatch({type: GET_FOODDAIRY, payload: result});
+        
     } catch (err) {
-        dispatch({type: FOODDAIRY_ERROR, payload: err.responce.msg})
+        dispatch({type: FOODDAIRY_ERROR, payload: err});
     }
 }
 
@@ -60,6 +94,7 @@ export const delFoodRow = (data) => async dispatch => {
     const del = await axios.delete(`/api/foodDairy/${data.id}`);
     const res = await axios.get("/api/foodDairy");
     dispatch({type: DEL_FOOD_ROW, payload: res.data});
+    dispatch(getFoodDairy());
 }
 
 export const findFoodSuggestions = data => async dispatch => {
@@ -116,4 +151,7 @@ export const clearCurrentFoodItem = () => {
     return {
         type: CLEAR_CURRENT_FOOD_ITEM,
     }
+    // const res = await axios.get("/api/foodDairy");
+    // dispatch({type: DEL_FOOD_ROW, payload: res.data});
+    // dispatch(getFoodDairy());
 }

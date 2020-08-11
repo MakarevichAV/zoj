@@ -8,11 +8,12 @@ import s from './user-info-edit.module.css';
 const UserInfoEdit = () => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.userInfo.user);
+    const _id = useSelector(state => state.userInfo.user._id)
     const [user, setUser] = useState({  name: userData.name, 
                                         birthdate: userData.birthdate, 
                                         height: userData.height, 
                                         weight: userData.weight, 
-                                        gender: userData.gender
+                                        gender: userData.gender,
                                     });
     const {name, birthdate, height, weight, gender} = user;
     
@@ -26,7 +27,7 @@ const UserInfoEdit = () => {
     
     const onSubmit = e => {
         e.preventDefault();
-        dispatch(editUserInfo({name, birthdate, height, weight, gender}));
+        dispatch(editUserInfo({name, birthdate, height, weight, gender, _id}));
     }
 
     const uploadPhoto = e => {  // для загрузки фото
@@ -42,7 +43,7 @@ const UserInfoEdit = () => {
         <form className={s.info}>
             <div className={s.photo}>
                 <input className={s.choosePhoto} type="file" accept="image/jpeg" id="photo" onChange={uploadPhoto}/>
-                <label for="photo">
+                <label htmlFor="photo">
                     <div className={s.pseudoChoose}></div>
                 </label>
             </div>
@@ -59,16 +60,20 @@ const UserInfoEdit = () => {
                                 checked={gender==='female' ? true : false} 
                                 onChange={onChangeRadio}
                                 />
-                            <div className={s.pseudoRadio}></div>
-                            <label for="female"><p>Женский</p></label>
+                            <label htmlFor="female">
+                                <div className={s.pseudoRadio}></div>
+                                <p>Женский</p>
+                            </label>
                         </div>
                         <div className={s.genderItem}>
                             <input id="male" type="radio" value="male" name="gender" 
                                 checked={gender==='male' ? true : false} 
                                 onChange={onChangeRadio} 
                                 />
-                            <div className={s.pseudoRadio}></div>
-                            <label for="male"><p>Мужской</p></label>
+                            <label htmlFor="male">
+                                <div className={s.pseudoRadio}></div>
+                                <p>Мужской</p>
+                            </label>
                         </div>
                     </div>
                     

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {delFoodRow, getFoodDairy} from '../../../../context/actions/foodActions';
 import Button from '../../../button/button';
@@ -21,38 +21,63 @@ const TotalBlock = () => {
         }
     }
     
-    const foodList = food.food.map((item, key) => {
-        return (
-            <div className={s.row} key={key}>
-                <div className={s.name}>
-                    {item.dish}
-                    <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
-                </div>
-                <div className={s.values}>
-                    <div className={s.cell}>{item.weight}</div>
-                    <div className={s.cell}>{item.calories}</div>
-                    <div className={s.cell}>{item.protein}</div>
-                    <div className={s.cell}>{item.fats}</div>
-                    <div className={s.cell}>{item.carbohydrates}</div>
-                </div>
-            </div>
-        )
-    });
+    // const foodList = food.food.map((item, key) => {
+    //     return (
+    //         <div className={s.row} key={key}>
+    //             <div className={s.name}>
+    //                 {item.dish}
+    //                 <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
+    //             </div>
+    //             <div className={s.values}>
+    //                 <div className={s.cell}>{item.weight}</div>
+    //                 <div className={s.cell}>{item.calories}</div>
+    //                 <div className={s.cell}>{item.protein}</div>
+    //                 <div className={s.cell}>{item.fats}</div>
+    //                 <div className={s.cell}>{item.carbohydrates}</div>
+    //             </div>
+    //         </div>
+    //     )
+    // });
 
-    // рассчет суммарных значений КБЖУ
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = Number(date.getMonth()) + 1;
+    const day = date.getDate();
+    const nowDate = year + '-' + 
+                    (month < 10 ? '0' + month : month) + '-' + 
+                    (day < 10 ? '0' + day : day);
     let sumEnergy = 0;
     let sumProtein = 0;
     let sumFat = 0;
     let sumC = 0;
-    food.food.forEach((item) => {
-        sumEnergy = sumEnergy + +item.calories;
-        sumProtein = sumProtein + +item.protein;
-        sumFat = sumFat + +item.fats;
-        sumC = sumC + +item.carbohydrates;
+    food.food.forEach((item, i) => {
+        if (nowDate === item.userDate.substring(0, 10)) {
+            sumEnergy = sumEnergy + +item.calories;
+            sumProtein = sumProtein + +item.protein;
+            sumFat = sumFat + +item.fats;
+            sumC = sumC + +item.carbohydrates;
+        }
     });
-
-    const saveTotal = () => {
-    }
+  
+    const foodList = food.food.map((item, key) => {
+        if (nowDate === item.userDate.substring(0, 10)) {
+            return (
+                <div className={s.row}>
+                    <div className={s.name}>
+                        {item.dish}
+                        <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
+                    </div>
+                    <div className={s.values}>
+                        <div className={s.cell}>{item.weight}</div>
+                        <div className={s.cell}>{item.calories}</div>
+                        <div className={s.cell}>{item.protein}</div>
+                        <div className={s.cell}>{item.fats}</div>
+                        <div className={s.cell}>{item.carbohydrates}</div>
+                    </div>
+                </div>
+            )
+        }
+    });
 
     return (
         <div className={s.container}>
@@ -68,18 +93,7 @@ const TotalBlock = () => {
                         <div className={s.cell}>Угл, г</div>
                     </div>
                 </div>
-                {foodList[0] ? foodList : 
-                    <div className={s.row}>
-                        <div className={s.name}></div>
-                        <div className={s.values}>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                            <div className={s.cell}></div>
-                        </div>
-                    </div>
-                }
+                {foodList}
             </div>
             <div className={s.total}>
                 <h2>Всего:</h2>
@@ -109,7 +123,6 @@ const TotalBlock = () => {
                     <span className={s.targetValue}> / {dailyRate.w} л</span>
                 </p> 
             </div>
-            <Button txt="Записать день" classType="type3" onClick={saveTotal} />
         </div>
     )
 }

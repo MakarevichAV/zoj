@@ -5,13 +5,15 @@ import {
     GET_FOODDAIRY,
     SET_SEARCH_SUGGESTIONS,
     SET_CURRENT_FOOD_ITEM,
-    CLEAR_CURRENT_FOOD_ITEM
+    CLEAR_CURRENT_FOOD_ITEM,
+    SET_GRAPH
 } from '../actions/types';
 
 const initialState = {
     food: [],
     searchSuggestions: [],
-    currentFoodItem: null
+    currentFoodItem: null,
+    arrForGraph: []
 }
 
 const foodReducer = (state = initialState, action) => {
@@ -36,7 +38,8 @@ const foodReducer = (state = initialState, action) => {
         case  GET_FOODDAIRY:
             return {
                 ...state,
-                food: [...action.payload]
+                food: [...action.payload.data],
+                arrForGraph: [...action.payload.arrForGraph]
             }
         case SAVE_FOOD_ITEM:
             return {

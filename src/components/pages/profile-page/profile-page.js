@@ -1,16 +1,24 @@
-import React from 'react';
-
-import SideBar from './side-bar/side-bar';
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import preloader from '../../../760.svg';
+import UserBar from './user-bar/user-bar';
 import Info from './info/info';
 import s from './profile-page.module.css';
 
 const ProfilePage = () => {
-    // const {userInfo, normsInfo, adviceInfo} = props;
+    const isLoading = useSelector(state => state.userInfo.isLoading);
     return (
-        <div className={s.container}>
-            <SideBar />
-            <Info />
-        </div>
+        <>
+            {isLoading ? 
+                <div className="preloader">
+                    <img src={preloader} />
+                </div>
+                : null }
+            <div className={s.container}>
+                <UserBar />
+                <Info />
+            </div>
+        </>
     )
 }
 
