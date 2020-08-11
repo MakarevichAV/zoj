@@ -68,19 +68,17 @@ const FoodSearchBlock = () => {
         }
     }, [currentFoodItem, searchSuggestions]);
 
-    const showDropList = e => {
-        if (e.target.value != '') {
-            dispatch(findFoodSuggestions(e.target.value));
+    const showDropList = () => {
+        if (food.inpVal !== '') {
+            dispatch(findFoodSuggestions(food.inpVal));
             setFood({
                 ...food,
-                inpVal: e.target.value,
                 showList: true,
             });
         } else {
             setFood({
                 ...food,
                 list: '',
-                inpVal: e.target.value,
                 showList: false,
             });
         }
@@ -100,6 +98,19 @@ const FoodSearchBlock = () => {
             fat: currentFoodItem.fat,
             carbs: currentFoodItem.carbs
         });
+    }
+
+    const typeSearchValue = (e) => {
+        if (e.target.value === '') {
+            setFood({
+                ...food,
+                inpVal: '',
+                list: '',
+                showList: false,
+            });
+        } else {
+            setFood({...food, inpVal: e.target.value})
+        }
     }
 
     // Функция отчистки при нажатии на СБРОСИТЬ
@@ -145,8 +156,10 @@ const FoodSearchBlock = () => {
                         type="text" 
                         placeholder="Начни вводить продукт" 
                         value={inpVal}
-                        onChange={showDropList}
+                        onChange={typeSearchValue}
+                        onKeyPress={e => e.key === 'Enter' ? showDropList : 0 }
                 />
+                <button onClick={showDropList} className={s.btn}>Поиск</button>
                 <div className={listClasses}>
                     {list}
                 </div>

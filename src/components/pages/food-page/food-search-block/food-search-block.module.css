@@ -18,6 +18,7 @@
     overflow: auto;
     position: absolute;
     width: 100%;
+    top:45px;
     box-sizing: border-box;
     border: 1px solid #85AD90;
     border-radius: 8px;
@@ -47,6 +48,9 @@
 
 .relative {
     position: relative;
+    display: flex;
+    align-items:center;
+    justify-content: center;
 }
 
 .dataRows {
@@ -112,6 +116,12 @@
 .numGramm {
     display: flex;
     align-items: center;
+}
+
+.btn{
+    font-size: 16px;
+    padding: 10px 5px;
+    margin-bottom: 0px;
 }
 
 @media (max-width: 600px) {
