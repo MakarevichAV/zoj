@@ -91,7 +91,7 @@ export const setCurrentFoodItem = data => {
         energyDefault: Math.round(data.nutrients.ENERC_KCAL),
         proteinDefault: Math.round(data.nutrients.PROCNT),
         fatDefault: Math.round(data.nutrients.FAT),
-        carbsDefault: Math.round(data.nutrients.CHOCDF),
+        carbsDefault: Math.round(data.nutrients.CHOCDF)
     }
 
     return {

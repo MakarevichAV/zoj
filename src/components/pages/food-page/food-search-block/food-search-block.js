@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ListItem from './list-item/list-item';
 import {saveFoodItem, findFoodSuggestions, calculateEPFC, clearCurrentFoodItem} from '../../../../context/actions/foodActions';
+import {setCurrentFoodItem} from "../../../../context/actions/foodActions";
 import s from "./food-search-block.module.css";
 import cn from 'classnames';
 
@@ -21,9 +22,18 @@ const FoodSearchBlock = () => {
         energy: 0,
         protein: 0,
         fat: 0,
-        carbs: 0
+        carbs: 0,
+        disabled: true
     });
     const { list, inpVal, inpNumValue, showList, disabled, name, energy, protein, fat, carbs} = food;
+    
+    const setCurrent = (item) => {
+        dispatch(setCurrentFoodItem(item));
+        setFood({
+            ...food,
+            disabled: false
+        });
+    }
 
     useEffect(() => {
         if (currentFoodItem)  {
@@ -46,7 +56,7 @@ const FoodSearchBlock = () => {
                 suggestions.forEach((food, index) => {
                     if (food && food.food) {
                         const item = food.food;
-                        names.push(<ListItem key={index} id={item.foodId} listItemValue={item.label} item={item} brand={item.brand}/>);
+                        names.push(<ListItem key={index} id={item.foodId} listItemValue={item.label} item={item} brand={item.brand} onSetCurrent={setCurrent}/>);
                     }
                 });
                 setFood({
@@ -106,6 +116,7 @@ const FoodSearchBlock = () => {
             protein: 0,
             fat: 0,
             carbs: 0,
+            disabled: true
         });
     }
 

@@ -25,7 +25,8 @@ const foodReducer = (state = initialState, action) => {
         case SET_CURRENT_FOOD_ITEM:
             return {
                 ...state,
-                currentFoodItem: action.payload
+                currentFoodItem: action.payload,
+                // food: action.disabled
             }
         case SET_SEARCH_SUGGESTIONS:
             return {
