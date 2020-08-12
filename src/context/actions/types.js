@@ -15,6 +15,7 @@ export const HIDE_MENU = 'HIDE_MENU';
 export const ADD_GLASS = 'ADD_GLASS';
 export const DEL_GLASS = 'DEL_GLASS';
 export const SET_GRAPH = 'SET_GRAPH';
+export const LIST_IS_LOADING = 'LIST_IS_LOADING';
 
 // Preloaders
 export const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';

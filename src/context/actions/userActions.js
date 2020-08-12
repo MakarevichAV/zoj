@@ -200,6 +200,7 @@ export const setPhoto = file => async dispatch => {
     })
   
 }
+
 export const goToEdit = (edit) => {
   return {
     type: GO_TO_EDIT,

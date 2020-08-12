@@ -8,7 +8,8 @@ import {
     SET_SEARCH_SUGGESTIONS,
     SET_CURRENT_FOOD_ITEM,
     CLEAR_CURRENT_FOOD_ITEM,
-    SET_GRAPH
+    SET_GRAPH,
+    LIST_IS_LOADING
 } from './types';
 
 export const saveFoodItem = data => async dispatch => {
@@ -53,6 +54,7 @@ export const saveFoodItem = data => async dispatch => {
 export const getFoodDairy = () => async dispatch =>{
     try {
         let result = {};
+        dispatch(listIsLoading(true));
         let res = await axios.get("/api/foodDairy");
         // Сортируем массив из БД
         res.data.sort(function(a, b) {
@@ -84,35 +86,34 @@ export const getFoodDairy = () => async dispatch =>{
         result.arrForGraph = Object.values(obj);
 
         dispatch({type: GET_FOODDAIRY, payload: result});
-        
+        dispatch(listIsLoading(false));
     } catch (err) {
         dispatch({type: FOODDAIRY_ERROR, payload: err});
     }
 }
 
 export const delFoodRow = (data) => async dispatch => {
+    dispatch(listIsLoading(true));
     const del = await axios.delete(`/api/foodDairy/${data.id}`);
     const res = await axios.get("/api/foodDairy");
     dispatch({type: DEL_FOOD_ROW, payload: res.data});
     dispatch(getFoodDairy());
+    dispatch(listIsLoading(false));
 }
 
 export const findFoodSuggestions = data => async dispatch => {
     const suggestions = [];
-    //todo test cors problem
-    // const res = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
     const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
         {headers: {
         'Access-Control-Allow-Origin': '*',}});
     const hints = await res.data.hints;
 
     for (let i = 0; i < hints.length; i++) {
-        if (suggestions.length === 4) {
+        if (suggestions.length === 50) {
             break;
         }
         suggestions.push(hints[i]);
     }
-    console.log(suggestions);
     dispatch({type: SET_SEARCH_SUGGESTIONS, payload: suggestions})
 }
 
@@ -151,7 +152,11 @@ export const clearCurrentFoodItem = () => {
     return {
         type: CLEAR_CURRENT_FOOD_ITEM,
     }
-    // const res = await axios.get("/api/foodDairy");
-    // dispatch({type: DEL_FOOD_ROW, payload: res.data});
-    // dispatch(getFoodDairy());
+}
+
+export const listIsLoading = (isLoading) => {
+    return {
+      type: LIST_IS_LOADING,
+      isLoading
+    }
 }

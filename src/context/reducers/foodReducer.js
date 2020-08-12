@@ -6,14 +6,16 @@ import {
     SET_SEARCH_SUGGESTIONS,
     SET_CURRENT_FOOD_ITEM,
     CLEAR_CURRENT_FOOD_ITEM,
-    SET_GRAPH
+    SET_GRAPH,
+    LIST_IS_LOADING
 } from '../actions/types';
 
 const initialState = {
     food: [],
     searchSuggestions: [],
     currentFoodItem: null,
-    arrForGraph: []
+    arrForGraph: [],
+    isLoading: false
 }
 
 const foodReducer = (state = initialState, action) => {
@@ -50,6 +52,11 @@ const foodReducer = (state = initialState, action) => {
             return {
                 ...state,
                 food: [...action.payload]
+            }
+        case LIST_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
             }
         default:
             return state;
