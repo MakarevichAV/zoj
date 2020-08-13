@@ -14,6 +14,7 @@ connectDB();
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/foodDairy", require("./routes/foodDairy"));
+app.use("/api/waterdairy", require("./routes/waterDairy"));
 
 if (process.env.NODE_ENV === "production") {
   //set static folder
