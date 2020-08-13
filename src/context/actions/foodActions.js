@@ -29,10 +29,9 @@ export const saveFoodItem = data => async dispatch => {
         protein: data.protein,
         fats: data.fat,
         carbohydrates: data.carbs,
-        // carbohydrates: data.carbohydrate,
         userDate: nowDate
     };
-    // console.log(foodItem);
+
     setAuthToken(localStorage.token);
 
     const config = {
@@ -43,10 +42,6 @@ export const saveFoodItem = data => async dispatch => {
 
     const res = await axios.post("/api/foodDairy", JSON.stringify(foodItem), config);
 
-    // dispatch({
-    //     type: SAVE_FOOD_ITEM,
-    //     payload: res.data
-    // });
     dispatch(getFoodDairy());
 }
 
@@ -100,8 +95,8 @@ export const delFoodRow = (data) => async dispatch => {
 export const findFoodSuggestions = data => async dispatch => {
     const suggestions = [];
     //todo test cors problem
-    // const res = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
-    const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
+    const res = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
+    // const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
         {headers: {
         'Access-Control-Allow-Origin': '*',}});
     const hints = await res.data.hints;
@@ -151,7 +146,4 @@ export const clearCurrentFoodItem = () => {
     return {
         type: CLEAR_CURRENT_FOOD_ITEM,
     }
-    // const res = await axios.get("/api/foodDairy");
-    // dispatch({type: DEL_FOOD_ROW, payload: res.data});
-    // dispatch(getFoodDairy());
 }

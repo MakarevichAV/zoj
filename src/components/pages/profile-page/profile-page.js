@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
+import { useSelector} from 'react-redux';
 import preloader from '../../../760.svg';
 import UserBar from './user-bar/user-bar';
 import Info from './info/info';
