@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {login, clearErrors} from '../../../../context/actions/userActions';
+import {login, clearErrors, runWhenConditionTrue} from '../../../../context/actions/userActions';
 
 import s from './login-form.module.css';
 
@@ -17,11 +17,10 @@ const LoginForm = (props) => {
         e.preventDefault();
         dispatch(login({email, password}));
 
-        setTimeout(() => {
-            if (localStorage.getItem('login')) {
-                window.location  = "/home";
-            }
-        }, 1000)
+        runWhenConditionTrue(
+            () => localStorage.getItem('login'),
+            () => window.location  = "/home"
+        );
     }
 
     if (alert) {

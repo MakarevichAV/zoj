@@ -10,16 +10,6 @@ import LoginForm from './login-form/login-form';
 import RegisterForm from './register-form/register-form';
 
 const LoginPage = (props) => {
-
-    // useEffect(() => {
-    //     if (props.isAuth === true) {
-    //       props.history.push("/home");
-    //     }
-    // }, [props.isAuth, props.history]);
-    // if (props.isAuth) {
-    //     props.history.push("/home");
-    // }
-
     return (
         <Router>
             <div className={s.loginPage}>
