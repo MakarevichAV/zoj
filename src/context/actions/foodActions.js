@@ -103,7 +103,8 @@ export const delFoodRow = (data) => async dispatch => {
 
 export const findFoodSuggestions = data => async dispatch => {
     const suggestions = [];
-    const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
+    // const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
+    const res = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?ingr=${data}&app_id=7795af92&app_key=1b2e03b9161e10e10516d5aa0e77a675`,
         {headers: {
         'Access-Control-Allow-Origin': '*',}});
     const hints = await res.data.hints;
