@@ -38,7 +38,7 @@ const RegisterForm = (props) => {
     }
 
     return (
-        <form >
+        <form className={s.form}>
              {alert ? <div className={s.alert}>{alert}</div> : false}
             <input type="text" className={s.input}
                         name="name"

@@ -5,7 +5,6 @@ import Title from '../../title/title';
 const SportPage = () => {
     return (
         <div>
-            Страница упражнений
             <Title label="физическая нагрузка"/>
         </div>
     )

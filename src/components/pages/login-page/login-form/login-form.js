@@ -28,7 +28,7 @@ const LoginForm = (props) => {
     }
 
     return (
-        <form>
+        <form className={s.form}>
             {alert ? <div className={s.alert}>{alert}</div> : false}
             <input type="text" className={s.input} placeholder="Логин"
                     name='email' value={email} onChange={onChange}/>

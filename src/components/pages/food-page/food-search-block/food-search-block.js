@@ -68,7 +68,27 @@ const FoodSearchBlock = () => {
         }
     }, [currentFoodItem, searchSuggestions]);
 
-    const showDropList = () => {
+    // Функция отчистки при нажатии на СБРОСИТЬ
+    const clear = () => {
+        dispatch(clearCurrentFoodItem());
+        setFood({
+            ...food,
+            inpVal: '',
+            inpNumValue: 100,
+            name: '',
+            showList: false,
+            foodName: null,
+            energy: 0,
+            protein: 0,
+            fat: 0,
+            carbs: 0,
+            disabled: true
+        });
+    }
+
+    const showDropList = (e) => {
+        e.preventDefault();
+        clear();
         if (food.inpVal !== '') {
             dispatch(findFoodSuggestions(food.inpVal));
             setFood({
@@ -113,24 +133,6 @@ const FoodSearchBlock = () => {
         }
     }
 
-    // Функция отчистки при нажатии на СБРОСИТЬ
-    const clear = () => {
-        dispatch(clearCurrentFoodItem());
-        setFood({
-            ...food,
-            inpVal: '',
-            inpNumValue: 100,
-            name: '',
-            showList: false,
-            foodName: null,
-            energy: 0,
-            protein: 0,
-            fat: 0,
-            carbs: 0,
-            disabled: true
-        });
-    }
-
     // Функция записи данных в дневник при нажатии на ЗАПИСАТЬ В ДНЕВНИК
     const write = () => {
         dispatch(saveFoodItem({
@@ -148,22 +150,33 @@ const FoodSearchBlock = () => {
     );
     
     const mainRow = name ? name : 'Продукт не выбран';
+    
+    let resList;
+    if (list) {
+        if (list.length === 0) {
+            resList = <p className={s.emptyList}>Ничего не найдено</p>;    
+        } else {
+            resList = list;
+        }
+    } else {
+        resList = <div className={s.preloader}></div>
+    }
 
     return (
         <div className={s.foodSearchBlock}>
-            <div className={s.relative}>
+            <form className={s.relative}>
                 <input  className={cn(s.inputs, s.searchArea)} 
                         type="text" 
-                        placeholder="Начни вводить продукт" 
+                        placeholder="Найти продукт" 
                         value={inpVal}
                         onChange={typeSearchValue}
                         onKeyPress={e => e.key === 'Enter' ? showDropList : 0 }
                 />
-                <button onClick={showDropList} className={s.btn}>Поиск</button>
+                <button type="submit" onClick={showDropList} className={cn(s.btnType1,s.searchBtn)}>Поиск</button>
                 <div className={listClasses}>
-                    {list}
+                    { resList }
                 </div>
-            </div>
+            </form>
             <div className={s.dataRows}>
                 <div className={cn(s.row, s.mainRow)}>
                     <h2>{mainRow}</h2>
