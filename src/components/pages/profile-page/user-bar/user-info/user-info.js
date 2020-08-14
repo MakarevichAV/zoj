@@ -44,10 +44,7 @@ const UserInfo = () => {
                 <InfoItem name="Рост" value={height} unit="см" />
                 <InfoItem name="Вес" value={weight} unit="кг" />
             </div>
-            <Button txt="Редактрировать"
-                    classType="type1"
-                    onClick={edit}
-                    />
+            <button className={`${s.btn} ${s.type1}`} onClick={edit}>Редактировать</button> 
         </div>
     )
 }
