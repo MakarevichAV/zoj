@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {goToEdit, editUserInfo} from '../../../../../context/actions/userActions'
 import InfoItem from '../../../info-item/info-item';
 import s from './user-info.module.css';
-import Button from '../../../../button/button';
 
 const UserInfo = () => {
     const dispatch = useDispatch();

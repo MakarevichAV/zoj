@@ -14,10 +14,6 @@ const InfoItem = (props) => {
     );
 
     const type = props.type ? props.type : 'number';
-    // const [user, setUser] = useState({index: props.value});
-    // const val = user.index;
-
-    // const onChange = e => setUser({...user, index: e.target.value});
 
     return (
         <p className={styles}>

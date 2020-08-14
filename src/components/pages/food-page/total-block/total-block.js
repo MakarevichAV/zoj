@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {delFoodRow, getFoodDairy} from '../../../../context/actions/foodActions';
-import Button from '../../../button/button';
 
 import s from './total-block.module.css';
 
@@ -20,24 +19,6 @@ const TotalBlock = () => {
             dispatch(getFoodDairy());
         }
     }
-    
-    // const foodList = food.food.map((item, key) => {
-    //     return (
-    //         <div className={s.row} key={key}>
-    //             <div className={s.name}>
-    //                 {item.dish}
-    //                 <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
-    //             </div>
-    //             <div className={s.values}>
-    //                 <div className={s.cell}>{item.weight}</div>
-    //                 <div className={s.cell}>{item.calories}</div>
-    //                 <div className={s.cell}>{item.protein}</div>
-    //                 <div className={s.cell}>{item.fats}</div>
-    //                 <div className={s.cell}>{item.carbohydrates}</div>
-    //             </div>
-    //         </div>
-    //     )
-    // });
 
     const date = new Date();
     const year = date.getFullYear();
