@@ -11,10 +11,8 @@ describe("Сценарии действий пользователя", () => {
     it("Вход в аккаунт", async () => {
         await driver.get('http://localhost:3000/login'); // страница входа
         await driver.findElement(By.css("[class*='login-form_input']")).sendKeys('dunkanm89@gmail.com'); // Вводим логин
-        
         await driver.findElement(By.css("[class*='login-form_input'][type='password']")).sendKeys('123456', Key.RETURN); // Вводим пароль и нажимаем Enter
         await driver.wait(until.elementLocated(By.css("[class*='header_menu']")), 10000); // Ждем пока загрузится шапка сайта
-        
         let url = await driver.getCurrentUrl();
         assert.equal(url === 'http://localhost:3000/home', true);
     });
