@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {editUserInfo, setPhoto} from '../../../../../context/actions/userActions'; 
-import InfoItem from '../../../info-item/info-item';
+import InfoItem from '../../../../info-item/info-item';
 import s from './user-info-edit.module.css';
 
 const UserInfoEdit = () => {
@@ -29,14 +29,26 @@ const UserInfoEdit = () => {
         dispatch(editUserInfo({name, birthdate, height, weight, gender, _id}));
     }
 
-    const uploadPhoto = e => {  // для загрузки фото
+    const uploadPhoto = e => {
         if (e.target.files.length) {
             const file = e.target.files[0];
-            // let formData = new FormData();
-            // formData.append('file', file);
             dispatch(setPhoto(file));
         };
     }
+
+    const genderItems = ['female', 'male'].map((item) => {
+        return (
+            <div className={s.genderItem}>
+                <input id={item} type="radio" value={item} name="gender" 
+                    checked={gender === item ? true : false} 
+                    onChange={onChangeRadio}/>
+                <label htmlFor={item}>
+                    <div className={s.pseudoRadio}></div>
+                    <p>{item === 'female' ? 'Женский' : 'Мужской'}</p>
+                </label>
+            </div>
+        )
+    });
     
     return (
         <form className={s.info}>
@@ -54,35 +66,11 @@ const UserInfoEdit = () => {
                 <div className={s.item}>
                     <p>Пол:</p>
                     <div>
-                        <div className={s.genderItem}>
-                            <input id="female" type="radio" value="female" name="gender" 
-                                checked={gender==='female' ? true : false} 
-                                onChange={onChangeRadio}
-                                />
-                            <label htmlFor="female">
-                                <div className={s.pseudoRadio}></div>
-                                <p>Женский</p>
-                            </label>
-                        </div>
-                        <div className={s.genderItem}>
-                            <input id="male" type="radio" value="male" name="gender" 
-                                checked={gender==='male' ? true : false} 
-                                onChange={onChangeRadio} 
-                                />
-                            <label htmlFor="male">
-                                <div className={s.pseudoRadio}></div>
-                                <p>Мужской</p>
-                            </label>
-                        </div>
+                        {genderItems}
                     </div>
                     
                 </div>
             </div>
-            {/* <Button txt="Сохранить"
-                    classType="type1"
-                    type="submit"
-                    onClick={onSubmit}
-                    /> */}
             <button type="submit" className={`${s.btn} ${s.type1}`} onClick={onSubmit}>Сохранить</button> 
         </form>
     )

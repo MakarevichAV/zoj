@@ -22,12 +22,12 @@ const initialState = {
     edit: false,
     error: null,
     normsInfo: {
-        minWeight: null, // сюда попадут расчитанные значения
+        minWeight: null,
         maxWeight: null,
         optWeight: null       
     },
     dailyRate: {
-        e: null, // расчитанные
+        e: null,
         p: null,
         f: null,
         c: null,

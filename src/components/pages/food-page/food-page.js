@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import InfoItem from '../info-item/info-item';
+// import InfoItem from '../../info-item/info-item';
+import DailyRateBlock from './daily-rate-block/daily-rate-block';
 import WaterBlock from './water-block/water-block'
 import TotalBlock from './total-block/total-block'
 import Chart from './chart/chart'
@@ -15,6 +16,7 @@ const FoodPage = () => {
     const arrForGraph = useSelector(state => state.foodInfo.arrForGraph);
     const isLoading = useSelector(state => state.foodInfo.isLoading);
 
+    // Данные для графика
     const data = arrForGraph.map((item) => {
         return {
             name: item.date,
@@ -22,7 +24,9 @@ const FoodPage = () => {
             'Рекомендуемое значение': dailyRate.e
         }
     });
+
     let barWidth = data.length * 120; // ширина графика
+
     return (
         <>
             {isLoading ? 
@@ -36,7 +40,7 @@ const FoodPage = () => {
                 </div>
                 <div className={s.container}>
                     <FoodSearchBlock />
-                    <div className={s.dailyRate}>
+                    {/* <div className={s.dailyRate}>
                         <InfoItem 
                             name="Суточная норма" 
                             value 
@@ -66,8 +70,10 @@ const FoodPage = () => {
                             name="Вода" 
                             value={dailyRate.w} 
                             unit="л" 
-                            underline blue/>    
-                    </div>
+                            underline 
+                            blue/>    
+                    </div> */}
+                    <DailyRateBlock />
                 </div>
                 <div className={s.container}>
                     <WaterBlock />
