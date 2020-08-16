@@ -2,6 +2,7 @@ import React from 'react';
 import InfoItem from '../../../info-item/info-item';
 import {useSelector} from 'react-redux';
 import s from './daily-rate-block.module.css';
+
 const DailyRateBlock = () => {
 
     const dailyRate = useSelector(state => state.userInfo.dailyRate);

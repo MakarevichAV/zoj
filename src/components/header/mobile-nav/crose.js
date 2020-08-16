@@ -1,15 +1,9 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {hideMenu} from '../../../context/actions/menuActions';
+import React from 'react';
 import s from './crose.module.css';
 
-const Crose = () => {
-    const dispatch = useDispatch();
-    const onHideMenu = () => {
-        dispatch(hideMenu())
-    }
+const Crose = ({onClick}) => {
     return (
-        <button className={s.crose} onClick={onHideMenu}></button>
+        <button className={s.crose} onClick={onClick}></button>
     )
 }
 

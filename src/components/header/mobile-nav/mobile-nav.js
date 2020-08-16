@@ -1,17 +1,9 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {hideMenu} from '../../../context/actions/menuActions';
 import { NavLink } from 'react-router-dom';
 import Crose from './crose';
 import s from './mobile-nav.module.css';
 
-const MobileNav = ({navItems}) => {
-    const dispatch = useDispatch();
-    const menuData = useSelector(state => state.mobileMenu);
-
-    const onHideMenu = () => {
-        dispatch(hideMenu())
-    }
+const MobileNav = ({navItems, visible, onHide}) => {
 
     const logout = () => {
         localStorage.removeItem('login');
@@ -24,15 +16,14 @@ const MobileNav = ({navItems}) => {
             <li>
                 <NavLink activeClassName={s.navActive} 
                     to={item.link} 
-                    onClick={onHideMenu}>{item.name}</NavLink>
+                    onClick={onHide}>{item.name}</NavLink>
             </li>
         )
     });
 
     return (
-        
-        <ul className={`${s.nav} ${menuData.visible ? s.visible : ''}`}>
-            <Crose />
+        <ul className={`${s.nav} ${visible ? s.visible : ''}`}>
+            <Crose onClick={onHide}/>
             {links}
             <button className={s.logoutBtn} onClick={logout}> 
                 <i className="fa fa-sign-out" aria-hidden="true"></i> 

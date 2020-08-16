@@ -5,10 +5,12 @@ import InfoItem from '../../../../info-item/info-item';
 import s from './user-info.module.css';
 
 const UserInfo = () => {
+    
     const dispatch = useDispatch();
     const userData = useSelector(state => state.userInfo);
     const age = userData.age;
     const {name, weight, height} = userData.user;
+    
     // склонение ГОД/ГОДА/ЛЕТ
     let yearsTxt;
     if (age <= 20) {
