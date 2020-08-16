@@ -8,13 +8,21 @@ import MobileNav from './mobile-nav/mobile-nav';
 import s from './header.module.css';
 
 const Header = () => {
+
+    const navItems = [
+        { name: 'Профиль', link: '/profile'},
+        { name: 'Питание', link: '/food'},
+        { name: 'Упражнения', link: '/sport'},
+        { name: 'Виртуальный тренер', link: '/trainer'},
+    ];
+
     return (
         <div className={s.header}>
             <div className={s.menu}>
                 <Logo />
-                <Nav />
+                <Nav navItems={navItems} />
                 <MenuBtn />
-                <MobileNav />
+                <MobileNav navItems={navItems} />
             </div>
         </div>
     )

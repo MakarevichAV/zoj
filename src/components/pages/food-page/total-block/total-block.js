@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {delFoodRow, getFoodDairy} from '../../../../context/actions/foodActions';
+import TableRow from './table-row/table-row';
 
 import s from './total-block.module.css';
+import TotalRow from './total-row/total-row';
 
 const TotalBlock = () => {
     const dispatch = useDispatch();
@@ -43,19 +45,9 @@ const TotalBlock = () => {
     const foodList = food.food.map((item, key) => {
         if (nowDate === item.userDate.substring(0, 10)) {
             return (
-                <div className={s.row}>
-                    <div className={s.name}>
-                        {item.dish}
-                        <button id={item._id} className={s.btnDel} onClick={deleteRow}></button>
-                    </div>
-                    <div className={s.values}>
-                        <div className={s.cell}>{item.weight}</div>
-                        <div className={s.cell}>{item.calories}</div>
-                        <div className={s.cell}>{item.protein}</div>
-                        <div className={s.cell}>{item.fats}</div>
-                        <div className={s.cell}>{item.carbohydrates}</div>
-                    </div>
-                </div>
+                <TableRow dish={item.dish} id={item._id} weight={item.weight}
+                    calories={item.calories} protein={item.protein} fats={item.fats} 
+                    carbo={item.carbohydrates} onClick={deleteRow} />
             )
         }
     });
@@ -64,45 +56,17 @@ const TotalBlock = () => {
         <div className={s.container}>
             <h2>Итого за день</h2>
             <div className={s.table}>
-                <div className={s.row}>
-                    <div className={`${s.name} ${s.noName}`}></div>
-                    <div className={s.values}>
-                        <div className={s.cell}>Гр</div>
-                        <div className={s.cell}>кКал</div>
-                        <div className={s.cell}>Бел, г</div>
-                        <div className={s.cell}>Жир, г</div>
-                        <div className={s.cell}>Угл, г</div>
-                    </div>
-                </div>
+                <TableRow mainRow weight="Гр" calories="кКал" 
+                    protein="Бел, г" fats="Жир, г" carbo="Угл, г"/>
                 {foodList}
             </div>
             <div className={s.total}>
                 <h2>Всего:</h2>
-                <p className={s.totalRow}>
-                    <span className={s.key}>Калории: </span>
-                    <span className={s.factValue}>{sumEnergy} кКал</span>
-                    <span className={s.targetValue}> / {dailyRate.e} кКал</span>
-                </p> 
-                <p className={s.totalRow}>
-                    <span className={s.key}>Белки: </span> 
-                    <span className={s.factValue}>{sumProtein} г</span>
-                    <span className={s.targetValue}> / {dailyRate.p} г</span>
-                </p> 
-                <p className={s.totalRow}>
-                    <span className={s.key}>Жиры: </span>
-                    <span className={s.factValue}>{sumFat} г</span>
-                    <span className={s.targetValue}> / {dailyRate.f} г</span>
-                </p> 
-                <p className={s.totalRow}>
-                    <span className={s.key}>Углеводы: </span> 
-                    <span className={s.factValue}>{sumC} г</span>
-                    <span className={s.targetValue}> / {dailyRate.c} г</span>
-                </p> 
-                <p className={s.totalRow}>
-                    <span className={s.key}>Вода: </span> 
-                    <span className={s.factValueWater}>{data.sum} л</span>
-                    <span className={s.targetValue}> / {dailyRate.w} л</span>
-                </p> 
+                <TotalRow text="Калории" factVal={sumEnergy} targetVal={dailyRate.e} unit="кКал"/>
+                <TotalRow text="Белки" factVal={sumProtein} targetVal={dailyRate.p} unit="г"/>
+                <TotalRow text="Жиры" factVal={sumFat} targetVal={dailyRate.f} unit="г"/>
+                <TotalRow text="Углеводы" factVal={sumC} targetVal={dailyRate.c} unit="г"/>
+                <TotalRow text="Вода" factVal={data.sum} targetVal={dailyRate.w} unit="л" water/>
             </div>
         </div>
     )

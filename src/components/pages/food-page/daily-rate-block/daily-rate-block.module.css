@@ -9,3 +9,9 @@
     border-radius: 8px;
     flex-basis: 330px;
 }
+
+@media (max-width: 990px) {
+    .dailyRate {
+        max-width: initial;
+    }
+}

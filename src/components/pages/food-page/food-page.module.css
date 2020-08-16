@@ -1,15 +1,3 @@
-.dailyRate {
-    padding: 30px;
-    margin: 0 20px;
-    margin-bottom: 30px;
-    background: var(--block);
-    flex-grow: 1;
-    max-width: 330px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    flex-basis: 330px;
-}
-
 .wrapper {
     max-width: 1240px;
     margin: 0 auto;
@@ -23,10 +11,4 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-}
-
-@media (max-width: 990px) {
-    .dailyRate {
-        max-width: initial;
-    }
 }

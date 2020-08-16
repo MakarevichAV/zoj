@@ -1,6 +1,5 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-// import InfoItem from '../../info-item/info-item';
+import {useSelector} from 'react-redux';
 import DailyRateBlock from './daily-rate-block/daily-rate-block';
 import WaterBlock from './water-block/water-block'
 import TotalBlock from './total-block/total-block'
@@ -24,8 +23,9 @@ const FoodPage = () => {
             'Рекомендуемое значение': dailyRate.e
         }
     });
-
-    let barWidth = data.length * 120; // ширина графика
+    
+    // ширина графика
+    let barWidth = data.length * 120;
 
     return (
         <>
@@ -40,39 +40,6 @@ const FoodPage = () => {
                 </div>
                 <div className={s.container}>
                     <FoodSearchBlock />
-                    {/* <div className={s.dailyRate}>
-                        <InfoItem 
-                            name="Суточная норма" 
-                            value 
-                            unit
-                            head/>
-                        <InfoItem 
-                            name="кКал" 
-                            value={dailyRate.e} 
-                            unit
-                            underline/>
-                        <InfoItem 
-                            name="Белки" 
-                            value={dailyRate.p} 
-                            unit="г" 
-                            underline/>
-                        <InfoItem 
-                            name="Жиры" 
-                            value={dailyRate.f} 
-                            unit="г" 
-                            underline/>
-                        <InfoItem 
-                            name="Углеводы" 
-                            value={dailyRate.c} 
-                            unit="г" 
-                            underline/>
-                        <InfoItem 
-                            name="Вода" 
-                            value={dailyRate.w} 
-                            unit="л" 
-                            underline 
-                            blue/>    
-                    </div> */}
                     <DailyRateBlock />
                 </div>
                 <div className={s.container}>
