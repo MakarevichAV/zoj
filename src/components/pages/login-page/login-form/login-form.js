@@ -5,7 +5,7 @@ import {login, clearErrors, runWhenConditionTrue} from '../../../../context/acti
 
 import s from './login-form.module.css';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
     const dispatch = useDispatch();
     const alert = useSelector(state => state.userInfo.error);
     const [user, setUser] = useState({email: '', password: ''});
@@ -41,8 +41,7 @@ const LoginForm = (props) => {
                     >
                         ВОЙТИ
             </button>            
-            test@mail.ru - 123456 (с неправильным форматом даты) <br />
-            dunkanm89@gmail.com - 123456 (с правильным форматом даты)
+            dunkanm89@gmail.com - 123456
         </form>
     )
 }

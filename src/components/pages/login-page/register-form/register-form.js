@@ -5,7 +5,7 @@ import {addUser, clearErrors} from '../../../../context/actions/userActions';
 
 import s from './register-form.module.css';
 
-const RegisterForm = (props) => {
+const RegisterForm = () => {
 
     const dispatch = useDispatch();
     const [user, setUser] = useState({
