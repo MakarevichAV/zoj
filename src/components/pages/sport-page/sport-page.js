@@ -4,7 +4,7 @@ import Title from '../../title/title';
 
 const SportPage = () => {
     return (
-        <div>
+        <div className={s.wrapper}>
             <Title label="физическая нагрузка"/>
         </div>
     )
