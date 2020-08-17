@@ -13,8 +13,10 @@
 .sector {
     position: absolute;
     opacity: 0;
+    transition: 0.3s;
 }
 
 .sector:hover {
     opacity: 1;
+    transition: 0.3s;
 }
