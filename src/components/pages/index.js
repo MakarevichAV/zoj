@@ -7,5 +7,6 @@ export {
     ProfilePage,
     FoodPage,
     SportPage,
-    LoginPage
+    LoginPage,
+    TrainerPage
 };

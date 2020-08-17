@@ -9,6 +9,7 @@ import Header from '../../header/header';
 import ProfilePage from '../profile-page/profile-page';
 import FoodPage from '../food-page/food-page';
 import SportPage from '../sport-page/sport-page';
+import TrainerPage from '../trainer-page/trainer-page';
 
 export default function Home() {
 
@@ -28,6 +29,7 @@ export default function Home() {
                         <Route exact path="/profile" component={ProfilePage}/>
                         <Route path="/food" component={FoodPage} />
                         <Route path="/sport" component={SportPage} />
+                        <Route path="/trainer" component={TrainerPage} />
                         <Redirect to="profile" />   
                     </Fragment>
                 </Fragment>

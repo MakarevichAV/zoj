@@ -1,0 +1,31 @@
+.figuresBlock {
+    flex-grow: 1;
+    margin: 0 20px 30px;
+    background: var(--block);
+    border-radius: 8px;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.figure {
+    max-width: 400px;
+    margin: 15px;
+    position: relative;
+    flex-grow: 1;
+    flex-basis: 250px;
+}
+
+.mainImg {
+    width: 100%;
+}
+
+.sector {
+    position: absolute;
+    opacity: 0;
+}
+
+.sector:hover {
+    opacity: 1;
+}
