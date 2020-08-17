@@ -1,0 +1,20 @@
+.figure {
+    max-width: 400px;
+    margin: 15px;
+    position: relative;
+    flex-grow: 1;
+    flex-basis: 250px;
+}
+
+.mainImg {
+    width: 100%;
+}
+
+.sector {
+    position: absolute;
+    opacity: 0;
+}
+
+.sector:hover {
+    opacity: 1;
+}

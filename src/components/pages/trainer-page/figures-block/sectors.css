@@ -54,6 +54,30 @@
 
 #belly {
     width: 17.7%;
-    left: 163.7px;
+    left: 40.9%;
     top: 26.7%;
+}
+
+#right-hip {
+    width: 18%;
+    left: 30.4%;
+    bottom: 32.9%;
+}
+
+#left-hip {
+    width: 18%;
+    right: 29.9%;
+    bottom: 32.9%;
+}
+
+#right-shin {
+    width: 12.4%;
+    left: 29.1%;
+    bottom: 9.8%;
+}
+
+#left-shin {
+    width: 12.1%;
+    right: 28.9%;
+    bottom: 9.6%;
 }
