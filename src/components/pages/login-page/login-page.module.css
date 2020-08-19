@@ -1,0 +1,70 @@
+.loginPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.window {
+    background-color: var(--block);
+    border-radius: 8px;
+    max-width: 600px;
+    flex-grow: 1;
+}
+
+.header {
+    border-radius: 8px 8px 0 0;
+    padding: 10px 30px;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 30px 15px;
+}
+
+.item {
+    font-size: 20px;
+    margin-right: 20px;
+    color: var(--color-3);
+}
+
+.here {
+    color: var(--txt-1);
+    cursor: default;
+}
+
+.form {
+    padding: 30px;
+    padding-bottom: 40px;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input, .button {
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--color-1);
+    font-size: 20px;
+    color: var(--txt-1);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button {
+    background-color: var(--color-1);
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 7px;
+}

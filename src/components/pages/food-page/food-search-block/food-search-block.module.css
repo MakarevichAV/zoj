@@ -1,0 +1,161 @@
+.foodSearchBlock {
+    padding: 30px 30px 10px;
+    margin: 0 20px;
+    margin-bottom: 30px;
+    flex-grow: 1;
+    box-sizing: border-box;
+    min-height: 100px;
+    background: var(--main-color);
+    flex-basis: 560px;
+    border-radius: 8px;
+}
+
+.list {
+    background: white;
+    display: none;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    top:45px;
+    box-sizing: border-box;
+    border: 1px solid #85AD90;
+    border-radius: 8px;
+    background: var(--block);
+    box-shadow: 3px 3px 4px 2px #a8a8a8;
+    min-height: 130px;
+    max-height: 340px;
+}
+
+.showList {
+    display: block;
+}
+
+.inputs {
+    padding: 8px 15px;
+    border: 2px solid var(--color-1);
+    font-size: 20px;
+    color: var(--txt-1);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.searchArea {
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 8px 0 0 8px;
+    border-right: 0;
+}
+.number {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.relative {
+    position: relative;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.dataRows {
+    padding: 20px 0;
+}
+
+.mainRow h2 {
+    font-size: 22px;
+    color: var(--color-3);
+    margin-right: 20px;
+    flex-basis: 250px;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+
+
+.row {
+    font-size: 20px;
+    color: var(--txt-3);
+    border-bottom: 1px solid var(--txt-3);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainRow {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: none;
+}
+
+.buttons {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.btn {
+    min-width: 180px;
+    padding: 10px 30px;
+    font-size: 24px;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btnType1 {
+    background-color: var(--color-1);
+    color: white;
+}
+
+.btnType2 {
+    background-color: var(--block);
+    color: var(--color-1);
+    margin-right: 20px;
+}
+
+.numGramm {
+    display: flex;
+    align-items: center;
+}
+
+.searchBtn {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 0;
+    font-size: 20px;
+    padding: 10px 15px;
+    border: 2px solid var(--color-1);
+    border-radius: 0 8px 8px 0;
+    min-width: 110px;
+}
+
+.preloader {
+    width: 60px;
+    height: 130px;
+    margin: 0 auto;
+    background: url(../../../../preloader.svg) no-repeat center center / contain;
+}
+
+.emptyList {
+    padding: 15px 30px;
+    color: var(--color-3);
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .btn {
+        min-width: 0;
+        padding: 10px 15px;
+        font-size: 20px;
+    }
+    .searchBtn {
+        padding: 8px 15px;
+    }
+    .searchArea {
+        padding: 8px 15px;
+    }
+}

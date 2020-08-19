@@ -1,0 +1,19 @@
+.header {
+    min-height: 110px;
+    background: var(--main-color);
+    border-bottom: 5px solid var(--color-1);
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.menu {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: inherit;
+    position: relative;
+}
