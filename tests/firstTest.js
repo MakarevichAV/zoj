@@ -22,8 +22,9 @@ describe("Сценарии действий пользователя", () => {
             var menuItem = await driver.findElement(By.css("[class*='header_menu'] ul[class^='nav_nav'] [href='/food']"));
         } 
         while (!menuItem);
+        await driver.findElement(By.css("[class*='header_menu'] ul[class^='nav_nav'] [href='/food']")).click();
         // console.log('Пункт меню ПИТАНИЕ загружен');
-        menuItem.click();
+        // menuItem.click();
         // console.log('Кликнули по пункту ПИТАНИЕ');
         await driver.wait(until.elementLocated(By.css("[class*='title_titleBlock']")), 10000);
         // console.log('Тайтл Блок загружен');
@@ -48,25 +49,25 @@ describe("Сценарии действий пользователя", () => {
     it("Запись хавчика произведена успешно", async () => {
         await driver.wait(until.elementLocated(By.css("[class='recharts-layer recharts-bar-rectangle']:nth-last-child(1)")), 10000);
         // console.log('График загружен');
-        let rows = await driver.findElements(By.css("[class*='total-block_row']"));
+        let rows = await driver.findElements(By.css("[class*='table-row_row']"));
         // console.log('Загружены строки');
         let txt1 = await driver.findElement(By.css("[class*='search-block_mainRow'] h2")).getText();
-        // console.log('Взяли название хавучика - ' + txt1);
+        // console.log('Взяли название хавчика - ' + txt1);
         await driver.findElement(By.css("[class*='food-search-block_btnType1']:nth-last-child(1)")).click();
         // console.log('Кликнули по кнопке ЗАПИСАТЬ');
-        await driver.wait(until.elementLocated(By.xpath(`//div[contains(@class, 'total-block_row')][position()=${rows.length + 1}]`)), 30000);
+        await driver.wait(until.elementLocated(By.xpath(`//div[contains(@class, 'table-row_row')][position()=${rows.length + 1}]`)), 30000);
         // console.log('Хавчик записан в таблицу');
-        let txt2 = await driver.findElement(By.xpath(`//div[contains(@class, 'total-block_row')][position()=${rows.length + 1}] //div[text()='${txt1}']`)).getText();
-        // console.log('Взяли текст добавленного хавчика для сравнения');
+        let txt2 = await driver.findElement(By.xpath(`//div[contains(@class, 'table-row_row')][position()=${rows.length + 1}] //div[text()='${txt1}']`)).getText();
+        // console.log(txt1 + ' - ' + txt2);
         assert.equal(txt1 === txt2, true);
     });
 
     it("Удаление хавчика произведено успешно", async () => {
-        let numBefore = await driver.findElements(By.css("[class*='total-block_row']"));
-        await driver.findElement(By.css(`[class*='total-block_row']:nth-last-child(${numBefore.length - 1}) [class*='btnDel']`)).click();
+        let numBefore = await driver.findElements(By.css("[class*='table-row_row']"));
+        await driver.findElement(By.css(`[class*='table-row_row']:nth-last-child(${numBefore.length - 1}) [class*='btnDel']`)).click();
         await driver.switchTo().alert().accept();
         do {
-            var numAfter = await driver.findElements(By.css("[class*='total-block_row']"));
+            var numAfter = await driver.findElements(By.css("[class*='table-row_row']"));
         } 
         while (numAfter.length == numBefore.length);
         assert.equal(numBefore.length - numAfter.length == 1, true);
