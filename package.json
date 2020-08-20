@@ -6,39 +6,17 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.19.2",
-    "bcryptjs": "^2.4.3",
-    "chromedriver": "^84.0.1",
     "classnames": "^2.2.6",
-    "concurrently": "^5.2.0",
-    "config": "^3.3.1",
-    "express": "^4.17.1",
-    "express-validator": "^6.6.0",
-    "jsonwebtoken": "^8.5.1",
-    "mocha": "^8.1.1",
-    "mongoose": "^5.9.23",
-    "multer": "^1.4.2",
-    "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "recharts": "^1.8.5",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "save": "^2.4.0",
-    "selenium-webdriver": "^4.0.0-alpha.7"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon server/server.js",
-    "startWithServer": "concurrently \"nodemon server.js\" \"npm run start\"",
-    "startTest1": "mocha --timeout 20000 ./tests/firstTest.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,10 +32,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@wdio/cli": "^6.3.6",
-    "cors": "^2.8.5"
-  },
-  "proxy": "http://localhost:8080"
+  }
 }

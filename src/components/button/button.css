@@ -1,0 +1,14 @@
+.btn {
+    min-width: 180px;
+    padding: 14px 40px;
+    font-size: 24px;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+}
+
+.btn-type-1 {
+    background-color: var(--color-1);
+    color: white;
+}

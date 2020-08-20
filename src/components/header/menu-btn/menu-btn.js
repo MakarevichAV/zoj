@@ -1,9 +1,10 @@
 import React from 'react';
-import s from './menu-btn.module.css';
 
-const MenuBtn = ({onClick}) => {
+import './menu-btn.css';
+
+const MenuBtn = () => {
     return (
-        <button className={s.menuBtn} onClick={onClick}></button>
+        <div className="menu-btn"></div>
     )
 }
 

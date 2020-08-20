@@ -1,6 +1,6 @@
 import React from 'react';
 
-import s from './title.module.css';
+import './title.css';
 
 const Title = ({label}) => {
     let date = new Date(),
@@ -9,9 +9,9 @@ const Title = ({label}) => {
         year = date.getFullYear();
 
     return (
-        <div className={s.titleBlock}>
-            <p className={s.title}>{label}</p>
-            <p className={`${s.title} ${s.date}`}>{day + '.' + month + '.' + year}</p>
+        <div className="title">
+            <p>{label}</p>
+            <p className="date">{day + '.' + month + '.' + year}</p>
         </div>
     )
 }

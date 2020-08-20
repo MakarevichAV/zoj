@@ -1,8 +1,0 @@
-.container {
-    background-color: var(--block);
-    margin: 0 20px 30px;
-    flex-grow: 1;
-    padding: 60px 30px;
-    border-radius: 8px;
-    overflow-x: auto;
-}

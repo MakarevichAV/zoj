@@ -7,11 +7,6 @@
     `npm i` 
     Примечание: должен быть установлен Node.js
     Ссылка для установки Node.js https://nodejs.org/en/download/
-4. В терминале ввести 
-    `npm run server`
-    `npm start`
-5. Для запуска тестов набрать в терминале
-    `npm run startTest1`
 
 #### Работа с ветками
 ***

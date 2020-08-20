@@ -1,0 +1,23 @@
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: var(--txt-1);
+}
+
+.underline {
+    border-bottom: 1px solid var(--txt-1);
+}
+
+.important {
+    color: var(--color-3);
+}
+
+.head {
+    color: var(--color-1);
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 45px;
+}
