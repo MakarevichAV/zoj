@@ -10,13 +10,14 @@
 
 :root {
     --bg-color: #ECEBEB;
-    --main-color: #99DEAB;
+    --main-color: #abd2b5;
     --color-1: #85AD90;
     --color-2: #32904B;
     --color-3: #A64639;
     --color-4: #F0CD69;
     --txt-1: #A7A7A7;
     --txt-2: #2F7585;
+    --txt-3: #F7F7F7;
     --block: #F7F7F7;
     --user-font-color: #A64639;
 }

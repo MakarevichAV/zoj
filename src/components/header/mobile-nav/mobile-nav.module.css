@@ -1,0 +1,52 @@
+.nav {
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    background: var(--block);
+    padding: 80px 0 30px 0;
+    box-sizing: border-box;
+    top: 0;
+    right: -100%;
+    border: 1px solid var(--color-1);
+    display: none;
+    min-height: 100vh;
+    z-index: 10;
+    transition: 0.5s;
+}
+
+.visible {
+    right: 0;
+    transition: 0.5s;
+}
+
+.nav li {
+    margin: 0;
+}
+
+.navActive {
+    color: white !important;
+    background: var(--color-1);
+}
+
+.nav a, .logoutBtn {
+    color: var(--color-1);
+    padding: 10px 30px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    font-size: 24px;
+}
+
+.logoutBtn{
+    color: var(--color-3);
+    background: none;
+    margin-top: 40px;
+    text-align: left;
+}
+
+
+@media (max-width: 1000px) {
+    .nav {
+        display: block;
+    }
+}

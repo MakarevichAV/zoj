@@ -1,0 +1,99 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5px;
+    min-height: 140px;
+}
+
+.item p {
+    font-size: 20px;
+    color: var(--txt-1);
+}
+
+.emptyGlass {
+    width: 60px;
+    height: 70px;
+    background: url(../img/empty-glass.svg) no-repeat center top / 85%;
+    margin-bottom: 6px;
+}
+.fullGlass {
+    width: 60px;
+    height: 70px;
+    background: url(../img/full-glass.svg) no-repeat center top / 85%;
+    margin-bottom: 6px;
+}
+.btn {
+    display: none;
+}
+.addBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    background: var(--color-3);
+    position: relative;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.delBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    background: var(--color-4);
+    position: relative;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.addBtn:before {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 5px;
+    background: white;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.addBtn:after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 28px;
+    background: white;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.delBtn:before {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 5px;
+    background: white;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.item:hover .btn {
+    display: block;
+}
+
+.item:hover .emptyGlass {
+    background: url(../img/full-glass.svg) no-repeat center top / contain;
+}
+.item:hover .fullGlass {
+    background: url(../img/full-glass.svg) no-repeat center top / contain;
+}
