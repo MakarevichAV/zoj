@@ -1,0 +1,17 @@
+.balanceBlock {
+    padding: 30px;
+    margin: 0 20px;
+    margin-bottom: 30px;
+    background: var(--block);
+    flex-grow: 1;
+    max-width: 330px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    flex-basis: 330px;
+}
+
+@media (max-width: 990px) {
+    .balanceBlock {
+        max-width: initial;
+    }
+}

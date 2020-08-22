@@ -20,7 +20,7 @@ const InfoItem = (props) => {
             <span>{props.name}</span>
             {props.change ? 
                 <input name={props.ind} type={type} value={props.value} onChange={props.onChangeValue} /> : 
-                <span>{props.value} {props.unit}</span>
+                <span className={props.red ? s.red : null}>{props.value} {props.unit}</span>
             }
         </p>
     )

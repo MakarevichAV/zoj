@@ -1,12 +1,30 @@
 import React from 'react';
-import s from './sport-page.module.css';
+import {useSelector} from 'react-redux';
 import Title from '../../title/title';
+import TrainingSearchBlock from './training-search-block/training-search-block';
+import BalanceBlock from './balance-block/balance-block';
+import preloader from '../../../preloader.svg';
+import s from './sport-page.module.css';
 
 const SportPage = () => {
+    const isLoading = useSelector(state => state.foodInfo.isLoading);
     return (
-        <div className={s.wrapper}>
-            <Title label="физическая нагрузка"/>
-        </div>
+        <>
+            {isLoading ? 
+                <div className="preloader">
+                    <img src={preloader} />
+                </div>
+                : null }
+            <div className={s.sportPage}>
+                <div className={s.wrapper}>
+                    <Title label="физическая нагрузка"/>
+                </div>
+                <div className={s.container}>
+                    <TrainingSearchBlock />
+                    <BalanceBlock />
+                </div>
+            </div>
+        </>
     )
 }
 

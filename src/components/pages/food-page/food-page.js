@@ -6,7 +6,6 @@ import TotalBlock from './total-block/total-block'
 import Chart from './chart/chart'
 import preloader from '../../../preloader.svg';
 import s from './food-page.module.css';
-
 import FoodSearchBlock from './food-search-block/food-search-block';
 import Title from '../../title/title';
 

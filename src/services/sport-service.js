@@ -43,19 +43,41 @@ const TrainingService = () => {
         },
         {
             id: 9,
-			name: '',
-			energy: 320
+			name: 'Прием душа',
+			energy: 90
         },
+        {
+            id: 10,
+			name: 'Прием душа',
+			energy: 90
+        },
+        {
+            id: 11,
+			name: 'Работа в сидячем положении',
+			energy: 70
+        },
+        {
+            id: 12,
+			name: 'Работа в офисе',
+			energy: 70
+        }
 	];
-
-	// getAllTraining = () => {
-	// 	return this._food;
-    // };
     
     getMatchList = (phrase) => {
-         
+        const names = this._trainings.map((val) => { 
+            const regExp = new RegExp('^' + phrase, 'i');
+            if (regExp.test(val.name)) {
+                return {
+                    id: val.id,
+                    listItemValue: val.name,
+                };
+            } 
+        })
+        .filter(function(x) {
+            return x !== undefined && x !== null; 
+        });
+        return names;
     }
-
 	
 	getSelectedTraining = (id) => {
 		let farther = true;
