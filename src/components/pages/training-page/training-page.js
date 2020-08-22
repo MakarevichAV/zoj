@@ -4,9 +4,9 @@ import Title from '../../title/title';
 import TrainingSearchBlock from './training-search-block/training-search-block';
 import BalanceBlock from './balance-block/balance-block';
 import preloader from '../../../preloader.svg';
-import s from './sport-page.module.css';
+import s from './training-page.module.css';
 
-const SportPage = () => {
+const TrainingPage = () => {
     const isLoading = useSelector(state => state.foodInfo.isLoading);
     return (
         <>
@@ -28,4 +28,4 @@ const SportPage = () => {
     )
 }
 
-export default SportPage;
+export default TrainingPage;

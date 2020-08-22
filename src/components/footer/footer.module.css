@@ -1,0 +1,35 @@
+.footer {
+    min-height: 60px;
+    width: 100%;
+    background: #85AD90;
+    position: absolute;
+    bottom: 0;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.wrapper {
+    max-width: 1240px;
+    flex-grow: 1;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.text {
+    color: var(--txt-3);
+}
+
+.txt1 {
+    color: #000000;
+}
+
+.txt2 {
+    color: #FAC100;
+}
+
+.italic {
+    font-style: italic;
+}

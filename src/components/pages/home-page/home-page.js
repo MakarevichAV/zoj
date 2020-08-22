@@ -5,10 +5,13 @@ import {useDispatch} from 'react-redux';
 import {getUser} from '../../../context/actions/userActions';
 import {getFoodDairy} from '../../../context/actions/foodActions';
 
+import s from './home-page.module.css';
+
 import Header from '../../header/header';
+import Footer from '../../footer/footer';
 import ProfilePage from '../profile-page/profile-page';
 import FoodPage from '../food-page/food-page';
-import SportPage from '../sport-page/sport-page';
+import TrainingPage from '../training-page/training-page';
 import TrainerPage from '../trainer-page/trainer-page';
 
 export default function Home() {
@@ -21,17 +24,18 @@ export default function Home() {
     }, []);
     
     return (
-        <div>
+        <div className={s.wrap}>
             <Router>
                 <Fragment>
                     <Header />
                     <Fragment>
                         <Route exact path="/profile" component={ProfilePage}/>
                         <Route path="/food" component={FoodPage} />
-                        <Route path="/sport" component={SportPage} />
+                        <Route path="/training" component={TrainingPage} />
                         <Route path="/trainer" component={TrainerPage} />
                         <Redirect to="profile" />   
                     </Fragment>
+                    <Footer />
                 </Fragment>
             </Router>
         </div>

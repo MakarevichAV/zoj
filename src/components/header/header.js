@@ -12,7 +12,7 @@ const Header = () => {
     const navItems = [
         { name: 'Профиль', link: '/profile'},
         { name: 'Питание', link: '/food'},
-        { name: 'Упражнения', link: '/sport'},
+        { name: 'Упражнения', link: '/training'},
         { name: 'Виртуальный тренер', link: '/trainer'},
     ];
 

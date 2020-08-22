@@ -164,7 +164,7 @@ const TrainingSearchBlock = () => {
             <form className={s.relative}>
                 <input  className={cn(s.inputs, s.searchArea)} 
                         type="text" 
-                        placeholder="" 
+                        placeholder="Вид деятельности" 
                         value={inpVal}
                         onChange={typeSearchValue}
                         onKeyPress={e => e.key === 'Enter' ? showDropList : 0 }
